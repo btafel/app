@@ -23,9 +23,8 @@ function PositiveResults() {
         RIESGO LEVE
       </Text>
       <Text style={styles.cardSubTitle}>
-        No contás con síntomas que puedan estar relacionados con el contagio de
-        coronavirus, como así tampoco haber estado posiblemente expuesto a gente
-        contagiada.
+        Según pautas oficiales, el conjunto de tus sintomas e historia no
+        implican contagio de coronavirus o alto riesgo.
       </Text>
       <Text style={styles.cardText}>
         Te proponemos realizar el aislamiento voluntario, repasando el listado
