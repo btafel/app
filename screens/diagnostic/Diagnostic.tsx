@@ -262,12 +262,10 @@ function Questionary({ onShowResults }: QuestionaryProps) {
         </View>
       </ScrollView>
       <Touchable
-        enabled={!disabled}
         style={[
           styles.button,
           styles.activeButton,
           { width: undefined, margin: 10 },
-          disabled && { backgroundColor: '#ccc' },
         ]}
         onPress={handlePress}
       >

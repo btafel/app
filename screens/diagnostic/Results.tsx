@@ -46,7 +46,7 @@ function PositiveResults() {
       </Text>
       <RectButton
         style={[styles.button, styles.activeButton, { width: '80%' }]}
-        onPress={() => navigation.goBack()}
+        onPress={() => navigation.navigate('Diagnostic')}
       >
         <Text style={[styles.buttonText, styles.activeButtonText]}>
           Realizar diagnóstico nuevamente
@@ -86,7 +86,7 @@ function NeutralResults() {
       </Text>
       <RectButton
         style={[styles.button, styles.activeButton, { width: '80%' }]}
-        onPress={() => navigation.goBack()}
+        onPress={() => navigation.navigate('Diagnostic')}
       >
         <Text style={[styles.buttonText, styles.activeButtonText]}>
           Realizar diagnóstico nuevamente
@@ -143,7 +143,7 @@ function NegativeResults() {
             textAlign: 'center',
           }}
         >
-          Ministerio de Salud de la Nación
+          Ministerio de Salud
         </Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Text
@@ -155,16 +155,16 @@ function NegativeResults() {
             }}
             onPress={async () => {
               try {
-                await Linking.openURL(`tel:0800-222-1002`);
+                await Linking.openURL(`tel:0800-800-26843`);
               } catch (e) {
                 Alert.alert('Error al intentar hacer la llamada');
               }
             }}
           >
-            0800-222-1002
+            0800-800-26843 (COVID)
           </Text>
         </View>
-        <Text>(opción 1)</Text>
+        {/* <Text>(opción 1)</Text> */}
       </View>
       <Text style={styles.cardText}>
         Si tus síntomas fueron cambiando, por favor volvé a realizar el
@@ -172,7 +172,7 @@ function NegativeResults() {
       </Text>
       <RectButton
         style={[styles.button, styles.activeButton, { width: '80%' }]}
-        onPress={() => navigation.goBack()}
+        onPress={() => navigation.navigate('Diagnostic')}
       >
         <Text style={[styles.buttonText, styles.activeButtonText]}>
           Realizar diagnóstico nuevamente
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 50,
   },
-  cardTitle: { fontSize: 24, padding: 10, fontWeight: '700' },
+  cardTitle: { fontSize: 24, padding: 10, fontWeight: '700', zIndex: 1 },
   cardSubTitle: {
     fontSize: 17,
     paddingTop: 20,
