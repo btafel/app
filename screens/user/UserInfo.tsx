@@ -46,7 +46,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
     if (state.bob || '' !== '') {
       return false;
     }
-    return moment(state.dob, 'DD/MM/YYYY', true).isValid();
+    return moment(state.dob, 'D/M/YYYY', true).isValid();
   }
   async function handleContinue() {
     await savePreferences({ userInfo: state });
