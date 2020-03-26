@@ -111,7 +111,8 @@ function Questionary({ onShowResults }: QuestionaryProps) {
     );
     const hasAnswers =
       Object.keys(state.questions).filter(k => k !== 'pathology').length >= 5;
-    if (!!hasSymptoms && !!hasAnswers) {
+    // if (!!hasSymptoms && !!hasAnswers) {
+    if (!!hasAnswers) {
       setDisabled(false);
     } else {
       setDisabled(true);
