@@ -66,7 +66,14 @@ export const OnboardingSlides = ({ navigation }: MainStackNavProps<'Help'>) => {
       ? navigation.goBack()
       : navigation.reset({
           index: 0,
-          routes: [{ name: preferences.userInfo ? 'Main' : 'UserInfo' }],
+          routes: [
+            {
+              name:
+                preferences.userInfo && preferences.userInfo.province
+                  ? 'Main'
+                  : 'UserInfo',
+            },
+          ],
         });
   };
   return (

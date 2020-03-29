@@ -16,6 +16,10 @@ import Touchable from '../../components/Touchable';
 import Colors from '../../constants/Colors';
 import { savePreferences } from '../../utils/config';
 import RadioButtons from '../../components/RadioButtons';
+import DatePicker from '../../components/DatePicker';
+
+import SearchableDropdown from 'react-native-searchable-dropdown';
+import { provinces } from '../../utils/data';
 
 function reducer(state, newState) {
   return { ...state, ...newState };
@@ -24,7 +28,6 @@ function reducer(state, newState) {
 const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
   const [state, setState] = useReducer(reducer, {});
   const [canSave, setCanSave] = useState(false);
-  const dobRef = useRef<any | undefined>();
 
   const handleChange = key => value => {
     setState({ [key]: value });
@@ -34,6 +37,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
     if (
       (state.phoneNumber || '') !== '' &&
       (state.gender || '') !== '' &&
+      (state.province || '') !== '' &&
       isValidDate()
     ) {
       setCanSave(true);
@@ -69,48 +73,76 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             Necesitamos algunos datos tuyos para poder realizar un diagnóstico
             más preciso y contactarte si necesitas ayuda.
           </Text>
+          <SearchableDropdown
+            onTextChange={text => console.log(text)}
+            //On text change listner on the searchable input
+            // onItemSelect={item => alert(JSON.stringify(item))}
+            onItemSelect={handleChange('province')}
+            //onItemSelect called after the selection from the dropdown
+            containerStyle={{ marginTop: 20, padding: 0 }}
+            //suggestion container style
+            textInputStyle={{
+              //inserted text style
+              padding: 10,
+              borderWidth: 1,
+            }}
+            itemStyle={{
+              //single dropdown item style
+              padding: 10,
+              marginTop: 2,
+              backgroundColor: '#FAF9F8',
+              borderColor: '#bbb',
+              borderWidth: 1,
+            }}
+            itemTextStyle={{
+              //single dropdown item's text style
+              color: '#222',
+            }}
+            itemsContainerStyle={
+              {
+                //items container style you can pass maxHeight
+                //to restrict the items dropdown hieght
+                // maxHeight: '30vw',
+              }
+            }
+            items={provinces}
+            //mapping of item array
+            // defaultIndex={2}
+            //default selected item index
+            placeholder="Provincia"
+            //place holder for the search input
+            resetValue={false}
+            //reset textInput Value with true and false state
+            underlineColorAndroid="transparent"
+            //To remove the underline from the android input
+          />
+
           <TextInput
             placeholder="# Celular"
             value={state.phoneNumber}
             onChangeText={handleChange('phoneNumber')}
-            autoFocus
             keyboardType="phone-pad"
             style={styles.input}
+            blurOnSubmit
           />
           <RadioButtons
             label="Sexo"
             options={[
               {
                 key: 'M',
-                text: 'M',
+                text: 'Masculino',
               },
               {
                 key: 'F',
-                text: 'F',
+                text: 'Femenino',
               },
             ]}
             onChange={handleChange('gender')}
           />
-          {Platform.OS === 'web' ? (
-            <TextInput
-              placeholder="Fecha de Nacimiento (DD/MM/YYYY)"
-              value={state.dob}
-              onChangeText={handleChange('dob')}
-              style={styles.input}
-            />
-          ) : (
-            <TextInputMask
-              placeholder="Fecha de Nacimiento (DD/MM/YYYY)"
-              type="datetime"
-              options={{
-                format: 'DD/MM/YYYY',
-              }}
-              value={state.dob}
-              onChangeText={handleChange('dob')}
-              style={styles.input}
-              ref={dobRef}
-            />
-          )}
+          <DatePicker
+            label="Fecha de Nacimiento"
+            onChange={handleChange('dob')}
+          />
           <Touchable
             enabled={canSave}
             style={[

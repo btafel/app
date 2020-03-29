@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Linking,
   Alert,
@@ -14,6 +14,7 @@ import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { DiagnosticStackNavProps } from './types';
 import Colors from '../../constants/Colors';
 import Layout from '../../constants/Layout';
+import { getPreferences } from '../../utils/config';
 
 function PositiveResults() {
   const navigation = useNavigation();
@@ -95,8 +96,12 @@ function NeutralResults() {
   );
 }
 
-function NegativeResults() {
+function NegativeResults({ province }) {
   const navigation = useNavigation();
+  const tel = province?.tel || '0800-222-1002';
+  const extra = province?.extra;
+  const name = province?.name || 'Ministerio de Salud';
+
   return (
     <>
       <Text style={[styles.cardTitle, { color: Colors.palette.negative }]}>
@@ -142,7 +147,7 @@ function NegativeResults() {
             textAlign: 'center',
           }}
         >
-          Ministerio de Salud
+          {name}
         </Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Text
@@ -154,16 +159,26 @@ function NegativeResults() {
             }}
             onPress={async () => {
               try {
-                await Linking.openURL(`tel:0800-800-26843`);
+                await Linking.openURL(`tel:${tel}`);
               } catch (e) {
                 Alert.alert('Error al intentar hacer la llamada');
               }
             }}
           >
-            0800-800-26843 (COVID)
+            {tel}
           </Text>
         </View>
+        <Text
+          style={{
+            // fontSize: 10,
+            fontWeight: '300',
+            paddingTop: 5,
+          }}
+        >
+          {extra}
+        </Text>
       </View>
+
       <Text style={styles.cardText}>
         Si tus síntomas fueron cambiando, por favor volvé a realizar el
         autodiagnóstico y seguí las recomendaciones dadas.
@@ -225,6 +240,16 @@ export default function Results({
     }, []),
   );
 
+  const [province, setProvince] = useState(null);
+
+  useEffect(() => {
+    async function loadData() {
+      const preferences = await getPreferences();
+      setProvince(preferences.userInfo.province);
+    }
+    loadData();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
@@ -250,7 +275,7 @@ export default function Results({
         <View style={styles.card}>
           {results === 'positive' && <PositiveResults />}
           {results === 'neutral' && <NeutralResults />}
-          {results === 'negative' && <NegativeResults />}
+          {results === 'negative' && <NegativeResults province={province} />}
         </View>
       </ScrollView>
     </SafeAreaView>

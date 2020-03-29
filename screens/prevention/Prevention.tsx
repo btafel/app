@@ -49,9 +49,9 @@ const data: PreventionItem[] = [
     id: '5',
     title: '¿Cómo ayuda la higiene?',
     shortText:
-      'Los síntomas más comunes del contagio de coronavirus son fiebre, tos y dolor de garganta.',
+      'Mantené la limpieza, principalmente de las superficies donde usás las manos (picaportes, canillas, teclados, asas, etc).',
     longText:
-      'Los síntomas más comunes del contagio de coronavirus son fiebre, tos y dolor de garganta.\nEn algunos casos puede provocar dificultades respiratorias severas, requiriendo hospitalización.',
+      'Mantené la limpieza, principalmente de las superficies donde usás las manos (picaportes, canillas, teclados, asas, etc).\n\nTambién mantené tus manos limpias. Evitá tocarte la cara.\n\nCubrite con el pliegue del codo y no con las manos al estornudar.',
     image: require('../../assets/images/prevention/hygiene.png'),
   },
   {

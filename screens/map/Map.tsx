@@ -1,29 +1,27 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   Platform,
   Text,
   View,
-  StyleSheet,
-  Dimensions,
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
 import { Ionicons as Icon } from '@expo/vector-icons';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Heatmap } from 'react-native-maps';
 import BottomSheet from 'reanimated-bottom-sheet';
+import { getHeatmapData } from '../../api/services';
 
 import { useLocation } from '../../hooks/use-location';
 import Colors from '../../constants/Colors';
 
-const { width, height } = Dimensions.get('window');
-const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.0922;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
-// Default location is Argentina's coords
-const DEFAULT_LOCATION = {
-  latitude: -38.00578,
-  longitude: -63.479311,
-};
+import { panelStyles, mapStyles } from './mapStyles';
+import {
+  shouldUpdateHeatMap,
+  LATITUDE_DELTA,
+  LONGITUDE_DELTA,
+  HEATMAP_GET_DATA_DISTANCE,
+  DEFAULT_LOCATION,
+} from './mapConfig';
 
 function PanelContent() {
   return (
@@ -65,64 +63,48 @@ function PanelHeader() {
   );
 }
 
-const panelStyles = StyleSheet.create({
-  panel: {
-    padding: 20,
-    backgroundColor: '#f7f5eee8',
-  },
-  header: {
-    backgroundColor: '#f7f5eee8',
-    shadowColor: '#000000',
-    paddingTop: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-  },
-  panelHeader: {
-    alignItems: 'center',
-  },
-  panelHandle: {
-    width: 40,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: '#00000040',
-    marginBottom: 10,
-  },
-  panelTitle: {
-    fontSize: 20,
-    paddingBottom: 10,
-  },
-  panelSubtitle: {
-    fontSize: 14,
-    color: 'gray',
-    marginBottom: 10,
-  },
-  panelButton: {
-    padding: 20,
-    borderRadius: 10,
-    backgroundColor: '#318bfb',
-    alignItems: 'center',
-    marginVertical: 10,
-  },
-  panelButtonTitle: {
-    fontSize: 17,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  photo: {
-    width: '100%',
-    height: 225,
-    marginTop: 30,
-  },
-});
-
 export default function Map({ navigation }) {
   const { location, error } = useLocation({ runInBackground: true });
   const [mapReady, setMapReady] = useState(false);
+  const [heatmapData, setHeatmapData] = useState({});
   const mapRef = useRef<MapView>();
   const refRBSheet = useRef();
 
+  useEffect(() => {
+    if (location) {
+      const locationCoords = {
+        lat: location.coords.latitude,
+        lng: location.coords.longitude,
+      };
+      if (shouldUpdateHeatMap(heatmapData, locationCoords)) {
+        getHeatmapData({
+          ...locationCoords,
+          distance: HEATMAP_GET_DATA_DISTANCE,
+        })
+          .then(response => {
+            const positions = response.data;
+            const mapData = positions.map(item => ({
+              latitude: item.lat,
+              longitude: item.lng,
+              weight: item.weight,
+            }));
+            const now = new Date().getTime();
+            const heatmapData = {
+              mapData: mapData,
+              lastUpdated: now,
+              center: locationCoords,
+            };
+            setHeatmapData(heatmapData);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+    }
+  }, [location]);
+
   return (
-    <View style={[styles.container]}>
+    <View style={[mapStyles.container]}>
       <MapView
         ref={mapRef}
         provider={PROVIDER_GOOGLE}
@@ -138,20 +120,25 @@ export default function Map({ navigation }) {
             : undefined
         }
         initialCamera={{
-          center: DEFAULT_LOCATION,
+          center: location ? location.coords : DEFAULT_LOCATION,
           pitch: 1,
           heading: 1,
           altitude: 11,
           zoom: 4,
         }}
-        style={styles.map}
+        style={mapStyles.map}
         showsMyLocationButton={false}
         onMapReady={() => setMapReady(true)}
-      />
-      <SafeAreaView style={[styles.buttonContainer]}>
+      >
+        {heatmapData.mapData ? (
+          <Heatmap points={heatmapData.mapData}></Heatmap>
+        ) : null}
+      </MapView>
+
+      <SafeAreaView style={[mapStyles.buttonContainer]}>
         <TouchableOpacity
           activeOpacity={0.8}
-          style={[styles.button, styles.locationButton]}
+          style={[mapStyles.button, mapStyles.locationButton]}
           onPress={() => navigation.navigate('Help')}
         >
           <Icon
@@ -162,7 +149,7 @@ export default function Map({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.8}
-          style={[styles.button, styles.infoButton]}
+          style={[mapStyles.button, mapStyles.infoButton]}
           disabled={!location}
           onPress={() =>
             mapRef.current.animateToRegion({
@@ -191,41 +178,3 @@ export default function Map({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    textAlign: 'center',
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  },
-  button: {
-    alignItems: 'center',
-    backgroundColor: 'rgba(255,255,255,0.9)',
-    paddingVertical: 12,
-    marginHorizontal: 10,
-    paddingHorizontal: 12,
-    minWidth: 50,
-  },
-  locationButton: {
-    marginTop: 12,
-    marginBottom: StyleSheet.hairlineWidth,
-    borderTopEndRadius: 15,
-    borderTopStartRadius: 15,
-  },
-  infoButton: {
-    borderBottomEndRadius: 15,
-    borderBottomStartRadius: 15,
-  },
-  buttonContainer: {
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-  },
-});

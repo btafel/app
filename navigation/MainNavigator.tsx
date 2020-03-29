@@ -18,7 +18,7 @@ export default function MainNavigator({
 }: UserPreferences) {
   const initialRouteName = showOnboarding
     ? 'Help'
-    : userInfo
+    : userInfo && userInfo.province
     ? 'Main'
     : 'UserInfo';
 
