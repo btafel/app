@@ -4,19 +4,22 @@ import {
   Platform,
   View,
   Button,
+  Text,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
 import { Ionicons as Icon } from '@expo/vector-icons';
 import GoogleMapReact from 'google-map-react';
-import { getHeatmapData, getHeatmapSocialData } from '../../api/services';
+import Modal from 'modal-enhanced-react-native-web';
 
+import { getHeatmapData, getHeatmapSocialData } from '../../api/services';
 import { useLocation } from '../../hooks/use-location';
 import Constants from 'expo-constants';
 import Colors from '../../constants/Colors';
 
 import {
   shouldUpdateHeatMap,
+  heatmapInitialValues,
   HEATMAP_WEB_ZOOM,
   HEATMAP_WEB_RADIUS,
   HEATMAP_WEB_OPACITY,
@@ -26,24 +29,9 @@ import {
 
 import { mapStyles } from './mapStyles';
 
-const heatmapInitialValues = {
-  mapData: {
-    positions: [],
-    options: {
-      radius: HEATMAP_WEB_RADIUS,
-      opacity: HEATMAP_WEB_OPACITY,
-    },
-  },
-  lastUpdated: undefined,
-  center: undefined,
-  isSocial: false,
-};
-
 export default function Map({ navigation }) {
   const [heatmapData, setHeatmapData] = useState(heatmapInitialValues);
   const [heatmapDataAux, setHeatmapDataAux] = useState(heatmapInitialValues);
-
-  // const [isSocial, setIsSocial] = useState(false);
 
   const { location } = useLocation();
 
@@ -57,6 +45,8 @@ export default function Map({ navigation }) {
   );
 
   const [zoom, setZoom] = useState(HEATMAP_WEB_ZOOM);
+
+  const [isVisibleModalSocial, setIsVisibleModalSocial] = useState(false);
 
   useEffect(() => {
     if (location) {
@@ -161,8 +151,14 @@ export default function Map({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.8}
-          style={[mapStyles.button, mapStyles.layerButton]}
+          style={[
+            mapStyles.button,
+            mapStyles.layerButton,
+            { backgroundColor: heatmapData.isSocial ? 'green' : 'gray' },
+          ]}
           onPress={() => {
+            !heatmapData.isSocial && setIsVisibleModalSocial(true);
+
             setHeatmapData(heatmapInitialValues);
 
             setTimeout(() => {
@@ -175,8 +171,7 @@ export default function Map({ navigation }) {
           <Icon
             name={`${Platform.OS === 'ios' ? 'ios' : 'md'}-people`}
             size={24}
-            // color="rgba(66,135,244,1)"
-            color={heatmapData.isSocial ? 'green' : 'gray'}
+            color="white"
           />
         </TouchableOpacity>
         <TouchableOpacity
@@ -225,6 +220,26 @@ export default function Map({ navigation }) {
           />
         ) : null}
       </GoogleMapReact>
+
+      <Modal
+        isVisible={isVisibleModalSocial}
+        onSwipe={() => setIsVisibleModalSocial(false)}
+        swipeDirection="left"
+      >
+        <View style={mapStyles.modalContent}>
+          <Text style={mapStyles.modalTitle}>Datos Comunitarios</Text>
+          <Text style={mapStyles.modalBody}>
+            Los datos que estarás viendo ahora son datos reportados
+            voluntariamente. No son datos oficiales!
+          </Text>
+
+          <TouchableOpacity onPress={() => setIsVisibleModalSocial(false)}>
+            <View style={mapStyles.modalButton}>
+              <Text style={{ color: 'white' }}>Aceptar</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </View>
   );
 }

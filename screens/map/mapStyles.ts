@@ -92,6 +92,43 @@ export const mapStyles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
   },
+  modalContent: {
+    width: '50%',
+    marginHorizontal: 'auto',
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+    padding: 0,
+    borderRadius: 8,
+  },
+  modalTitle: {
+    backgroundColor: 'rgba(66, 135, 244, 1)',
+    color: 'rgb(255, 255, 255)',
+    width: '100%',
+    textAlign: 'center',
+    lineHeight: 35,
+    borderTopEndRadius: 6,
+    borderTopStartRadius: 6,
+    borderBottomEndRadius: 0,
+    borderBottomStartRadius: 0,
+  },
+  modalBody: {
+    backgroundColor: 'rgb(255, 255, 255)',
+    padding: 10,
+    textAlign: 'center',
+  },
+  modalButton: {
+    alignItems: 'center',
+    backgroundColor: 'rgba(66, 135, 244, 1)',
+    color: 'rgb(255, 255, 255)',
+    paddingVertical: 12,
+    marginHorizontal: 10,
+    paddingHorizontal: 12,
+    margin: 10,
+    minWidth: 50,
+    borderRadius: 10,
+  },
 });
 
 const CIRCLE_WIDTH = 60;
