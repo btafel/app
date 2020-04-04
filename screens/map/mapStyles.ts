@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-
 export const panelStyles = StyleSheet.create({
   panel: {
     padding: 20,
@@ -51,7 +50,6 @@ export const panelStyles = StyleSheet.create({
   },
 });
 
-
 export const mapStyles = StyleSheet.create({
   container: {
     flex: 1,
@@ -78,6 +76,12 @@ export const mapStyles = StyleSheet.create({
     marginBottom: StyleSheet.hairlineWidth,
     borderTopEndRadius: 15,
     borderTopStartRadius: 15,
+  },
+  layerButton: {
+    marginTop: 0,
+    marginBottom: StyleSheet.hairlineWidth,
+    borderTopEndRadius: 0,
+    borderTopStartRadius: 0,
   },
   infoButton: {
     borderBottomEndRadius: 15,

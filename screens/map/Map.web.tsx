@@ -1,11 +1,19 @@
 /* global google */
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Button } from 'react-native';
+import {
+  Platform,
+  View,
+  Button,
+  SafeAreaView,
+  TouchableOpacity,
+} from 'react-native';
+import { Ionicons as Icon } from '@expo/vector-icons';
 import GoogleMapReact from 'google-map-react';
 import { getHeatmapData } from '../../api/services';
 
 import { useLocation } from '../../hooks/use-location';
 import Constants from 'expo-constants';
+import Colors from '../../constants/Colors';
 
 import {
   shouldUpdateHeatMap,
@@ -15,6 +23,8 @@ import {
   HEATMAP_GET_DATA_DISTANCE,
   DEFAULT_LOCATION_WEB,
 } from './mapConfig';
+
+import { mapStyles } from './mapStyles';
 
 const heatmapInitialValues = {
   mapData: {
@@ -40,6 +50,8 @@ export default function Map({ navigation }) {
         }
       : DEFAULT_LOCATION_WEB,
   );
+
+  const [zoom, setZoom] = useState(HEATMAP_WEB_ZOOM);
 
   useEffect(() => {
     if (location) {
@@ -92,14 +104,74 @@ export default function Map({ navigation }) {
     ></div>
   );
 
+  const buttonContainerWeb = {
+    position: 'absolute',
+    zIndex: 9999,
+    right: 0,
+  };
+
+  const mapRef = useRef<GoogleMapReact>();
+
   return (
-    <View style={{ height: '100vh', width: '100%' }}>
+    <View style={[mapStyles.container]}>
+      <SafeAreaView style={[mapStyles.buttonContainer, buttonContainerWeb]}>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={[mapStyles.button, mapStyles.locationButton]}
+          onPress={() => navigation.navigate('Help')}
+        >
+          <Icon
+            name={`${Platform.OS === 'ios' ? 'ios' : 'md'}-help-circle-outline`}
+            size={24}
+            color="rgba(66,135,244,1)"
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={[mapStyles.button, mapStyles.layerButton]}
+          onPress={() => navigation.navigate('Help')}
+        >
+          <Icon
+            name={`${Platform.OS === 'ios' ? 'ios' : 'md'}-help-circle-outline`}
+            size={24}
+            color="rgba(66,135,244,1)"
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={[mapStyles.button, mapStyles.infoButton]}
+          disabled={!location}
+          onPress={() => {
+            setZoom(-1);
+
+            const bounds = new mapRef.current.maps_.LatLngBounds();
+            var latLng = new mapRef.current.maps_.LatLng(
+              location.coords.latitude,
+              location.coords.longitude,
+            );
+            bounds.extend(latLng);
+
+            mapRef.current.map_.fitBounds(bounds);
+            setTimeout(() => {
+              setZoom(HEATMAP_WEB_ZOOM);
+            }, 10);
+          }}
+        >
+          <Icon
+            name={`${Platform.OS === 'ios' ? 'ios' : 'md'}-locate`}
+            size={24}
+            color={!location ? Colors.tabIconDefault : 'rgba(66, 135, 244, 1)'}
+          />
+        </TouchableOpacity>
+      </SafeAreaView>
       <GoogleMapReact
+        ref={mapRef}
         bootstrapURLKeys={{
           key: `${Constants.manifest.extra.googleMapsWebApiKey}`,
         }}
         center={coords}
-        zoom={HEATMAP_WEB_ZOOM}
+        zoom={zoom}
+        defaultZoom={HEATMAP_WEB_ZOOM}
         heatmapLibrary={true}
         heatmap={heatmapData.mapData}
         options={{ fullscreenControl: false, zoomControl: false }}
