@@ -251,9 +251,18 @@ export default function Map({ navigation }) {
           presentationStyle="overFullScreen"
           visible={isVisibleModalSocial}
         >
-          <View style={{ marginTop: 22 }}>
+          <View style={{ marginTop: 22, width: '100%' }}>
             <Text style={mapStyles.modalTitle}>Datos Comunitarios</Text>
-            <Text style={mapStyles.modalBody}>
+            <Text
+              style={[
+                mapStyles.modalBody,
+                {
+                  borderRightWidth: 0,
+                  borderLeftWidth: 0,
+                  borderWidth: 0,
+                },
+              ]}
+            >
               Los datos que estarás viendo ahora son datos reportados
               voluntariamente. No son datos oficiales!
             </Text>

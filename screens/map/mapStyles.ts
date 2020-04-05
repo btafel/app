@@ -93,7 +93,7 @@ export const mapStyles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   modalContent: {
-    width: '50%',
+    width: '90%',
     marginHorizontal: 'auto',
     backgroundColor: 'white',
     justifyContent: 'center',
@@ -116,7 +116,22 @@ export const mapStyles = StyleSheet.create({
   modalBody: {
     backgroundColor: 'rgb(255, 255, 255)',
     padding: 10,
-    textAlign: 'center',
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
+    borderRightWidth: 1,
+    borderRightColor: 'black',
+    borderLeftWidth: 1,
+    borderLeftColor: 'black',
+  },
+  modalButtonContainer: {
+    backgroundColor: 'white',
+    borderTopWidth: 0,
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
+    borderRightWidth: 1,
+    borderRightColor: 'black',
+    borderLeftWidth: 1,
+    borderLeftColor: 'black',
   },
   modalButton: {
     alignItems: 'center',

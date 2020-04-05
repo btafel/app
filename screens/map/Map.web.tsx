@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   Platform,
   View,
-  Button,
+  StyleSheet,
   Text,
   SafeAreaView,
   TouchableOpacity,
@@ -127,17 +127,20 @@ export default function Map({ navigation }) {
     ></div>
   );
 
-  const buttonContainerWeb = {
-    position: 'absolute',
-    zIndex: 9999,
-    right: 0,
-  };
+  const webStyles = StyleSheet.create({
+    buttonContainerWeb: {
+      ...mapStyles.buttonContainer,
+      position: 'absolute',
+      zIndex: 9999,
+      right: 0,
+    },
+  });
 
   const mapRef = useRef<GoogleMapReact>();
 
   return (
     <View style={[mapStyles.container]}>
-      <SafeAreaView style={[mapStyles.buttonContainer, buttonContainerWeb]}>
+      <SafeAreaView style={webStyles.buttonContainerWeb}>
         <TouchableOpacity
           activeOpacity={0.8}
           style={[mapStyles.button, mapStyles.locationButton]}
@@ -227,7 +230,12 @@ export default function Map({ navigation }) {
       >
         <View style={mapStyles.modalContent}>
           <Text style={mapStyles.modalTitle}>Datos Comunitarios</Text>
-          <Text style={mapStyles.modalBody}>
+          <Text
+            style={[
+              mapStyles.modalBody,
+              { textAlign: 'center', borderWidth: 0 },
+            ]}
+          >
             Los datos que estarás viendo ahora son datos reportados
             voluntariamente. No son datos oficiales!
           </Text>
