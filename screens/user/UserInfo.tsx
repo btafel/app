@@ -22,10 +22,9 @@ import Colors from '../../constants/Colors';
 import { savePreferences, getPreferences } from '../../utils/config';
 import RadioButtons from '../../components/RadioButtons';
 import DatePicker from '../../components/DatePicker';
+import ProvincePicker from '../../components/ProvincePicker';
 import { syncUserInfoDataWithServer } from '../../utils/syncStorageHelper';
 
-import SearchableDropdown from 'react-native-searchable-dropdown';
-import { provinces } from '../../utils/data';
 import { mapStyles } from '../map/mapStyles';
 
 function reducer(state, newState) {
@@ -60,7 +59,11 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
   };
 
   const handlePressTyC = () => {
-    Linking.openURL('https://cotrack.social/');
+    if (Platform.OS === 'web') {
+      window.open('https://cotrack.social/tyc.html', '_blank');
+    } else {
+      Linking.openURL('https://cotrack.social/tyc.html');
+    }
   };
 
   useEffect(() => {
@@ -132,10 +135,20 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                   Tu información GPS se almacena en tu telefono y solamente se
                   comparte si vos lo decidís.{'\n\n'}
                   <Text style={{ marginTop: 15 }}>
-                    Te pedimos leas los Términos y Condiciones de Uso y las
-                    Preguntas Frecuentes disponibles en{' '}
+                    Te pedimos leas los{' '}
                     <Text
                       onPress={handlePressTyC}
+                      style={{
+                        color: Colors.primaryColor,
+                        textDecorationLine: 'underline',
+                        marginTop: 15,
+                      }}
+                    >
+                      Términos y Condiciones de Uso
+                    </Text>{' '}
+                    y las Preguntas Frecuentes disponibles en{' '}
+                    <Text
+                      onPress={() => Linking.openURL('https://cotrack.social/')}
                       style={{
                         color: Colors.primaryColor,
                         textDecorationLine: 'underline',
@@ -158,7 +171,13 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             </View>
           </Modal>
         </View>
-        <View style={{ flex: 1, padding: 20, alignItems: 'center' }}>
+        <View
+          style={{
+            flex: 1,
+            padding: 20,
+            alignItems: 'center',
+          }}
+        >
           <Image
             source={require('../../assets/images/logo.png')}
             style={styles.logo}
@@ -175,51 +194,13 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               Necesitamos algunos datos tuyos para poder realizar un diagnóstico
               más preciso y contactarte si necesitas ayuda.
             </Text>
-            <SafeAreaView>
-              <SearchableDropdown
-                onTextChange={text => console.log(text)}
-                //On text change listner on the searchable input
-                // onItemSelect={item => alert(JSON.stringify(item))}
-                onItemSelect={handleChange('province')}
-                //onItemSelect called after the selection from the dropdown
-                containerStyle={{ marginTop: 20, padding: 0 }}
-                //suggestion container style
-                textInputStyle={{
-                  //inserted text style
-                  padding: 10,
-                  borderWidth: 1,
-                }}
-                itemStyle={{
-                  //single dropdown item style
-                  padding: 10,
-                  marginTop: 2,
-                  backgroundColor: '#FAF9F8',
-                  borderColor: '#bbb',
-                  borderWidth: 1,
-                }}
-                itemTextStyle={{
-                  //single dropdown item's text style
-                  color: '#222',
-                }}
-                itemsContainerStyle={
-                  {
-                    //items container style you can pass maxHeight
-                    //to restrict the items dropdown hieght
-                    // maxHeight: '30vw',
-                  }
-                }
-                items={provinces}
-                //mapping of item array
-                defaultIndex={selectedProvince}
-                //default selected item index
-                placeholder="Provincia"
-                //place holder for the search input
-                resetValue={false}
-                //reset textInput Value with true and false state
-                underlineColorAndroid="transparent"
-                //To remove the underline from the android input
-              />
-            </SafeAreaView>
+
+            <ProvincePicker
+              label="Provincia"
+              onChange={handleChange('province')}
+              value={state.province}
+            />
+
             <TextInput
               placeholder="DNI"
               value={state.dni}
@@ -241,6 +222,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                     text: 'Femenino',
                   },
                 ]}
+                value={state.gender}
                 onChange={handleChange('gender')}
               />
             </View>
@@ -287,7 +269,17 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               />
               <Text style={{ marginTop: 0, marginBottom: 20 }}>
                 {' '}
-                He leído y acepto los términos y condiciones
+                He leído y acepto los{' '}
+                <Text
+                  onPress={handlePressTyC}
+                  style={{
+                    color: Colors.primaryColor,
+                    textDecorationLine: 'underline',
+                    marginTop: 15,
+                  }}
+                >
+                  términos y condiciones
+                </Text>
               </Text>
             </View>
             <Touchable
