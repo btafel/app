@@ -121,7 +121,6 @@ export const mapStyles = StyleSheet.create({
   modalButton: {
     alignItems: 'center',
     backgroundColor: 'rgba(66, 135, 244, 1)',
-    color: 'rgb(255, 255, 255)',
     paddingVertical: 12,
     marginHorizontal: 10,
     paddingHorizontal: 12,
