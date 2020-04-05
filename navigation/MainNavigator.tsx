@@ -14,7 +14,7 @@ import { UserPreferences } from '../utils/config';
 const Stack = createStackNavigator<MainStackParamList>();
 
 export default function MainNavigator() {
-  // { showOnboarding, userInfo, isLoadingComplete }: UserPreferences,
+  // ({ userInfo }: UserPreferences) {
   return (
     <Stack.Navigator
       screenOptions={{

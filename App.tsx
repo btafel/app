@@ -73,7 +73,12 @@ export default function App(props) {
           ? 'Main'
           : 'UserInfo';
 
-        containerRef.current?.navigate(initialRoute);
+        // containerRef.current?.navigate(initialRoute);
+
+        containerRef.current?.reset({
+          index: 0,
+          routes: [{ name: initialRoute }],
+        });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
         console.warn(e);
