@@ -68,7 +68,8 @@ export default function App(props) {
         const userInfo = preferences.userInfo;
         const initialRoute = preferences.showOnboarding
           ? 'Help'
-          : userInfo && userInfo.province
+          : userInfo &&
+            userInfo.acceptedTerms === Constants.manifest.extra.termsVersion
           ? 'Main'
           : 'UserInfo';
 

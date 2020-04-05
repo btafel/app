@@ -141,7 +141,7 @@ export default function Map({ navigation }) {
         <TouchableOpacity
           activeOpacity={0.8}
           style={[mapStyles.button, mapStyles.locationButton]}
-          onPress={() => navigation.navigate('Help')}
+          onPress={() => navigation.navigate({ name: 'Help', key: 'help-map' })}
         >
           <Icon
             name={`${Platform.OS === 'ios' ? 'ios' : 'md'}-help-circle-outline`}
@@ -220,7 +220,6 @@ export default function Map({ navigation }) {
           />
         ) : null}
       </GoogleMapReact>
-
       <Modal
         isVisible={isVisibleModalSocial}
         onSwipe={() => setIsVisibleModalSocial(false)}

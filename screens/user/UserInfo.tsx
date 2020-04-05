@@ -11,7 +11,7 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { TextInputMask } from 'react-native-masked-text';
+import Constants from 'expo-constants';
 import moment from 'moment';
 import { MainStackNavProps } from '../../navigation/types';
 import Touchable from '../../components/Touchable';
@@ -61,9 +61,9 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
     return moment(state.dob, 'D/M/YYYY', true).isValid();
   }
   async function handleContinue() {
+    state.acceptedTerms = Constants.manifest.extra.termsVersion;
     await savePreferences({ userInfo: state });
     syncUserInfoDataWithServer();
-
     navigation.navigate('Main');
   }
 
