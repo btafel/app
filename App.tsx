@@ -18,9 +18,9 @@ import Layout from './constants/Layout';
 export default function App(props) {
   // const [isLoadingComplete, setLoadingComplete] = React.useState(false);
   // const [showOnboarding, setShowOnboarding] = React.useState(true);
-  const [preferences, setPreferences] = React.useState<
-    UserPreferences | undefined
-  >();
+  // const [preferences, setPreferences] = React.useState<
+  //   UserPreferences | undefined
+  // >();
   const [initialNavigationState, setInitialNavigationState] = React.useState<
     any
   >();
@@ -38,7 +38,7 @@ export default function App(props) {
 
         // Load fonts
         await Font.loadAsync({
-          ...Ionicons.font,
+          // ...Ionicons.font,
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
         });
 
@@ -63,7 +63,7 @@ export default function App(props) {
 
         // await clearPreferences();
         const preferences = await getPreferences();
-        setPreferences(preferences);
+        // setPreferences(preferences);
 
         const userInfo = preferences.userInfo;
         const initialRoute = preferences.showOnboarding
