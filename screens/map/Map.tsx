@@ -89,9 +89,9 @@ export default function Map({ navigation }) {
           ...locationCoords,
           distance: HEATMAP_GET_DATA_DISTANCE,
         })
-          .then(response => {
+          .then((response) => {
             const positions = response.data;
-            const mapData = positions.map(item => ({
+            const mapData = positions.map((item) => ({
               latitude: item.lat,
               longitude: item.lng,
               weight: item.weight,
@@ -109,7 +109,7 @@ export default function Map({ navigation }) {
             // });
             setHeatmapData(heatmapData);
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(error);
           });
 
@@ -117,10 +117,10 @@ export default function Map({ navigation }) {
           ...locationCoords,
           distance: HEATMAP_GET_DATA_DISTANCE,
         })
-          .then(response => {
+          .then((response) => {
             const positions = response.data;
 
-            const mapData = positions.map(item => ({
+            const mapData = positions.map((item) => ({
               latitude: item.lat,
               longitude: item.lng,
               weight: item.weight,
@@ -135,7 +135,7 @@ export default function Map({ navigation }) {
 
             setHeatmapDataAux(heatmapData);
           })
-          .catch(error => {
+          .catch((error) => {
             console.log(error);
           });
       }
@@ -199,15 +199,14 @@ export default function Map({ navigation }) {
             { backgroundColor: heatmapData.isSocial ? 'green' : 'gray' },
           ]}
           onPress={() => {
-            !heatmapData.isSocial && setIsVisibleModalSocial(true);
-
             setHeatmapData(heatmapInitialValues);
 
             setTimeout(() => {
               const aux = heatmapData;
               setHeatmapData(heatmapDataAux);
               setHeatmapDataAux(aux);
-            }, 500);
+              setIsVisibleModalSocial(true);
+            }, 100);
           }}
         >
           <Icon
@@ -252,7 +251,9 @@ export default function Map({ navigation }) {
           visible={isVisibleModalSocial}
         >
           <View style={{ marginTop: 22, width: '100%' }}>
-            <Text style={mapStyles.modalTitle}>Datos Comunitarios</Text>
+            <Text style={mapStyles.modalTitle}>
+              Datos {heatmapData.isSocial ? 'Comunitarios' : 'Oficiales'}
+            </Text>
             <Text
               style={[
                 mapStyles.modalBody,
@@ -263,8 +264,9 @@ export default function Map({ navigation }) {
                 },
               ]}
             >
-              Los datos que estarás viendo ahora son datos reportados
-              voluntariamente. No son datos oficiales!
+              {heatmapData.isSocial
+                ? 'Los datos que estarás viendo ahora son datos reportados voluntariamente. No son datos oficiales!'
+                : 'Los datos que estarás viendo son datos reportados oficialmente. Las zonas de calor no indican puntos exactos de ubicación de contagiados.'}
             </Text>
             <View style={{ backgroundColor: 'white' }}>
               <TouchableOpacity onPress={() => setIsVisibleModalSocial(false)}>
