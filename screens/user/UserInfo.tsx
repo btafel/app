@@ -54,11 +54,11 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
     loadData();
   }, []);
 
-  const handleChange = key => value => {
+  const handleChange = (key) => (value) => {
     setState({ [key]: value });
   };
 
-  const handleOpenLink = url => {
+  const handleOpenLink = (url) => {
     if (Platform.OS === 'web') {
       window.open(url, '_blank');
     } else {
@@ -206,7 +206,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             }}
           >
             <Text style={styles.text}>
-              Necesitamos algunos datos tuyos para poder realizar un diagnóstico
+              Necesitamos algunos datos tuyos para poder realizar un evaluación
               más preciso y contactarte si necesitas ayuda.
             </Text>
 

@@ -18,12 +18,11 @@ import Touchable from '../../components/Touchable';
 import { saveDiagnosticLocally } from '../../utils/localStorageHelper';
 import { syncRecordsDataWithServer } from '../../utils/syncStorageHelper';
 
-
 const initialState = {
   age: '',
   symptoms: {},
   questions: {},
-  medicalHistory: {}
+  medicalHistory: {},
 };
 
 function reducer(state, newState) {
@@ -60,7 +59,7 @@ function YesNoButtons({ id, onPress, state }) {
     onSelect('no');
   };
 
-  const onSelect = value => {
+  const onSelect = (value) => {
     const newState = { ...state, [id]: value };
     onPress(newState);
   };
@@ -98,7 +97,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
   const [positiveExtraConditions, setpositiveExtraConditions] = useState(false);
 
   const onSelectSymptoms = useCallback(
-    id => {
+    (id) => {
       const newSelected = {
         ...state.symptoms,
         [id]: state.symptoms[id] === 'yes' ? 'no' : 'yes',
@@ -108,8 +107,8 @@ function Questionary({ onShowResults }: QuestionaryProps) {
     [state.symptoms],
   );
 
-  const onSelectMedicalHistory= useCallback(
-    id => {
+  const onSelectMedicalHistory = useCallback(
+    (id) => {
       const newSelected = {
         ...state.medicalHistory,
         [id]: state.medicalHistory[id] === 'yes' ? 'no' : 'yes',
@@ -119,26 +118,25 @@ function Questionary({ onShowResults }: QuestionaryProps) {
     [state.medicalHistory],
   );
 
-  const handleChangeAge = age => {
+  const handleChangeAge = (age) => {
     setState({ age: formatAge(age) });
   };
 
   useEffect(() => {
     const hasAnswers = Object.keys(state.questions);
-    const hasPositiveAnswers = hasAnswers.filter(
-      k => state.questions[k] === 'yes',
-    ).length >= 1;
-    const hasPositiveConditions = Object.keys(state.medicalHistory).filter(
-      k => state.medicalHistory[k] === 'yes',
-    ).length >= 1;
+    const hasPositiveAnswers =
+      hasAnswers.filter((k) => state.questions[k] === 'yes').length >= 1;
+    const hasPositiveConditions =
+      Object.keys(state.medicalHistory).filter(
+        (k) => state.medicalHistory[k] === 'yes',
+      ).length >= 1;
 
     setDisabled(!(hasAnswers.length >= 3));
     setPositiveTravelContact(!!hasPositiveAnswers);
     setpositiveExtraConditions(!!hasPositiveConditions);
-
   }, [state]);
 
-  const handleShowResults = result => {
+  const handleShowResults = (result) => {
     onShowResults(result);
     // scrollRef.current.scrollTo({ x: 0, animated: false });
   };
@@ -147,7 +145,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
     let result: QuestResults;
 
     function hasExtraConditions() {
-      if ((parseInt(state.age) >= 60) || positiveExtraConditions) {
+      if (parseInt(state.age) >= 60 || positiveExtraConditions) {
         result = 'negative';
       } else {
         result = 'neutral';
@@ -180,13 +178,13 @@ function Questionary({ onShowResults }: QuestionaryProps) {
       location = '';
     }
 
-    saveDiagnosticLocally(state, result,location,()=>{
+    saveDiagnosticLocally(state, result, location, () => {
       handleShowResults(result);
       syncRecordsDataWithServer();
     });
   };
 
-  const handleYesNoPress = values => {
+  const handleYesNoPress = (values) => {
     setState({ questions: values });
   };
 
@@ -205,7 +203,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           Si tenés algún malestar y pensás que puede estar ligado al contagio de
           coronavirus, podemos realizar un{' '}
           <Text style={{ fontWeight: '700' }}>
-            auto-diagnóstico de detección temprana
+            auto-evaluación de detección temprana
           </Text>{' '}
           respondiendo una serie de preguntas, detallando los síntomas que estás
           teniendo y si creés haber estado en contacto con alguien infectado.
@@ -266,7 +264,8 @@ function Questionary({ onShowResults }: QuestionaryProps) {
         </View>
         <Text style={styles.section}>Viajes o contactos confirmados</Text>
         <Text style={styles.subtitle}>
-          ¿Estuviste en contacto con algún caso confirmado de Coronavirus, en los ultimos 14 días?
+          ¿Estuviste en contacto con algún caso confirmado de Coronavirus, en
+          los ultimos 14 días?
         </Text>
         <View style={styles.questButtons}>
           <YesNoButtons
@@ -286,7 +285,8 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           />
         </View>
         <Text style={styles.subtitle}>
-          ¿Estuviste en alguna Provincia con casos locales de Coronavirus, en los ultimos 14 días?
+          ¿Estuviste en alguna Provincia con casos locales de Coronavirus, en
+          los ultimos 14 días?
         </Text>
         <View style={styles.questButtons}>
           <YesNoButtons
