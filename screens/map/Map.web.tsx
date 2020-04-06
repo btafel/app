@@ -206,7 +206,10 @@ export default function Map({ navigation }) {
       <GoogleMapReact
         ref={mapRef}
         bootstrapURLKeys={{
-          key: `${Constants.manifest.extra.googleMapsWebApiKey}`,
+          key: `${
+            process.env.REACT_NATIVE_GOOGLE_API_KEY ||
+            Constants.manifest.extra.googleMapsWebApiKey
+          }`,
         }}
         center={coords}
         zoom={zoom}
