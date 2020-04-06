@@ -58,11 +58,11 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
     setState({ [key]: value });
   };
 
-  const handlePressTyC = () => {
+  const handleOpenLink = url => {
     if (Platform.OS === 'web') {
-      window.open('https://cotrack.social/tyc.html', '_blank');
+      window.open(url, '_blank');
     } else {
-      Linking.openURL('https://cotrack.social/tyc.html');
+      Linking.openURL(url);
     }
   };
 
@@ -137,7 +137,9 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                   <Text style={{ marginTop: 15 }}>
                     Te pedimos leas los{' '}
                     <Text
-                      onPress={handlePressTyC}
+                      onPress={() =>
+                        handleOpenLink('https://cotrack.social/tyc.html')
+                      }
                       style={{
                         color: Colors.primaryColor,
                         textDecorationLine: 'underline',
@@ -146,9 +148,22 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                     >
                       Términos y Condiciones de Uso
                     </Text>{' '}
-                    y las Preguntas Frecuentes disponibles en{' '}
+                    y las{' '}
                     <Text
-                      onPress={() => Linking.openURL('https://cotrack.social/')}
+                      onPress={() =>
+                        handleOpenLink('https://cotrack.social/faq.html')
+                      }
+                      style={{
+                        color: Colors.primaryColor,
+                        textDecorationLine: 'underline',
+                        marginTop: 15,
+                      }}
+                    >
+                      Preguntas Frecuentes
+                    </Text>{' '}
+                    disponibles en{' '}
+                    <Text
+                      onPress={() => handleOpenLink('https://cotrack.social/')}
                       style={{
                         color: Colors.primaryColor,
                         textDecorationLine: 'underline',
@@ -271,7 +286,9 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                 {' '}
                 He leído y acepto los{' '}
                 <Text
-                  onPress={handlePressTyC}
+                  onPress={() =>
+                    handleOpenLink('https://cotrack.social/tyc.html')
+                  }
                   style={{
                     color: Colors.primaryColor,
                     textDecorationLine: 'underline',
