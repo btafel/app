@@ -12,6 +12,7 @@ import {
   KeyboardAvoidingView,
   Modal,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Constants from 'expo-constants';
@@ -216,6 +217,27 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               value={state.province}
             />
 
+            {state.province && state.province.image ? (
+              <View
+                style={{
+                  alignItems: 'center',
+                }}
+              >
+                <Image
+                  source={state.province.image}
+                  style={{
+                    height: 100,
+                    width: 100,
+                    marginTop: 10,
+                  }}
+                  resizeMode="contain"
+                />
+                <Text style={{ textAlign: 'center', marginTop: 5 }}>
+                  App Oficial
+                </Text>
+              </View>
+            ) : null}
+
             <TextInput
               placeholder="DNI"
               value={state.dni}
@@ -339,6 +361,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 150,
     height: 100,
+    marginHorizontal: 'auto',
   },
   text: {
     fontSize: 14,
