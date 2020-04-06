@@ -73,7 +73,7 @@ export default function Map({ navigation }) {
   const [heatmapData, setHeatmapData] = useState(heatmapInitialValues);
   const [heatmapDataAux, setHeatmapDataAux] = useState(heatmapInitialValues);
 
-  const [isVisibleModalSocial, setIsVisibleModalSocial] = useState(false);
+  const [isVisibleModalSocial, setIsVisibleModalSocial] = useState(true);
 
   const mapRef = useRef<MapView>();
   const refRBSheet = useRef();
@@ -265,7 +265,7 @@ export default function Map({ navigation }) {
               ]}
             >
               {heatmapData.isSocial
-                ? 'Los datos que estarás viendo ahora son datos reportados voluntariamente. No son datos oficiales!'
+                ? 'Los datos que estás viendo ahora son datos reportados colaborativamente. No son casos confirmados, sino aquellos que presentan síntomas compatibles y no fueron aun testeados.'
                 : 'Los datos que estarás viendo son datos reportados oficialmente. Las zonas de calor no indican puntos exactos de ubicación de contagiados.'}
             </Text>
             <View style={{ backgroundColor: 'white' }}>
