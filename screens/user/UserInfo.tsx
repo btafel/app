@@ -199,7 +199,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             resizeMode="contain"
           />
           <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'padding'}
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
             style={{
               flex: 1,
               justifyContent: 'flex-start',
@@ -277,12 +277,14 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               ¿Por qué pedimos estos datos?
             </Text>
 
-            <View style={{ flexDirection: 'row', marginTop: 20 }}>
+            <View
+              style={{ flexDirection: 'row', marginTop: 20, marginBottom: 20 }}
+            >
               <CheckBox
                 value={state.terms}
                 onValueChange={handleChange('terms')}
               />
-              <Text style={{ marginTop: 0, marginBottom: 20 }}>
+              <Text style={{ marginTop: Platform.OS === 'web' ? 0 : 5 }}>
                 {' '}
                 He leído y acepto los{' '}
                 <Text
