@@ -7,6 +7,7 @@ import {
   Platform,
   ScrollView,
   StatusBar,
+  Picker,
 } from 'react-native';
 import { useScrollToTop } from '@react-navigation/native';
 import * as Location from 'expo-location';
@@ -83,6 +84,63 @@ function YesNoButtons({ id, onPress, state }) {
         </Text>
       </Touchable>
     </>
+  );
+}
+
+function TempPicker({ onChange, value }) {
+  let defaultValue = { temp1: 36, temp2: 0 };
+
+  if (value) {
+    try {
+      const v = value.split('.');
+      defaultValue.temp1 = v[0];
+      defaultValue.temp2 = v[1];
+    } catch (e) {}
+  }
+  const [internalValue, setInternalValue] = useState(defaultValue);
+
+  const handleChange = (key) => (val) => {
+    internalValue[key] = val;
+    setInternalValue(internalValue);
+    onChange(`${internalValue.temp1}.${internalValue.temp2}`);
+  };
+
+  const arrTemp1 = Array.from(Array(10).keys()).map((e, i) => (
+    <Picker.Item key={i + 34} label={`${i + 34}`} value={i + 34} />
+  ));
+  const arrTemp2 = Array.from(Array(10).keys()).map((e, i) => (
+    <Picker.Item key={i + 1} label={`${i}`} value={i} />
+  ));
+  const styles = StyleSheet.create({
+    buttonContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      marginBottom: 15,
+      marginTop: 15,
+    },
+  });
+  return (
+    <View style={styles.buttonContainer}>
+      <Picker
+        // id="day"
+        selectedValue={internalValue.temp1}
+        onValueChange={handleChange('temp1')}
+        style={{ width: '30%' }}
+        mode="dropdown"
+      >
+        {arrTemp1}
+      </Picker>
+      <Picker
+        // id="month"
+        selectedValue={internalValue.temp2}
+        onValueChange={handleChange('temp2')}
+        style={{ width: '30%' }}
+        mode="dropdown"
+      >
+        {arrTemp2}
+      </Picker>
+    </View>
   );
 }
 
@@ -262,6 +320,11 @@ function Questionary({ onShowResults }: QuestionaryProps) {
             selected={state.symptoms}
           />
         </View>
+        <Text style={styles.section}>Temperatura Corporal</Text>
+        <TempPicker
+          value={state.temperature}
+          onChange={(val) => setState({ temperature: val })}
+        />
         <Text style={styles.section}>Viajes o contactos confirmados</Text>
         <Text style={styles.subtitle}>
           ¿Estuviste en contacto con algún caso confirmado de Coronavirus, en
