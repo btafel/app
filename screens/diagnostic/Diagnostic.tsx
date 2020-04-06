@@ -88,13 +88,13 @@ function YesNoButtons({ id, onPress, state }) {
 }
 
 function TempPicker({ onChange, value }) {
-  let defaultValue = { temp1: 36, temp2: 0 };
+  let defaultValue = { temp1: 37, temp2: 5 };
 
   if (value) {
     try {
       const v = value.split('.');
-      defaultValue.temp1 = v[0];
-      defaultValue.temp2 = v[1];
+      defaultValue.temp1 = parseInt(v[0]);
+      defaultValue.temp2 = parseInt(v[1]);
     } catch (e) {}
   }
   const [internalValue, setInternalValue] = useState(defaultValue);
@@ -126,16 +126,20 @@ function TempPicker({ onChange, value }) {
         // id="day"
         selectedValue={internalValue.temp1}
         onValueChange={handleChange('temp1')}
-        style={{ width: '30%' }}
+        style={{
+          width: '25%',
+          marginLeft: 'auto',
+        }}
         mode="dropdown"
       >
         {arrTemp1}
       </Picker>
+      <Text>.</Text>
       <Picker
         // id="month"
         selectedValue={internalValue.temp2}
         onValueChange={handleChange('temp2')}
-        style={{ width: '30%' }}
+        style={{ width: '20%' }}
         mode="dropdown"
       >
         {arrTemp2}
@@ -320,11 +324,15 @@ function Questionary({ onShowResults }: QuestionaryProps) {
             selected={state.symptoms}
           />
         </View>
-        <Text style={styles.section}>Temperatura Corporal</Text>
-        <TempPicker
-          value={state.temperature}
-          onChange={(val) => setState({ temperature: val })}
-        />
+        {state.symptoms && state.symptoms.fever === 'yes' && (
+          <>
+            <Text style={styles.section}>Temperatura Corporal</Text>
+            <TempPicker
+              value={state.temperature}
+              onChange={(val) => setState({ temperature: val })}
+            />
+          </>
+        )}
         <Text style={styles.section}>Viajes o contactos confirmados</Text>
         <Text style={styles.subtitle}>
           ¿Estuviste en contacto con algún caso confirmado de Coronavirus, en
@@ -427,7 +435,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
         onPress={handlePress}
       >
         <Text style={[styles.buttonText, styles.activeButtonText]}>
-          REALIZAR DIAGNÓSTICO
+          REALIZAR EVALUACIÓN
         </Text>
       </Touchable>
     </>
