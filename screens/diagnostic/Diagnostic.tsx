@@ -427,7 +427,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
         onPress={handlePress}
       >
         <Text style={[styles.buttonText, styles.activeButtonText]}>
-          REALIZAR DIAGNÓSTICO
+          REALIZAR EVALUACIÓN
         </Text>
       </Touchable>
     </>
