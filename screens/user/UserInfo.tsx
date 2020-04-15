@@ -27,6 +27,7 @@ import ProvincePicker from '../../components/ProvincePicker';
 import { syncUserInfoDataWithServer } from '../../utils/syncStorageHelper';
 
 import { mapStyles } from '../map/mapStyles';
+import i18n from 'i18n-js';
 
 function reducer(state, newState) {
   return { ...state, ...newState };
@@ -206,10 +207,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               justifyContent: 'flex-start',
             }}
           >
-            <Text style={styles.text}>
-              Necesitamos algunos datos tuyos para poder realizar un evaluación
-              más preciso y contactarte si necesitas ayuda.
-            </Text>
+            <Text style={styles.text}>{i18n.t('title_signup')}</Text>
 
             <ProvincePicker
               label="Provincia"

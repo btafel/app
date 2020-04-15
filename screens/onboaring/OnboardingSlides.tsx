@@ -7,39 +7,40 @@ import Colors from '../../constants/Colors';
 import Layout from '../../constants/Layout';
 import { MainStackNavProps } from '../../navigation/types';
 import { pageHit } from '../../utils/analytics';
-
-const slides = [
-  {
-    key: 'slide1',
-    text:
-      'CoTrack necesita saber tu ubicación para avisarte en tiempo real si en tu recorrido estuviste en contacto cercano con alguna persona contagiada',
-    image: require('../../assets/images/prevention/spread.png'),
-    backgroundColor: '#fff',
-  },
-  {
-    key: 'slide2',
-    text:
-      'Si presentás síntomas o creés haber estado en contacto con alguien infectado, CoTrack te puede ayudar a realizar un evaluación y aconsejarte qué hacer según el resultado',
-    image: require('../../assets/images/prevention/fever.png'),
-    backgroundColor: '#fff',
-  },
-  {
-    key: 'slide3',
-    text:
-      'CoTrack te brinda información completa y confiable para ayudar a prevenir la infección, medidas para resguardarse e información útil y actualizada',
-    image: require('../../assets/images/prevention/washing.png'),
-    backgroundColor: '#fff',
-  },
-  // {
-  //   key: 'somethun4',
-  //   text:
-  //     'CoTrack no envía datos privados ni requiere que te identifiques, tan sólo saber tu ubicación, la cual también podés decidir si compartirla o no en caso de contagio',
-  //   image: require('../../assets/images/prevention/warning.png'),
-  //   backgroundColor: '#fff',
-  // },
-];
+import i18n from 'i18n-js';
 
 export const OnboardingSlides = ({ navigation }: MainStackNavProps<'Help'>) => {
+  console.log(i18n.locale);
+  const slides = [
+    {
+      key: 'slide1',
+      text: i18n.t('slide1'),
+      image: require('../../assets/images/prevention/spread.png'),
+      backgroundColor: '#fff',
+    },
+    {
+      key: 'slide2',
+      text: i18n.t('slide2'),
+
+      image: require('../../assets/images/prevention/fever.png'),
+      backgroundColor: '#fff',
+    },
+    {
+      key: 'slide3',
+      text: i18n.t('slide3'),
+
+      image: require('../../assets/images/prevention/washing.png'),
+      backgroundColor: '#fff',
+    },
+    // {
+    //   key: 'slide4',
+    //   text:
+    //     'CoTrack no envía datos privados ni requiere que te identifiques, tan sólo saber tu ubicación, la cual también podés decidir si compartirla o no en caso de contagio',
+    //   image: require('../../assets/images/prevention/warning.png'),
+    //   backgroundColor: '#fff',
+    // },
+  ];
+
   const renderItem = ({ item }) => {
     return (
       <View style={[styles.slide, { backgroundColor: item.backgroundColor }]}>
@@ -73,9 +74,9 @@ export const OnboardingSlides = ({ navigation }: MainStackNavProps<'Help'>) => {
   };
   return (
     <AppIntroSlider
-      nextLabel="Siguiente"
-      prevLabel="Anterior"
-      doneLabel="Finalizar"
+      nextLabel={i18n.t('next')}
+      prevLabel={i18n.t('prev')}
+      doneLabel={i18n.t('done')}
       renderItem={renderItem}
       showPrevButton
       // @ts-ignore

@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { Platform, StatusBar, StyleSheet, View, Text, TextInput } from 'react-native';
+import {
+  Platform,
+  StatusBar,
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+} from 'react-native';
 
 import { SplashScreen } from 'expo';
 import { Asset } from 'expo-asset';
@@ -14,6 +21,32 @@ import useLinking from './navigation/useLinking';
 import { getPreferences, UserPreferences } from './utils/config';
 import MainNavigator from './navigation/MainNavigator';
 import Layout from './constants/Layout';
+
+import * as Localization from 'expo-localization';
+import i18n from 'i18n-js';
+
+// Set the key-value pairs for the different languages you want to support.
+i18n.translations = {
+  es: {
+    slide1:
+      'CoTrack necesita saber tu ubicación para avisarte en tiempo real si en tu recorrido estuviste en contacto cercano con alguna persona contagiada',
+    slide2:
+      'Si presentás síntomas o creés haber estado en contacto con alguien infectado, CoTrack te puede ayudar a realizar un evaluación y aconsejarte qué hacer según el resultado',
+    slide3:
+      'CoTrack te brinda información completa y confiable para ayudar a prevenir la infección, medidas para resguardarse e información útil y actualizada',
+    next: 'Siguiente',
+    prev: 'Anterior',
+    done: 'Finalizar',
+    title_signup:
+      'Necesitamos algunos datos tuyos para poder realizar un evaluación más preciso y contactarte si necesitas ayuda.',
+  },
+  it: { slide1: 'slide 1 en italiano' },
+};
+i18n.locale = 'it'; //Localization.locale.startsWith('it') ? 'it' : 'es';
+// Set the locale once at the beginning of your app.
+// i18n.locale = Localization.locale;
+// When a value is missing from a language it'll fallback to another language with the key present.
+i18n.fallbacks = true;
 
 export default function App(props) {
   // Disable Font Scaling
@@ -62,7 +95,7 @@ export default function App(props) {
           require('./assets/images/prevention/warning.png'),
         ];
 
-        const cacheImages = preventionImages.map(image => {
+        const cacheImages = preventionImages.map((image) => {
           return Asset.fromModule(image).downloadAsync();
         });
 
