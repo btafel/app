@@ -434,7 +434,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
         onPress={handlePress}
       >
         <Text style={[styles.buttonText, styles.activeButtonText]}>
-        {i18n.t('MakeTest','REALIZAR EVALUACION')}
+        {i18n.t('MakeTest')}
         </Text>
       </Touchable>
     </>

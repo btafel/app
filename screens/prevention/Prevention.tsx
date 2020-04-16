@@ -7,6 +7,7 @@ import {
 import Layout from '../../constants/Layout';
 import { PreventionItem, PreventionStackNavProps } from './types';
 import { SharedElement } from 'react-navigation-shared-element';
+import i18n from 'i18n-js';
 
 const data: PreventionItem[] = [
   {
@@ -67,9 +68,9 @@ const data: PreventionItem[] = [
     id: '7',
     title: '¿Cuándo hacer cuarentena?',
     shortText:
-      'Hasta el día 12/04 la cuarentena es obligatoria para todos, salvo actividades exceptuadas.',
+      'Hasta el día 26/04 la cuarentena es obligatoria para todos, salvo actividades exceptuadas.',
     longText:
-      'Hasta el día 12/04 la cuarentena es obligatoria para todos, salvo actividades exceptuadas.\nPara aquellas personas exceptuadas, se recomienda mantener el distanciamiento social y extremar medidas de higiene.',
+      'Hasta el día 26/04 la cuarentena es obligatoria para todos, salvo actividades exceptuadas.\nPara aquellas personas exceptuadas, se recomienda mantener el distanciamiento social y extremar medidas de higiene.',
     image: require('../../assets/images/prevention/quarantine.png'),
   },
 ];
