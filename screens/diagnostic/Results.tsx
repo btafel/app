@@ -171,8 +171,7 @@ function NegativeResults({ province }) {
       </View>
 
       <Text style={styles.cardText}>
-        Si tus síntomas fueron cambiando, por favor volvé a realizar el
-        autoevaluación y seguí las recomendaciones dadas.
+        {i18n.t('IfSymptomsChanged')}
       </Text>
       <RectButton
         style={[styles.button, styles.activeButton, { width: '80%' }]}

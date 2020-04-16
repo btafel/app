@@ -64,6 +64,19 @@ export const translations = {
 
     symptoms_title: 'Dolencias y Síntomas',
 
+
+    January: 'Enero',
+    February: 'Febrero',
+    March: 'Marzo',
+    April: 'Abril',
+    May: 'Mayo',
+    June: 'Junio',
+    July: 'Julio',
+    August: 'Agosto',
+    September: 'Septiembre',
+    October: 'Octubre',
+    November: 'Noviembre',
+    Dicember: 'Diciembre',
   },
 
 
@@ -130,6 +143,19 @@ export const translations = {
     kidneyDisease: 'Malattia renale cronica',
     cardiologicalDisease: 'Malattia cardiologica (HT)',
 
-    symptoms_title: 'Dolencias y Síntomas',
+    symptoms_title: 'Disturbi e sintomi',
+
+    January: 'Gennaio',
+    February: 'Febbraio',
+    March: 'Marzo',
+    April: 'Aprile',
+    May: 'Magio',
+    June: 'Giugno',
+    July: 'Luglio',
+    August: 'Agosto',
+    September: 'Settembre',
+    October: 'Ottobre',
+    November: 'Novembre',
+    Dicember: 'Dicembre',
   },
 };

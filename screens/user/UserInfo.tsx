@@ -123,7 +123,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               style={{ marginTop: 15, width: '90%', marginHorizontal: '5%' }}
             >
               <Text style={mapStyles.modalTitle}>
-                ¿Por qué pedimos estos datos?
+                {i18n.t('WhyWeAsk')}
               </Text>
               <View style={[mapStyles.modalBody]}>
                 <Text style={{ textAlign: 'left' }}>
