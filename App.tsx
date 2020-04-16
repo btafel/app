@@ -40,7 +40,10 @@ i18n.translations = {
     title_signup:
       'Necesitamos algunos datos tuyos para poder realizar un evaluación más preciso y contactarte si necesitas ayuda.',
   },
-  it: { slide1: 'slide 1 en italiano' },
+  it: { 
+      slide1: 'slide 1 en italiano',
+      done: 'Finalizza',
+  },
 };
 i18n.locale = 'it'; //Localization.locale.startsWith('it') ? 'it' : 'es';
 // Set the locale once at the beginning of your app.
