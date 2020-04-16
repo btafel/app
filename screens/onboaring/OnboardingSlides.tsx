@@ -74,9 +74,9 @@ export const OnboardingSlides = ({ navigation }: MainStackNavProps<'Help'>) => {
   };
   return (
     <AppIntroSlider
-      nextLabel={i18n.t('next')}
-      prevLabel={i18n.t('prev')}
-      doneLabel={i18n.t('done')}
+      nextLabel={i18n.t('Next')}
+      prevLabel={i18n.t('Prev')}
+      doneLabel={i18n.t('Done')}
       renderItem={renderItem}
       showPrevButton
       // @ts-ignore
