@@ -280,7 +280,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           style={styles.input}
           blurOnSubmit
         />
-        <Text style={styles.section}>Dolencias y síntomas</Text>
+        <Text style={styles.section}>{i18n.t('symptoms_title')}</Text>
         <View style={styles.questButtons}>
           <QuestButton
             id="fever"

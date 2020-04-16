@@ -148,7 +148,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                         marginTop: 15,
                       }}
                     >
-                      Términos y Condiciones de Uso
+                      {i18n.t('Terms')}
                     </Text>{' '}
                     y las{' '}
                     <Text
@@ -161,7 +161,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                         marginTop: 15,
                       }}
                     >
-                      Preguntas Frecuentes
+                      {i18n.t('Faq')}
                     </Text>{' '}
                     disponibles en{' '}
                     <Text
@@ -246,15 +246,15 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             />
             <View style={[styles.input, { borderWidth: 0 }]}>
               <RadioButtons
-                label="Sexo"
+                label={i18n.t('Gender')}
                 options={[
                   {
                     key: 'M',
-                    text: 'Masculino',
+                    text: {i18n.t('Male')},
                   },
                   {
                     key: 'F',
-                    text: 'Femenino',
+                    text: {i18n.t('Female')},
                   },
                 ]}
                 value={state.gender}
@@ -263,7 +263,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             </View>
 
             <DatePicker
-              label="Fecha de Nacimiento"
+              label={i18n.t('BirthDate')}
               onChange={handleChange('dob')}
               value={state.dob}
             />
@@ -317,7 +317,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                     marginTop: 15,
                   }}
                 >
-                  términos y condiciones
+                  {i18n.t('Terms')}
                 </Text>
               </Text>
             </View>
@@ -332,13 +332,12 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               onPress={handleContinue}
             >
               <Text style={[styles.buttonText, styles.activeButtonText]}>
-                Continuar
+              {i18n.t('Continue')}
               </Text>
             </Touchable>
             <View style={{ flex: 1, justifyContent: 'flex-start' }}>
               <Text style={styles.footerText}>
-                Gestionamos tu información de forma segura y para uso exclusivo
-                oficial.
+              {i18n.t('ForOfficialUse')}
               </Text>
             </View>
           </KeyboardAvoidingView>

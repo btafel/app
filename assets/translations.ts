@@ -13,6 +13,17 @@ export const translations = {
       'Necesitamos algunos datos tuyos para poder realizar un evaluación más preciso y contactarte si necesitas ayuda.',
     MakeTest: 'REALIZAR EVALUACION',
     MakeTestAgain: 'Realizar evaluación nuevamente',
+    Terms: 'Términos y Condiciones de Uso',
+    Faq: 'Preguntas Frecuentes',
+    Continue: 'Continuar',
+
+    Gender: 'Sexo',
+    Male: 'Masculino',
+    Female: 'Femenino',
+    ForOfficialUse: 'Gestionamos tu información de forma segura y para uso exclusivo oficial.',
+    BirthDate: 'Fecha de Nacimiento',
+    WheWeAsk: '¿Por qué pedimos estos datos?',
+    IfSymptomsChanged: 'Si tus síntomas fueron cambiando, por favor volvé a realizar el autoevaluación y seguí las recomendaciones dadas.',
     
     LowRisk: 'RIESGO LEVE',
     MediumRisk: 'RIESGO MODERADO',
@@ -51,10 +62,12 @@ export const translations = {
     kidneyDisease: 'Enfermedad Renal Crónica',
     cardiologicalDisease: 'Enfermedad cardiológica (HTA)',
 
+    symptoms_title: 'Dolencias y Síntomas',
+
   },
 
 
-  
+
   it: {
     slide1:
       'CoTrack deve conoscere la tua posizione per avvisarti in tempo reale se durante il tour eri in stretto contatto con una persona infetta',
@@ -68,6 +81,18 @@ export const translations = {
 
     MakeTest: 'VALUTAZIONE DELLE PRESTAZIONI',
     MakeTestAgain: 'Eseguire di nuovo la valutazione',
+    Terms: 'Termini e condizioni d\'uso',
+    Faq: 'Domande frequenti',
+    Continue: 'Continuare',
+
+    Gender: 'Genere',
+    Male: 'Maschio',
+    Female: 'Femmina',
+    ForOfficialUse: 'Gestiamo le tue informazioni in modo sicuro e per uso esclusivo ufficiale.',
+    BirthDate: 'Data di nascita',
+    WhyWeAsk: 'Perché richiediamo queste informazioni?',
+    IfSymptomsChanged: 'Se i sintomi stavano cambiando, ripetere il autovalutazione e seguito le raccomandazioni fornite.',
+
     LowRisk: 'LEGGERO RISCHIO',
     MediumRisk: 'RISCHIO MODERATO',
     HighRisk: 'A RISCHIO',
@@ -104,5 +129,7 @@ export const translations = {
     respiratoryDisease: 'Malattia respiratoria (Asma, EPOC)',
     kidneyDisease: 'Malattia renale cronica',
     cardiologicalDisease: 'Malattia cardiologica (HT)',
+
+    symptoms_title: 'Dolencias y Síntomas',
   },
 };

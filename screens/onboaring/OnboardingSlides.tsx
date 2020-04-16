@@ -32,13 +32,6 @@ export const OnboardingSlides = ({ navigation }: MainStackNavProps<'Help'>) => {
       image: require('../../assets/images/prevention/washing.png'),
       backgroundColor: '#fff',
     },
-    // {
-    //   key: 'slide4',
-    //   text:
-    //     'CoTrack no envía datos privados ni requiere que te identifiques, tan sólo saber tu ubicación, la cual también podés decidir si compartirla o no en caso de contagio',
-    //   image: require('../../assets/images/prevention/warning.png'),
-    //   backgroundColor: '#fff',
-    // },
   ];
 
   const renderItem = ({ item }) => {
