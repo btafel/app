@@ -15,22 +15,20 @@ import { DiagnosticStackNavProps } from './types';
 import Colors from '../../constants/Colors';
 import Layout from '../../constants/Layout';
 import { getPreferences } from '../../utils/config';
+import i18n from 'i18n-js';
 
 function PositiveResults() {
   const navigation = useNavigation();
   return (
     <>
       <Text style={[styles.cardTitle, { color: Colors.palette.positive }]}>
-        RIESGO LEVE
+      {i18n.t('LowRisk')}
       </Text>
       <Text style={styles.cardSubTitle}>
-        Según pautas oficiales, el conjunto de tus sintomas e historia no
-        implican contagio de coronavirus o alto riesgo.
+      {i18n.t('LowRisk_subtitle')}
       </Text>
       <Text style={styles.cardText}>
-        Te proponemos realizar el aislamiento voluntario, repasando el listado
-        de medidas preventivas y compartir esta información con tus allegados
-        para así todos poder evitar el contagio
+      {i18n.t('LowRisk_subtitle')}
       </Text>
       <RectButton
         style={[styles.button, styles.activeButton, { width: '80%' }]}
@@ -49,7 +47,7 @@ function PositiveResults() {
         onPress={() => navigation.goBack()}
       >
         <Text style={[styles.buttonText, styles.activeButtonText]}>
-          Realizar evaluación nuevamente
+        {i18n.t('MakeTestAgain')}
         </Text>
       </RectButton>
     </>
@@ -60,17 +58,13 @@ function NeutralResults() {
   return (
     <>
       <Text style={[styles.cardTitle, { color: Colors.palette.neutral }]}>
-        RIESGO MODERADO
+      {i18n.t('MediumRisk')}
       </Text>
       <Text style={styles.cardSubTitle}>
-        Algunos de tus síntomas pueden estar asociados al contagio de
-        coronavirus pero no son concluyentes para determinar si efectivamente
-        estás infectado.
+      {i18n.t('MediumRisk_subtitle')}
       </Text>
       <Text style={styles.cardText}>
-        Te proponemos realizar el aislamiento voluntario, repasando el listado
-        de medidas preventivas y compartir esta información con tus allegados
-        para así todos poder evitar el contagio
+      {i18n.t('MediumRisk_text')}
       </Text>
       <RectButton
         style={[styles.button, styles.activeButton, { width: '80%' }]}
@@ -89,7 +83,7 @@ function NeutralResults() {
         onPress={() => navigation.goBack()}
       >
         <Text style={[styles.buttonText, styles.activeButtonText]}>
-          Realizar evaluación nuevamente
+        {i18n.t('MakeTestAgain')}
         </Text>
       </RectButton>
     </>
@@ -105,16 +99,13 @@ function NegativeResults({ province }) {
   return (
     <>
       <Text style={[styles.cardTitle, { color: Colors.palette.negative }]}>
-        EN RIESGO
+      {i18n.t('HighRisk')}
       </Text>
       <Text style={styles.cardSubTitle}>
-        Te aconsejamos consultar con un profesional de acuerdo a las
-        indicaciones en tu ciudad.
+      {i18n.t('HighRisk_subtitle')}
       </Text>
       <Text style={styles.cardText}>
-        Aquí podés conseguir ayuda para conseguir los números de organismos
-        oficiales según tu zona, para orientarte sobre cómo proceder y recibir
-        asistencia médica y psicológica.
+      {i18n.t('HighRisk_text')}
       </Text>
 
       <View
@@ -188,7 +179,7 @@ function NegativeResults({ province }) {
         onPress={() => navigation.goBack()}
       >
         <Text style={[styles.buttonText, styles.activeButtonText]}>
-          Realizar evaluación nuevamente
+        {i18n.t('MakeTestAgain')}
         </Text>
       </RectButton>
     </>
