@@ -122,9 +122,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             <View
               style={{ marginTop: 15, width: '90%', marginHorizontal: '5%' }}
             >
-              <Text style={mapStyles.modalTitle}>
-                {i18n.t('WhyWeAsk')}
-              </Text>
+              <Text style={mapStyles.modalTitle}>{i18n.t('WhyWeAsk')}</Text>
               <View style={[mapStyles.modalBody]}>
                 <Text style={{ textAlign: 'left' }}>
                   La información que generamos entre todos sobre nuestros
@@ -250,11 +248,11 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                 options={[
                   {
                     key: 'M',
-                    text: {i18n.t('Male')},
+                    text: i18n.t('Male'),
                   },
                   {
                     key: 'F',
-                    text: {i18n.t('Female')},
+                    text: i18n.t('Female'),
                   },
                 ]}
                 value={state.gender}
@@ -332,13 +330,11 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               onPress={handleContinue}
             >
               <Text style={[styles.buttonText, styles.activeButtonText]}>
-              {i18n.t('Continue')}
+                {i18n.t('Continue')}
               </Text>
             </Touchable>
             <View style={{ flex: 1, justifyContent: 'flex-start' }}>
-              <Text style={styles.footerText}>
-              {i18n.t('ForOfficialUse')}
-              </Text>
+              <Text style={styles.footerText}>{i18n.t('ForOfficialUse')}</Text>
             </View>
           </KeyboardAvoidingView>
         </View>
