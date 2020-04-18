@@ -8,6 +8,7 @@ import BottomTabNavigator from './BottomTabNavigator';
 import { OnboardingSlides } from '../screens/onboaring/OnboardingSlides';
 import { Splash } from '../screens/onboaring/Splash';
 import UserInfo from '../screens/user/UserInfo';
+import Settings from '../screens/user/Settings';
 import { MainStackParamList } from './types';
 import { UserPreferences } from '../utils/config';
 

@@ -19,10 +19,12 @@ import Results from '../screens/diagnostic/Results';
 import { TransitionSpec } from '@react-navigation/stack/lib/typescript/src/types';
 import { DiagnosticParamsList } from '../screens/diagnostic/types';
 import { HelpButton } from '../components/HelpButton';
+import { SettingsParamsList } from '../screens/user/types';
+import Settings from '../screens/user/Settings';
 
 import { pageHit } from '../utils/analytics';
 
-const INITIAL_ROUTE_NAME = 'Map';
+const INITIAL_ROUTE_NAME = 'Settings';
 const isIOS = Platform.OS === 'ios';
 const isWeb = Platform.OS === 'web';
 
@@ -30,6 +32,7 @@ type TabsParamsList = {
   Diagnostic: undefined;
   Map: undefined;
   Prevention: undefined;
+  Settings: undefined;
 };
 
 const Tab = createBottomTabNavigator<TabsParamsList>();
@@ -95,6 +98,40 @@ function PreventionNavStack() {
         }}
       />
     </PreventionStack.Navigator>
+  );
+}
+
+const SettingsStack = createSharedElementStackNavigator<SettingsParamsList>();
+
+function SettingsNavStack() {
+  useFocusEffect(
+    React.useCallback(() => {
+      StatusBar.setBarStyle('light-content');
+      Platform.OS === 'android' &&
+        StatusBar.setBackgroundColor(Colors.primaryColor);
+      pageHit('Settings');
+    }, []),
+  );
+  return (
+    <SettingsStack.Navigator
+      screenOptions={{
+        ...defaultScreenOptions,
+        transitionSpec: {
+          open: iosTransitionSpec,
+          close: iosTransitionSpec,
+        },
+        animationEnabled: !isWeb,
+      }}
+    >
+      <SettingsStack.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          headerTitle: 'Opciones',
+          headerRight: () => <HelpButton />,
+        }}
+      />
+    </SettingsStack.Navigator>
   );
 }
 
@@ -175,6 +212,19 @@ export default function BottomTabNavigator() {
           ),
         }}
         component={PreventionNavStack}
+      />
+      <Tab.Screen
+        name="Settings"
+        options={{
+          title: 'Opciones',
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon
+              focused={focused}
+              name={isIOS ? 'ios-settings' : 'md-settings'}
+            />
+          ),
+        }}
+        component={SettingsNavStack}
       />
     </Tab.Navigator>
   );
