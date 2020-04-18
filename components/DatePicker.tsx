@@ -19,7 +19,7 @@ export default function DatePicker({ label, onChange, value }) {
 
   const [internalValue, setInternalValue] = useState(defaultValue);
 
-  const handleChange = key => val => {
+  const handleChange = (key) => (val) => {
     internalValue[key] = val;
     setInternalValue(internalValue);
     onChange(
@@ -46,7 +46,7 @@ export default function DatePicker({ label, onChange, value }) {
     i18n.t('December'),    
   ].map((e, i) => <Picker.Item key={i + 1} label={e} value={i + 1} />);
 
-  const arrYears = Array.from(Array(100).keys()).map(i => (
+  const arrYears = Array.from(Array(100).keys()).map((i) => (
     <Picker.Item key={i + 1} label={`${2020 - i}`} value={2020 - i} />
   ));
 
