@@ -250,11 +250,11 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                 options={[
                   {
                     key: 'M',
-                    text: {i18n.t('Male')},
+                    text: i18n.t('Male'),
                   },
                   {
                     key: 'F',
-                    text: {i18n.t('Female')},
+                    text: i18n.t('Female'),
                   },
                 ]}
                 value={state.gender}

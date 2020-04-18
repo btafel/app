@@ -32,18 +32,18 @@ export default function DatePicker({ label, onChange, value }) {
   ));
 
   const arrMonths = [
-    {i18n.t('January')},
-    {i18n.t('February')},
-    {i18n.t('March')},
-    {i18n.t('April')},
-    {i18n.t('May')},
-    {i18n.t('June')},
-    {i18n.t('July')},
-    {i18n.t('August')},
-    {i18n.t('September')},
-    {i18n.t('October')},
-    {i18n.t('November')},
-    {i18n.t('December')},    
+    i18n.t('January'),
+    i18n.t('February'),
+    i18n.t('March'),
+    i18n.t('April'),
+    i18n.t('May'),
+    i18n.t('June'),
+    i18n.t('July'),
+    i18n.t('August'),
+    i18n.t('September'),
+    i18n.t('October'),
+    i18n.t('November'),
+    i18n.t('December'),    
   ].map((e, i) => <Picker.Item key={i + 1} label={e} value={i + 1} />);
 
   const arrYears = Array.from(Array(100).keys()).map(i => (

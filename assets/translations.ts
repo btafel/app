@@ -9,8 +9,7 @@ export const translations = {
     Next: 'Siguiente',
     Prev: 'Anterior',
     Done: 'Finalizar',
-    title_signup:
-      'Necesitamos algunos datos tuyos para poder realizar un evaluación más preciso y contactarte si necesitas ayuda.',
+    title_signup: 'Necesitamos algunos datos tuyos para poder realizar un evaluación más preciso y contactarte si necesitas ayuda.',
     MakeTest: 'REALIZAR EVALUACION',
     MakeTestAgain: 'Realizar evaluación nuevamente',
     Terms: 'Términos y Condiciones de Uso',
@@ -91,6 +90,7 @@ export const translations = {
     Next: 'Seguente',
     Prev: 'Anterior',
     Done: 'Finalizza',
+    title_signup: 'Abbiamo bisogno di alcune tue informazioni per consentirci di effettuare una valutazione più precisa e contattarti se hai bisogno di aiuto.',
 
     MakeTest: 'VALUTAZIONE DELLE PRESTAZIONI',
     MakeTestAgain: 'Eseguire di nuovo la valutazione',
