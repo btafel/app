@@ -27,6 +27,7 @@ import ProvincePicker from '../../components/ProvincePicker';
 import { syncUserInfoDataWithServer } from '../../utils/syncStorageHelper';
 
 import { mapStyles } from '../map/mapStyles';
+import i18n from 'i18n-js';
 
 function reducer(state, newState) {
   return { ...state, ...newState };
@@ -121,9 +122,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             <View
               style={{ marginTop: 15, width: '90%', marginHorizontal: '5%' }}
             >
-              <Text style={mapStyles.modalTitle}>
-                ¿Por qué pedimos estos datos?
-              </Text>
+              <Text style={mapStyles.modalTitle}>{i18n.t('WhyWeAsk')}</Text>
               <View style={[mapStyles.modalBody]}>
                 <Text style={{ textAlign: 'left' }}>
                   La información que generamos entre todos sobre nuestros
@@ -147,7 +146,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                         marginTop: 15,
                       }}
                     >
-                      Términos y Condiciones de Uso
+                      {i18n.t('Terms')}
                     </Text>{' '}
                     y las{' '}
                     <Text
@@ -160,7 +159,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                         marginTop: 15,
                       }}
                     >
-                      Preguntas Frecuentes
+                      {i18n.t('Faq')}
                     </Text>{' '}
                     disponibles en{' '}
                     <Text
@@ -206,10 +205,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               justifyContent: 'flex-start',
             }}
           >
-            <Text style={styles.text}>
-              Necesitamos algunos datos tuyos para poder realizar un evaluación
-              más preciso y contactarte si necesitas ayuda.
-            </Text>
+            <Text style={styles.text}>{i18n.t('title_signup')}</Text>
 
             <ProvincePicker
               label="Provincia"
@@ -248,15 +244,15 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             />
             <View style={[styles.input, { borderWidth: 0 }]}>
               <RadioButtons
-                label="Sexo"
+                label={i18n.t('Gender')}
                 options={[
                   {
                     key: 'M',
-                    text: 'Masculino',
+                    text: i18n.t('Male'),
                   },
                   {
                     key: 'F',
-                    text: 'Femenino',
+                    text: i18n.t('Female'),
                   },
                 ]}
                 value={state.gender}
@@ -265,7 +261,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             </View>
 
             <DatePicker
-              label="Fecha de Nacimiento"
+              label={i18n.t('BirthDate')}
               onChange={handleChange('dob')}
               value={state.dob}
             />
@@ -319,7 +315,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                     marginTop: 15,
                   }}
                 >
-                  términos y condiciones
+                  {i18n.t('Terms')}
                 </Text>
               </Text>
             </View>
@@ -334,14 +330,11 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               onPress={handleContinue}
             >
               <Text style={[styles.buttonText, styles.activeButtonText]}>
-                Continuar
+                {i18n.t('Continue')}
               </Text>
             </Touchable>
             <View style={{ flex: 1, justifyContent: 'flex-start' }}>
-              <Text style={styles.footerText}>
-                Gestionamos tu información de forma segura y para uso exclusivo
-                oficial.
-              </Text>
+              <Text style={styles.footerText}>{i18n.t('ForOfficialUse')}</Text>
             </View>
           </KeyboardAvoidingView>
         </View>

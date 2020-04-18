@@ -18,6 +18,7 @@ import { formatAge } from '../../utils/forms';
 import Touchable from '../../components/Touchable';
 import { saveDiagnosticLocally } from '../../utils/localStorageHelper';
 import { syncRecordsDataWithServer } from '../../utils/syncStorageHelper';
+import i18n from 'i18n-js';
 
 const initialState = {
   age: '',
@@ -272,71 +273,70 @@ function Questionary({ onShowResults }: QuestionaryProps) {
         </Text>
         <Text style={styles.section}>Edad</Text>
         <TextInput
-          placeholder="¿Cual es tu edad?"
+          placeholder={i18n.t('AskAge')}
           value={state.age}
           onChangeText={handleChangeAge}
           keyboardType="phone-pad"
           style={styles.input}
           blurOnSubmit
         />
-        <Text style={styles.section}>Dolencias y síntomas</Text>
+        <Text style={styles.section}>{i18n.t('symptoms_title')}</Text>
         <View style={styles.questButtons}>
           <QuestButton
             id="fever"
-            text="Fiebre"
+            text={i18n.t('fever')}
             onPress={onSelectSymptoms}
             selected={state.symptoms}
           />
           <QuestButton
             id="cough"
-            text="Tos seca"
+            text={i18n.t('cough')}
             onPress={onSelectSymptoms}
             selected={state.symptoms}
           />
           <QuestButton
             id="throat"
-            text="Dolor de garganta"
+            text={i18n.t('throat')}
             onPress={onSelectSymptoms}
             selected={state.symptoms}
           />
           <QuestButton
             id="breath"
-            text="Dificultad para respirar"
+            text={i18n.t('breath')}
             onPress={onSelectSymptoms}
             selected={state.symptoms}
           />
           <QuestButton
             id="headache"
-            text="Dolor de cabeza"
+            text={i18n.t('headache')}
             onPress={onSelectSymptoms}
             selected={state.symptoms}
           />
           <QuestButton
             id="diarrhea"
-            text="Descompostura o diarrea"
+            text={i18n.t('diarrhea')}
             onPress={onSelectSymptoms}
             selected={state.symptoms}
           />
           <QuestButton
             id="tiredness"
-            text="Cansancio general"
+            text={i18n.t('tiredness')}
             onPress={onSelectSymptoms}
             selected={state.symptoms}
           />
         </View>
         {state.symptoms && state.symptoms.fever === 'yes' && (
           <>
-            <Text style={styles.section}>Temperatura Corporal</Text>
+            <Text style={styles.section}>{i18n.t('temperature')}</Text>
             <TempPicker
               value={state.temperature}
               onChange={(val) => setState({ temperature: val })}
             />
           </>
         )}
-        <Text style={styles.section}>Viajes o contactos confirmados</Text>
+        <Text style={styles.section}>{i18n.t('Contact_section')}</Text>
         <Text style={styles.subtitle}>
-          ¿Estuviste en contacto con algún caso confirmado de Coronavirus, en
-          los ultimos 14 días?
+        {i18n.t('confirmedContact_subtitle')}  
         </Text>
         <View style={styles.questButtons}>
           <YesNoButtons
@@ -346,7 +346,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           />
         </View>
         <Text style={styles.subtitle}>
-          ¿Estuviste de viaje fuera del país, en los ultimos 14 días?
+        {i18n.t('suspectedOutside_subtitle')}  
         </Text>
         <View style={styles.questButtons}>
           <YesNoButtons
@@ -356,8 +356,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           />
         </View>
         <Text style={styles.subtitle}>
-          ¿Estuviste en alguna Provincia con casos locales de Coronavirus, en
-          los ultimos 14 días?
+        {i18n.t('suspectedInside_subtitle')}
         </Text>
         <View style={styles.questButtons}>
           <YesNoButtons
@@ -366,59 +365,59 @@ function Questionary({ onShowResults }: QuestionaryProps) {
             state={state.questions}
           />
         </View>
-        <Text style={styles.section}>Antecedentes medicos</Text>
+        <Text style={styles.section}>{i18n.t('medicalHistory')}</Text>
         <View style={styles.questButtons}>
           <QuestButton
             id="immunosuppression"
-            text="Inmunosupresión"
+            text={i18n.t('immunosuppression')}
             onPress={onSelectMedicalHistory}
             selected={state.medicalHistory}
           />
           <QuestButton
             id="diabetes"
-            text="Diabetes"
+            text={i18n.t('diabetes')}
             onPress={onSelectMedicalHistory}
             selected={state.medicalHistory}
           />
           <QuestButton
             id="cancer"
-            text="Cáncer"
+            text={i18n.t('cancer')}
             onPress={onSelectMedicalHistory}
             selected={state.medicalHistory}
           />
           <QuestButton
             id="hepatic"
-            text="Enfermedad hepática"
+            text={i18n.t('hepatic')}
             onPress={onSelectMedicalHistory}
             selected={state.medicalHistory}
           />
           <QuestButton
             id="pregnant"
-            text="Embarazo"
+            text={i18n.t('pregnant')}
             onPress={onSelectMedicalHistory}
             selected={state.medicalHistory}
           />
           <QuestButton
             id="newborn"
-            text="Recién nacido con síntomas"
+            text={i18n.t('newborn')}
             onPress={onSelectMedicalHistory}
             selected={state.medicalHistory}
           />
           <QuestButton
             id="respiratoryDisease"
-            text="Enfermedad respiratoria (Asma, EPOC)"
+            text={i18n.t('respiratoryDisease')}
             onPress={onSelectMedicalHistory}
             selected={state.medicalHistory}
           />
           <QuestButton
             id="kidneyDisease"
-            text="Enfermedad Renal Crónica"
+            text={i18n.t('kidneyDisease')}
             onPress={onSelectMedicalHistory}
             selected={state.medicalHistory}
           />
           <QuestButton
             id="cardiologicalDisease"
-            text="Enfermedad cardiológica (HTA)"
+            text={i18n.t('cardiologicalDisease')}
             onPress={onSelectMedicalHistory}
             selected={state.medicalHistory}
           />
@@ -435,7 +434,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
         onPress={handlePress}
       >
         <Text style={[styles.buttonText, styles.activeButtonText]}>
-          REALIZAR EVALUACIÓN
+        {i18n.t('MakeTest')}
         </Text>
       </Touchable>
     </>
