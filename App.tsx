@@ -29,7 +29,7 @@ import { translations } from './assets/translations';
 // Set the key-value pairs for the different languages you want to support.
 i18n.translations = translations;
 
-i18n.locale = 'it'; //Localization.locale.startsWith('it') ? 'it' : 'es';
+i18n.locale = Localization.locale.startsWith('it') ? 'it' : 'es';
 // Set the locale once at the beginning of your app.
 // i18n.locale = Localization.locale;
 // When a value is missing from a language it'll fallback to another language with the key present.
