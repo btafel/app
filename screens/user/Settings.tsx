@@ -90,7 +90,6 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
             
             <View>
             <Text h4>{i18n.t('Config_Tracking')}</Text>
-            <Divider style={{ backgroundColor: 'lightblue' }} />
               {
                 optlist.map((l, i) => (
                   <ListItem
@@ -98,7 +97,7 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
                     title={i18n.t(l.name)}
                     subtitle={i18n.t(l.subtitle)}
                     switch={{value: state[l.key], onValueChange: handleChange(l.key)}}
-                    
+                    bottomDivider
                   />
                 ))
               }
@@ -110,7 +109,6 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
             >
               <View style={styles.block}>
             <Text h4>{i18n.t('Config_Personal_data')}</Text>
-                <Divider style={{ backgroundColor: 'lightblue' }} />
                 <Icon
                   name={
                     Platform.OS === 'ios'
