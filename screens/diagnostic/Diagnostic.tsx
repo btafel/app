@@ -392,7 +392,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
               value={state.temperature}
               onChange={(val) => setState({ temperature: val })}
             />
-            {/*<TPicker/>*/}
+            {/*<TPicker onChange={(val) => setState({ temperature: val })}/>*/}
           </>
         )}
         <Text style={styles.section}>{i18n.t('Contact_section')}</Text>

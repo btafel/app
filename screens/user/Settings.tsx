@@ -15,17 +15,18 @@ import { MainStackNavProps } from '../../navigation/types';
 import { savePreferences, getPreferences } from '../../utils/config';
 import { syncUserInfoDataWithServer } from '../../utils/syncStorageHelper';
 import { Input, Divider, Text, ListItem } from 'react-native-elements';
+import i18n from 'i18n-js';
 
 const list = [
   {
-    name: 'Historial GPS',
+    name: i18n.t('gps_history'),
     statename: 'gps',
-    subtitle: 'Utilizar GPS para alertas de Contacto y Autoevaluaciones'
+    subtitle: i18n.t('gps_history_subtitle'),
   },
   {
-    name: 'Rastreo BlueTooth',
+    name: i18n.t('bt_tracking'),
     statename: 'bluetooth',
-    subtitle: 'Utilizar BlueTooth para identificar contactos con personas contagiadas'
+    subtitle: i18n.t('bt_tracking_subtitle'),
   },
 ]
 
@@ -101,7 +102,8 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
           >
             
             <View>
-            <Text h4>Localización y Rastreo</Text>
+            <Text h4>{i18n.t('Config_Tracking')}</Text>
+            <Divider style={{ backgroundColor: 'lightblue' }} />
               {
                 optlist.map((l, i) => (
                   <ListItem
@@ -109,11 +111,10 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
                     title={l.name}
                     subtitle={l.subtitle}
                     switch={{value: state[l.key], onValueChange: handleChange(l.key)}}
-                    bottomDivider
+                    
                   />
                 ))
               }
-            <Divider style={{ backgroundColor: 'lightblue' }} />
             </View>
 
 
@@ -121,7 +122,8 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
               onPress={() => navigation.navigate('UserInfo')}
             >
               <View style={styles.block}>
-                <Text h4>Datos Personales</Text>
+            <Text h4>{i18n.t('Config_Personal_data')}</Text>
+                <Divider style={{ backgroundColor: 'lightblue' }} />
                 <Icon
                   name={
                     Platform.OS === 'ios'

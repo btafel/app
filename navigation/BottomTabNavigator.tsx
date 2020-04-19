@@ -21,6 +21,7 @@ import { DiagnosticParamsList } from '../screens/diagnostic/types';
 import { HelpButton } from '../components/HelpButton';
 import { SettingsParamsList } from '../screens/user/types';
 import Settings from '../screens/user/Settings';
+import i18n from 'i18n-js';
 
 import { pageHit } from '../utils/analytics';
 
@@ -157,7 +158,7 @@ function DiagnosticNavStack() {
       <DiagnosticStack.Screen
         name="Diagnostic"
         options={{
-          headerTitle: 'Auto Evaluación',
+          headerTitle: i18n.t('AutoTest'),
           headerRight: () => <HelpButton />,
         }}
         component={Diagnostic}

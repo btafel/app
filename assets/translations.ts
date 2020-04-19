@@ -1,5 +1,6 @@
 export const translations = {
   es: {
+    AutoTest: 'AutoTest',
     AutoTest_Intro: 'Realizá un AutoTest para saber si debés contactar a los servicios de salud. Los datos serán almacenados para que tengas un historial de tu evolución. Este test no es un diagnostico médico.',
     slide1:
       'CoTrack necesita saber tu ubicación para avisarte en tiempo real si en tu recorrido estuviste en contacto cercano con alguna persona contagiada',
@@ -79,11 +80,19 @@ export const translations = {
     October: 'Octubre',
     November: 'Noviembre',
     Dicember: 'Diciembre',
+
+    gps_history: 'Historial GPS',
+    gps_history_subtitle: 'Utilizar GPS para alertas de Contacto y Autoevaluaciones',
+    bt_tracking: 'Rastreo BlueTooth',
+    bt_tracking_subtitle: 'Utilizar BlueTooth para identificar contactos con personas contagiadas',
+    Config_Personal_data: 'Datos Personales',
+    Config_Tracking: 'Geolocalización y Rastreo',
   },
 
 
 
   it: {
+    AutoTest: 'AutoTest',
     AutoTest_Intro: 'Esegui un test automatico per scoprire se è necessario contattare i servizi sanitari. I dati verranno archiviati in modo da avere una cronologia della tua evoluzione. Questo test non è una diagnosi medica.',
     slide1:
       'CoTrack deve conoscere la tua posizione per avvisarti in tempo reale se durante il tour eri in stretto contatto con una persona infetta',
@@ -163,5 +172,13 @@ export const translations = {
     October: 'Ottobre',
     November: 'Novembre',
     Dicember: 'Dicembre',
+
+    gps_history: 'Cronologia GPS',
+    gps_history_subtitle: 'Utilizzare il GPS per avvisi di contatto e autovalutazioni',
+    bt_tracking: 'Tracciamento BlueTooth',
+    bt_tracking_subtitle: 'Usa BlueTooth per identificare i contatti con persone infette',
+    Config_Personal_data: 'Dati Personali',
+    Config_Tracking: 'Geolocalizzazione e tracciamento',
+
   },
 };
