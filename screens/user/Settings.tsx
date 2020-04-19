@@ -8,7 +8,6 @@ import {
   KeyboardAvoidingView,
   Switch,
 } from 'react-native';
-import {Divider, Text, ListItem} from 'react-native-elements';
 import { Ionicons as Icon } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
@@ -92,10 +91,6 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
             width: '100%',
           }}
         >
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
           <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : undefined}
             style={{
@@ -104,7 +99,6 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
               width: '100%',
             }}
           >
-<<<<<<< Updated upstream
             
             <View>
             <Text h4>Localización y Rastreo</Text>
@@ -119,35 +113,15 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
                   />
                 ))
               }
-            </View>
-
-=======
-            <View>
-            <Text h4>Geoposicionamiento y Rastreo</Text>
-              {
-                  list.map((l, i) => (
-                    <ListItem
-                      key={i}
-                      title={l.name}
-                      subtitle={l.subtitle}
-                      switch={{onValueChange: handleChange(l.statename), value: state[l.statename]}}
-                      bottomDivider
-                    />
-                  ))
-              }
             <Divider style={{ backgroundColor: 'lightblue' }} />
             </View>
->>>>>>> Stashed changes
+
 
             <TouchableWithoutFeedback
               onPress={() => navigation.navigate('UserInfo')}
             >
               <View style={styles.block}>
-<<<<<<< Updated upstream
-                <Text h4>Modificar Datos Personales</Text>
-=======
                 <Text h4>Datos Personales</Text>
->>>>>>> Stashed changes
                 <Icon
                   name={
                     Platform.OS === 'ios'
