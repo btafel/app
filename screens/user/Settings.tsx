@@ -15,6 +15,21 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { MainStackNavProps } from '../../navigation/types';
 import { savePreferences, getPreferences } from '../../utils/config';
 import { syncUserInfoDataWithServer } from '../../utils/syncStorageHelper';
+import { Input, Divider, Text, ListItem } from 'react-native-elements';
+
+const list = [
+  {
+    name: 'Historial GPS',
+    statename: 'gps',
+    subtitle: 'Utilizar GPS para alertas de Contacto y Autoevaluaciones'
+  },
+  {
+    name: 'Rastreo BlueTooth',
+    statename: 'bluetooth',
+    subtitle: 'Utilizar BlueTooth para identificar contactos con personas contagiadas'
+  },
+]
+
 
 const GRAY_COLOR = 'rgba(147, 147, 147, 1)';
 
@@ -77,7 +92,10 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
             width: '100%',
           }}
         >
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
           <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : undefined}
             style={{
@@ -86,6 +104,7 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
               width: '100%',
             }}
           >
+<<<<<<< Updated upstream
             
             <View>
             <Text h4>Localización y Rastreo</Text>
@@ -102,12 +121,33 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
               }
             </View>
 
+=======
+            <View>
+            <Text h4>Geoposicionamiento y Rastreo</Text>
+              {
+                  list.map((l, i) => (
+                    <ListItem
+                      key={i}
+                      title={l.name}
+                      subtitle={l.subtitle}
+                      switch={{onValueChange: handleChange(l.statename), value: state[l.statename]}}
+                      bottomDivider
+                    />
+                  ))
+              }
+            <Divider style={{ backgroundColor: 'lightblue' }} />
+            </View>
+>>>>>>> Stashed changes
 
             <TouchableWithoutFeedback
               onPress={() => navigation.navigate('UserInfo')}
             >
               <View style={styles.block}>
+<<<<<<< Updated upstream
                 <Text h4>Modificar Datos Personales</Text>
+=======
+                <Text h4>Datos Personales</Text>
+>>>>>>> Stashed changes
                 <Icon
                   name={
                     Platform.OS === 'ios'
