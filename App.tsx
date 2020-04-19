@@ -34,6 +34,7 @@ i18n.locale = Localization.locale.startsWith('it') ? 'it' : 'es';
 // i18n.locale = Localization.locale;
 // When a value is missing from a language it'll fallback to another language with the key present.
 i18n.fallbacks = true;
+i18n.locale = 'it';
 
 export default function App(props) {
   // Disable Font Scaling

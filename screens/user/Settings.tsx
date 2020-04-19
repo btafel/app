@@ -17,34 +17,21 @@ import { syncUserInfoDataWithServer } from '../../utils/syncStorageHelper';
 import { Input, Divider, Text, ListItem } from 'react-native-elements';
 import i18n from 'i18n-js';
 
-const list = [
+const optlist = [
   {
-    name: i18n.t('gps_history'),
-    statename: 'gps',
-    subtitle: i18n.t('gps_history_subtitle'),
+    name: 'gps_history',
+    key: 'gps',
+    subtitle: 'gps_history_subtitle',
   },
   {
-    name: i18n.t('bt_tracking'),
-    statename: 'bluetooth',
-    subtitle: i18n.t('bt_tracking_subtitle'),
+    name: 'bt_tracking',
+    key: 'bluetooth',
+    subtitle: 'bt_tracking_subtitle',
   },
 ]
 
 
 const GRAY_COLOR = 'rgba(147, 147, 147, 1)';
-
-const optlist = [
-  {
-    key: 'gps',
-    name: 'Historial GPS',
-    subtitle: 'Utilizar GPS para Alertas de Contacto y AutoTest',
-  },
-  {
-    key: 'bluetooth',
-    name: 'Rastreo BlueTooth',
-    subtitle: 'Utilizar BlueTooth para identificar contactos con personas contagiadas',
-  },
-]
 
 
 function reducer(state, newState) {
@@ -108,8 +95,8 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
                 optlist.map((l, i) => (
                   <ListItem
                     key={i}
-                    title={l.name}
-                    subtitle={l.subtitle}
+                    title={i18n.t(l.name)}
+                    subtitle={i18n.t(l.subtitle)}
                     switch={{value: state[l.key], onValueChange: handleChange(l.key)}}
                     
                   />

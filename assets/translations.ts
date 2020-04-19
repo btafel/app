@@ -11,6 +11,8 @@ export const translations = {
     Next: 'Siguiente',
     Prev: 'Anterior',
     Done: 'Finalizar',
+    Accept: 'Aceptar',
+    
     title_signup: 'Necesitamos algunos datos tuyos para poder realizar un evaluación más preciso y contactarte si necesitas ayuda.',
     MakeTest: 'REALIZAR EVALUACION',
     MakeTestAgain: 'Realizar evaluación nuevamente',
@@ -18,6 +20,13 @@ export const translations = {
     Faq: 'Preguntas Frecuentes',
     Continue: 'Continuar',
     Settings: 'Configuración',
+    Gathering_data: 'RECOPILANDO INFORMACION',
+    Gathering_data_text: 'La aplicación se irá actualizando con los datos de ubicación y recorridos de personas confirmadas con el contagio',
+    Gathering_data_longtext: 'CoTrack utiliza tu ubicación para cruzar información de lugares y trayectos donde hayas estado, con las ubicaciones aproximadas de otros usuarios contagiados de coronavirus dentro de los últimos 14 días. Las coordenadas y horarios de localización se guardan en tu teléfono celular de manera encriptada. No hay ningún tipo de identificación con la cual se relacione ni a vos ni a tu dispositivo móvil con los datos de ubicación. La información de personas infectadas es provista por entes gubernamentales y nadie más que un organismo de salud puede certificar el contagio efectivo. El organismo preguntará al paciente si acepta compartir su información de ubicación de los últimos 14 días con motivo de ayudar a prevenir el contagio a otros usuarios. Sin embargo el paciente podrá optar por no hacerlo.',
+    Heatmap_issocial: 'Datos Colaborativos',
+    Heatmap_isofficial: 'Datos Oficiales',
+    Heatmap_issocial_text: 'Los datos que estás viendo ahora son datos reportados colaborativamente. No son casos confirmados, sino aquellos que presentan síntomas compatibles y no fueron aun testeados.',
+    Heatmap_isofficial_text: 'Los datos que estarás viendo son datos reportados oficialmente. Las zonas de calor no indican puntos exactos de ubicación de contagiados.',
 
     Gender: 'Sexo',
     Male: 'Masculino',
@@ -32,7 +41,9 @@ export const translations = {
     HighRisk: 'EN RIESGO',
 
     LowRisk_subtitle: 'Según pautas oficiales, el conjunto de tus sintomas e historia no implican contagio de coronavirus o alto riesgo.',
-    LosRisk_text: 'Te proponemos realizar el aislamiento voluntario, repasando el listado de medidas preventivas y compartir esta información con tus allegados para así todos poder evitar el contagio',
+    LowRisk_text: 'Te proponemos realizar el aislamiento voluntario, repasando el listado de medidas preventivas y compartir esta información con tus allegados para así todos poder evitar el contagio',
+    LowRisk_tips_title: 'Consejos para la prevención',
+    LowRisk_tips_text: 'Si tus síntomas fueron cambiando, por favor volvé a realizar el autoevaluación y seguí las recomendaciones dadas.',
 
     MediumRisk_subtitle: 'Algunos de tus síntomas pueden estar asociados al contagio de coronavirus pero no son concluyentes para determinar si efectivamente estás infectado.',
     MediumRisk_text: 'Te proponemos realizar el aislamiento voluntario, repasando el listado de medidas preventivas y compartir esta información con tus allegados para así todos poder evitar el contagio',
@@ -103,6 +114,7 @@ export const translations = {
     Next: 'Seguente',
     Prev: 'Anterior',
     Done: 'Finalizza',
+    Accept: 'Accettare',
     title_signup: 'Abbiamo bisogno di alcune tue informazioni per consentirci di effettuare una valutazione più precisa e contattarti se hai bisogno di aiuto.',
 
     MakeTest: 'VALUTAZIONE DELLE PRESTAZIONI',
@@ -111,6 +123,14 @@ export const translations = {
     Faq: 'Domande frequenti',
     Continue: 'Continuare',
     Settings: 'Configurazione',
+    Gathering_data: 'RACCOLTA DI INFORMAZIONI',
+    Gathering_data_text: 'L\'applicazione verrà aggiornata con i dati sulla posizione e le rotte delle persone confermate con il contagio',
+    Gathering_data_longtext: 'CoTrack utilizza la tua posizione per incrociare le informazioni di luoghi e percorsi in cui sei stato, con le posizioni approssimative di altri utenti infetti da coronavirus negli ultimi 14 giorni. Le coordinate e i tempi di localizzazione vengono salvati sul tuo cellulare in forma crittografata. Non esiste alcun identificativo con cui tu o il tuo dispositivo mobile siete in relazione ai dati sulla posizione. Le informazioni sulle persone infette sono fornite da enti governativi e nessuno diverso da un\'autorità di contrasto. La salute può certificare l\'efficace contagio. L\'agenzia chiederà al paziente se accetta di condividere le informazioni sulla propria posizione negli ultimi 14 giorni al fine di impedire la trasmissione ad altri utenti. Tuttavia, il paziente può scegliere di non farlo.',
+    Heatmap_issocial: 'Dati collaborativi',
+    Heatmap_isofficial: 'Dati ufficiali',
+    Heatmap_issocial_text: 'I dati che stai visualizzando ora sono dati riportati in modo collaborativo. Non sono casi confermati, ma quelli che presentano sintomi compatibili e non sono ancora stati testati.',
+    Heatmap_isofficial_text: 'I dati che verranno visualizzati sono dati ufficialmente segnalati. Le zone di calore non indicano punti di posizione esatti per gli infetti.',
+
 
     Gender: 'Genere',
     Male: 'Maschio',
@@ -125,7 +145,9 @@ export const translations = {
     HighRisk: 'A RISCHIO',
 
     LowRisk_subtitle: 'Secondo le linee guida ufficiali, l\'insieme dei sintomi e della storia non implica contagio del coronavirus o rischio elevato.',
-    LosRisk_text: 'Ti proponiamo di eseguire l\'isolamento volontario, rivedendo l\'elenco delle misure preventive e condividendo queste informazioni con i tuoi cari in modo che tutti possano evitare il contagio',
+    LowRisk_text: 'Ti proponiamo di eseguire l\'isolamento volontario, rivedendo l\'elenco delle misure preventive e condividendo queste informazioni con i tuoi cari in modo che tutti possano evitare il contagio',
+    LowRisk_tips_title: 'Suggerimenti per la prevenzione',
+    LowRisk_tips_text: 'Se i sintomi sono cambiati, torna all\'autovalutazione e segui le raccomandazioni fornite.',
 
     MediumRisk_subtitle: 'Alcuni dei tuoi sintomi possono essere associati alla diffusione del coronavirus ma non sono conclusivi per determinare se sei effettivamente infetto.',
     MediumRisk_text: 'Ti proponiamo di eseguire l\'isolamento volontario, rivedendo l\'elenco delle misure preventive e condividendo queste informazioni con i tuoi cari in modo che tutti possano evitare il contagio',
