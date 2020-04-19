@@ -2,12 +2,12 @@ import React, { useReducer, useCallback, useEffect, useState } from 'react';
 import {
   StyleSheet,
   TextInput,
-  Text,
   View,
   Platform,
   ScrollView,
   StatusBar,
   Picker,
+  Alert,
 } from 'react-native';
 import { useScrollToTop } from '@react-navigation/native';
 import * as Location from 'expo-location';
@@ -19,6 +19,8 @@ import Touchable from '../../components/Touchable';
 import { saveDiagnosticLocally } from '../../utils/localStorageHelper';
 import { syncRecordsDataWithServer } from '../../utils/syncStorageHelper';
 import i18n from 'i18n-js';
+import { Text, ListItem, Divider } from 'react-native-elements';
+import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace';
 
 const initialState = {
   age: '',
@@ -88,9 +90,42 @@ function YesNoButtons({ id, onPress, state }) {
   );
 }
 
-function TempPicker({ onChange, value }) {
-  let defaultValue = { temp1: 37, temp2: 5 };
+class TPicker extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
+  handleChange=(value, index)=>{
+    this.setState({temperature: value}, () => Alert.alert(this.state.temperature))
+  }
+  state = {temperature: '37.5'};
+  render() {
+
+    const arrItems = Array.from(Array(100).keys()).map((e, i) => (
+      <Picker.Item key={(i + 340)/10} label={`${(i + 340)/10}`} value={(i + 340)/10} />
+    ));
+
+    return (
+      <Picker
+      selectedValue={this.state.temperature}
+      onValueChange={this.handleChange}
+      style={{
+        width: '25%',
+        marginLeft: 'auto',
+      }}
+      mode="dropdown"
+    >
+      {arrItems}
+    </Picker>
+    )
+  }
+}
+
+
+function TempPicker({onChange, value }) {
+  let defaultValue = { temp1: 37, temp2: 5 };
+  
   if (value) {
     try {
       const v = value.split('.');
@@ -104,6 +139,7 @@ function TempPicker({ onChange, value }) {
     internalValue[key] = val;
     setInternalValue(internalValue);
     onChange(`${internalValue.temp1}.${internalValue.temp2}`);
+
   };
 
   const arrTemp1 = Array.from(Array(10).keys()).map((e, i) => (
@@ -124,7 +160,6 @@ function TempPicker({ onChange, value }) {
   return (
     <View style={styles.buttonContainer}>
       <Picker
-        // id="day"
         selectedValue={internalValue.temp1}
         onValueChange={handleChange('temp1')}
         style={{
@@ -137,7 +172,6 @@ function TempPicker({ onChange, value }) {
       </Picker>
       <Text>.</Text>
       <Picker
-        // id="month"
         selectedValue={internalValue.temp2}
         onValueChange={handleChange('temp2')}
         style={{ width: '20%' }}
@@ -207,6 +241,30 @@ function Questionary({ onShowResults }: QuestionaryProps) {
   const handlePress = async () => {
     let result: QuestResults;
 
+    // Fiebre 37.5+ Y
+    // Uno de (tos,odinofagia: dolor al tragar,dificultad respitatoria,anosmia/disguesia: falta de olfato/sabor)
+    // y en ultimos 14 días historial de viaje/contacto o residencia en zona de transmision local
+    result = 'positive';
+    console.log(state);
+    if(state.symptoms['fever'] === 'yes')
+    {
+      // state.temperature === undefined = 37.5, bug en TempPicker
+      if(state.temperature === undefined || state.temperature > 37.5) {
+        if( (state.symptoms['throat'] === 'yes' || 
+            state.symptoms['breath'] === 'yes' ||
+            state.symptoms['anosmya'] === 'yes' ||
+            state.symptoms['cough'] === 'yes')
+            &&
+            (
+              positiveTravelContact
+            ) 
+          ) {
+          result = 'negative';
+        }
+      }
+    }
+    console.log(result);
+    /* Triage Logica hasta el 16/04
     function hasExtraConditions() {
       if (parseInt(state.age) >= 60 || positiveExtraConditions) {
         result = 'negative';
@@ -232,6 +290,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
     } else {
       result = 'positive';
     }
+    */
 
     let location;
     try {
@@ -263,15 +322,9 @@ function Questionary({ onShowResults }: QuestionaryProps) {
         ref={scrollRef}
       >
         <Text style={styles.title}>
-          Si tenés algún malestar y pensás que puede estar ligado al contagio de
-          coronavirus, podemos realizar un{' '}
-          <Text style={{ fontWeight: '700' }}>
-            auto-evaluación de detección temprana
-          </Text>{' '}
-          respondiendo una serie de preguntas, detallando los síntomas que estás
-          teniendo y si creés haber estado en contacto con alguien infectado.
+        {i18n.t('AutoTest_Intro')}
         </Text>
-        <Text style={styles.section}>Edad</Text>
+        <Divider/>
         <TextInput
           placeholder={i18n.t('AskAge')}
           value={state.age}
@@ -281,7 +334,14 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           blurOnSubmit
         />
         <Text style={styles.section}>{i18n.t('symptoms_title')}</Text>
+        <Divider/>
         <View style={styles.questButtons}>
+        <QuestButton
+            id="anosmya"
+            text={i18n.t('anosmya')}
+            onPress={onSelectSymptoms}
+            selected={state.symptoms}
+          />
           <QuestButton
             id="fever"
             text={i18n.t('fever')}
@@ -332,9 +392,11 @@ function Questionary({ onShowResults }: QuestionaryProps) {
               value={state.temperature}
               onChange={(val) => setState({ temperature: val })}
             />
+            {/*<TPicker/>*/}
           </>
         )}
         <Text style={styles.section}>{i18n.t('Contact_section')}</Text>
+        <Divider/>
         <Text style={styles.subtitle}>
         {i18n.t('confirmedContact_subtitle')}  
         </Text>
@@ -366,6 +428,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           />
         </View>
         <Text style={styles.section}>{i18n.t('medicalHistory')}</Text>
+        <Divider/>
         <View style={styles.questButtons}>
           <QuestButton
             id="immunosuppression"
@@ -471,7 +534,7 @@ const styles = StyleSheet.create({
   },
   title: { paddingTop: 20, fontSize: 16, fontWeight: '300' },
   section: {
-    paddingTop: 20,
+    paddingTop: 30,
     paddingBottom: 10,
     fontSize: 15,
     fontWeight: '700',

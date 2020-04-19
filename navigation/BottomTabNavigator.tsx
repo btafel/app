@@ -127,7 +127,7 @@ function SettingsNavStack() {
         name="Settings"
         component={Settings}
         options={{
-          headerTitle: 'Opciones',
+          headerTitle: 'Configuración',
           headerRight: () => <HelpButton />,
         }}
       />

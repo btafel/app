@@ -1,5 +1,6 @@
 export const translations = {
   es: {
+    AutoTest_Intro: 'Realizá un AutoTest para saber si debés contactar a los servicios de salud. Los datos serán almacenados para que tengas un historial de tu evolución. Este test no es un diagnostico médico.',
     slide1:
       'CoTrack necesita saber tu ubicación para avisarte en tiempo real si en tu recorrido estuviste en contacto cercano con alguna persona contagiada',
     slide2:
@@ -15,6 +16,7 @@ export const translations = {
     Terms: 'Términos y Condiciones de Uso',
     Faq: 'Preguntas Frecuentes',
     Continue: 'Continuar',
+    Settings: 'Configuración',
 
     Gender: 'Sexo',
     Male: 'Masculino',
@@ -38,9 +40,10 @@ export const translations = {
     HighRisk_text: 'Aquí podés conseguir ayuda para conseguir los números de organismos oficiales según tu zona, para orientarte sobre cómo proceder y recibir asistencia médica y psicológica.',
 
     AskAge: '¿Cuál es tu Edad?',
+    anosmya: 'Falta de Olfato / Gusto',
     fever: 'Fiebre',
     cough: 'Tos Seca',
-    throat: 'Dolor de Garganta',
+    throat: 'Dolor al Tragar',
     breath: 'Dificultad para Respirar',
     headache: 'Dolor de Cabeza',
     diarrhea: 'Descompostura o diarrea',
@@ -51,7 +54,7 @@ export const translations = {
     suspectedOutside_subtitle: '¿Estuviste de viaje fuera del país, en los ultimos 14 días?',
     suspectedInside_subtitle: '¿Estuviste en alguna Provincia con casos locales de Coronavirus, en los ultimos 14 días?',
     medicalHistory: 'Antecedentes Medicos',
-    inmunosuppresion: 'Inmunosupresión',
+    immunosuppression: 'Inmunosupresión',
     diabetes: 'Diabetes',
     cancer: 'Cáncer',
     hepatic: 'Enfermedad hepática',
@@ -81,6 +84,7 @@ export const translations = {
 
 
   it: {
+    AutoTest_Intro: 'Esegui un test automatico per scoprire se è necessario contattare i servizi sanitari. I dati verranno archiviati in modo da avere una cronologia della tua evoluzione. Questo test non è una diagnosi medica.',
     slide1:
       'CoTrack deve conoscere la tua posizione per avvisarti in tempo reale se durante il tour eri in stretto contatto con una persona infetta',
     slide2:
@@ -97,6 +101,7 @@ export const translations = {
     Terms: 'Termini e condizioni d\'uso',
     Faq: 'Domande frequenti',
     Continue: 'Continuare',
+    Settings: 'Configurazione',
 
     Gender: 'Genere',
     Male: 'Maschio',
@@ -120,6 +125,7 @@ export const translations = {
     HighRisk_text: 'Qui puoi ottenere aiuto per ottenere il numero di organizzazioni ufficiali in base alla tua area, per guidarti su come procedere e ricevere assistenza medica e psicologica.',
 
     AskAge: '¿Qual è la tua età?',
+    anosmya: 'Mancanza di odore / gusto',
     fever: 'Febbre',
     cough: 'Tosse secca',
     throat: 'Mal di gola',
@@ -133,7 +139,7 @@ export const translations = {
     suspectedOutside_subtitle: 'Hai viaggiato fuori dal paese negli ultimi 14 giorni?',
     suspectedInside_subtitle: 'Eri in una Provincia con casi locali di Coronavirus, negli ultimi 14 giorni?',
     medicalHistory: 'Sfondo medico',
-    inmunosuppresion: 'immunosoppressione',
+    immunosuppression: 'immunosoppressione',
     diabetes: 'diabete',
     cancer: 'cancro',
     hepatic: 'malattia del fegato',

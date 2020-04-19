@@ -2,13 +2,13 @@ import React, { useReducer, useRef, useEffect, useState } from 'react';
 import {
   View,
   ScrollView,
-  Text,
   StyleSheet,
   Platform,
   Image,
   KeyboardAvoidingView,
   Switch,
 } from 'react-native';
+import {Divider, Text, ListItem} from 'react-native-elements';
 import { Ionicons as Icon } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
@@ -17,6 +17,20 @@ import { savePreferences, getPreferences } from '../../utils/config';
 import { syncUserInfoDataWithServer } from '../../utils/syncStorageHelper';
 
 const GRAY_COLOR = 'rgba(147, 147, 147, 1)';
+
+const optlist = [
+  {
+    key: 'gps',
+    name: 'Historial GPS',
+    subtitle: 'Utilizar GPS para Alertas de Contacto y AutoTest',
+  },
+  {
+    key: 'bluetooth',
+    name: 'Rastreo BlueTooth',
+    subtitle: 'Utilizar BlueTooth para identificar contactos con personas contagiadas',
+  },
+]
+
 
 function reducer(state, newState) {
   return { ...state, ...newState };
@@ -63,11 +77,7 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
             width: '100%',
           }}
         >
-          <Image
-            source={require('../../assets/images/logo.png')}
-            style={styles.logo}
-            resizeMode="contain"
-          />
+
           <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : undefined}
             style={{
@@ -76,24 +86,28 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
               width: '100%',
             }}
           >
-            <View style={styles.block}>
-              <Text>Activar GPS</Text>
-              <Switch onValueChange={handleChange('gps')} value={state.gps} />
+            
+            <View>
+            <Text h4>Localización y Rastreo</Text>
+              {
+                optlist.map((l, i) => (
+                  <ListItem
+                    key={i}
+                    title={l.name}
+                    subtitle={l.subtitle}
+                    switch={{value: state[l.key], onValueChange: handleChange(l.key)}}
+                    bottomDivider
+                  />
+                ))
+              }
             </View>
 
-            <View style={styles.block}>
-              <Text>Activar Bluetooth</Text>
-              <Switch
-                onValueChange={handleChange('bluetooth')}
-                value={state.bluetooth}
-              />
-            </View>
 
             <TouchableWithoutFeedback
               onPress={() => navigation.navigate('UserInfo')}
             >
               <View style={styles.block}>
-                <Text>Modificar Datos Personales</Text>
+                <Text h4>Modificar Datos Personales</Text>
                 <Icon
                   name={
                     Platform.OS === 'ios'
