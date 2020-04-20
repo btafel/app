@@ -218,6 +218,12 @@ function Questionary({ onShowResults }: QuestionaryProps) {
   const handleChangeAge = (age) => {
     setState({ age: formatAge(age) });
   };
+  const handleChangeWeight = (val) => {
+    setState({ weight: val });
+  };
+  const handleChangeHeight = (val) => {
+    setState({ height: val });
+  };
 
   useEffect(() => {
     const hasAnswers = Object.keys(state.questions);
@@ -325,6 +331,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
         {i18n.t('AutoTest_Intro')}
         </Text>
         <Divider/>
+        <View>
         <TextInput
           placeholder={i18n.t('AskAge')}
           value={state.age}
@@ -333,6 +340,23 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           style={styles.input}
           blurOnSubmit
         />
+        <TextInput
+          placeholder={i18n.t('Height')}
+          value={state.height}
+          onChangeText={handleChangeHeight}
+          keyboardType="phone-pad"
+          style={styles.input}
+          blurOnSubmit
+        />
+        <TextInput
+          placeholder={i18n.t('Weight')}
+          value={state.weight}
+          onChangeText={handleChangeWeight}
+          keyboardType="phone-pad"
+          style={styles.input}
+          blurOnSubmit
+        />
+        </View>
         <Text style={styles.section}>{i18n.t('symptoms_title')}</Text>
         <Divider/>
         <View style={styles.questButtons}>

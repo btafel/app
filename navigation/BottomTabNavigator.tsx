@@ -25,7 +25,7 @@ import i18n from 'i18n-js';
 
 import { pageHit } from '../utils/analytics';
 
-const INITIAL_ROUTE_NAME = 'Settings';
+const INITIAL_ROUTE_NAME = 'Diagnostic';
 const isIOS = Platform.OS === 'ios';
 const isWeb = Platform.OS === 'web';
 
@@ -85,7 +85,7 @@ function PreventionNavStack() {
         name="Prevention"
         component={Prevention}
         options={{
-          headerTitle: 'Prevención',
+          headerTitle: i18n.t('Prevention'),
           headerRight: () => <HelpButton />,
         }}
       />
@@ -128,7 +128,7 @@ function SettingsNavStack() {
         name="Settings"
         component={Settings}
         options={{
-          headerTitle: 'Configuración',
+          headerTitle: i18n.t('Settings'),
           headerRight: () => <HelpButton />,
         }}
       />
@@ -182,7 +182,7 @@ export default function BottomTabNavigator() {
         name="Diagnostic"
         component={DiagnosticNavStack}
         options={{
-          title: 'Evaluación',
+          title: i18n.t('Diagnostic'),
           tabBarIcon: ({ focused }) => (
             <TabBarIcon
               focused={focused}
@@ -194,7 +194,7 @@ export default function BottomTabNavigator() {
       <Tab.Screen
         name="Map"
         options={{
-          title: 'Mapa',
+          title: i18n.t('Map'),
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} name={isIOS ? 'ios-map' : 'md-map'} />
           ),
@@ -204,7 +204,7 @@ export default function BottomTabNavigator() {
       <Tab.Screen
         name="Prevention"
         options={{
-          title: 'Prevención',
+          title: i18n.t('Prevention'),
           tabBarIcon: ({ focused }) => (
             <TabBarIcon
               focused={focused}
@@ -217,7 +217,7 @@ export default function BottomTabNavigator() {
       <Tab.Screen
         name="Settings"
         options={{
-          title: 'Opciones',
+          title: i18n.t('Settings'),
           tabBarIcon: ({ focused }) => (
             <TabBarIcon
               focused={focused}

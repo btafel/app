@@ -12,7 +12,7 @@ export const translations = {
     Prev: 'Anterior',
     Done: 'Finalizar',
     Accept: 'Aceptar',
-    
+
     title_signup: 'Necesitamos algunos datos tuyos para poder realizar un evaluación más preciso y contactarte si necesitas ayuda.',
     MakeTest: 'REALIZAR EVALUACION',
     MakeTestAgain: 'Realizar evaluación nuevamente',
@@ -20,6 +20,11 @@ export const translations = {
     Faq: 'Preguntas Frecuentes',
     Continue: 'Continuar',
     Settings: 'Configuración',
+    Prevention: 'Prevención',
+    Diagnostic: 'Evaluación',
+    Map: 'Mapa',
+    Height: 'Altura',
+    Weight: 'Peso',
     Gathering_data: 'RECOPILANDO INFORMACION',
     Gathering_data_text: 'La aplicación se irá actualizando con los datos de ubicación y recorridos de personas confirmadas con el contagio',
     Gathering_data_longtext: 'CoTrack utiliza tu ubicación para cruzar información de lugares y trayectos donde hayas estado, con las ubicaciones aproximadas de otros usuarios contagiados de coronavirus dentro de los últimos 14 días. Las coordenadas y horarios de localización se guardan en tu teléfono celular de manera encriptada. No hay ningún tipo de identificación con la cual se relacione ni a vos ni a tu dispositivo móvil con los datos de ubicación. La información de personas infectadas es provista por entes gubernamentales y nadie más que un organismo de salud puede certificar el contagio efectivo. El organismo preguntará al paciente si acepta compartir su información de ubicación de los últimos 14 días con motivo de ayudar a prevenir el contagio a otros usuarios. Sin embargo el paciente podrá optar por no hacerlo.',
@@ -98,6 +103,35 @@ export const translations = {
     bt_tracking_subtitle: 'Utilizar BlueTooth para identificar contactos con personas contagiadas',
     Config_Personal_data: 'Datos Personales',
     Config_Tracking: 'Geolocalización y Rastreo',
+
+    Prevention_Item_1_Title: '¿Qué es el coronavirus?',
+    Prevention_Item_1_shortText: 'También llamado COVID-19, es una enfermedad infecciosa causada por un nuevo virus que no había sido detectado en humanos hasta la fecha.',
+    Prevention_Item_1_longText: 'También llamado COVID-19, es una enfermedad infecciosa causada por un nuevo virus que no había sido detectado en humanos hasta la fecha. El virus causa una complicación respiratoria como la gripe, similar a la Influenza, junto con diversos síntomas, que en casos graves pueden producir neumonía e incluso, la muerte.',
+
+    Prevention_Item_2_Title: '¿Cuáles son los síntomas?',
+    Prevention_Item_2_shortText: 'Los síntomas más comunes del contagio de coronavirus son fiebre, tos y dolor de garganta.',
+    Prevention_Item_2_longText: 'Los síntomas más comunes del contagio de coronavirus son fiebre, tos y dolor de garganta. En algunos casos puede provocar dificultades respiratorias severas, requiriendo hospitalización.',
+
+    Prevention_Item_3_Title: '¿Cómo se propaga?',
+    Prevention_Item_3_shortText: 'La principal vía para la diseminación del virus es la exposición ante una persona infectada mediante el estornudo o tos y también por la circulación de objetos contaminados, donde el virus permanece un tiempo variable según su material.',
+    Prevention_Item_3_longText: 'La principal vía para la diseminación del virus es la exposición ante una persona infectada mediante el estornudo o tos y también por la circulación de objetos contaminados, donde el virus permanece un tiempo variable según su material. Estas pequeñas partículas pueden llegar a la boca o la nariz de las personas que se encuentren en contacto o posiblemente entrar a los pulmones al respirar.',
+
+    Prevention_Item_4_Title: '¿Cómo podemos protegernos?',
+    Prevention_Item_4_shortText: 'La principal vía de contagio es a través de las manos, tocando un objeto contaminado y llevándose las manos a la boca y ojos.',
+    Prevention_Item_4_longText: 'La principal vía de contagio es a través de las manos, tocando un objeto contaminado y llevándose las manos a la boca y ojos. Esta epidemia requiere que colaboremos con medidas simples, que apuntan a disminuir la probabilidad de contagio entre las personas. SEPARACIÓN SOCIAL: Tratá de mantener siempre una distancia mayor a 1 metro con los demás. CONTACTO CORPORAL: Evitá tocar las manos o la cara para saludar o interactuar con otras personas. AGLOMERACIONES: Evitá concurrir a lugares donde puedas estar en contacto con más de 20 personas. AUTO AISLAMIENTO: El auto aislamiento, o cuarentena voluntaria, ayuda a que el sistema de salud no colapse si en caso de contagio múltiple, se deba atender a varias personas a la vez. Si tenés síntomas de gripe quedate en tu casa, no concurras a tu trabajo o a lugares públicos. Consultá a las líneas de atención profesional para saber cómo proceder.',
+
+    Prevention_Item_5_Title: '¿Cómo ayuda la higiene?',
+    Prevention_Item_5_shortText: 'Mantené la limpieza, principalmente de las superficies donde usás las manos (picaportes, canillas, teclados, asas, etc).',
+    Prevention_Item_5_longText: 'Mantené la limpieza, principalmente de las superficies donde usás las manos (picaportes, canillas, teclados, asas, etc).\n\nTambién mantené tus manos limpias. Evitá tocarte la cara.\n\nCubrite con el pliegue del codo y no con las manos al estornudar.',
+
+    Prevention_Item_6_Title: '¿Cuándo es aconsejable consultar?',
+    Prevention_Item_6_shortText: 'Ante la presencia de fiebre y síntomas respiratorios como tos, dolor de garganta, dificultad para respirar y haber permanecido en áreas con circulación del virus o al haber estado en contacto con un caso confirmado o probable.',
+    Prevention_Item_6_longText: 'Ante la presencia de fiebre y síntomas respiratorios como tos, dolor de garganta, dificultad para respirar y haber permanecido en áreas con circulación del virus o al haber estado en contacto con un caso confirmado o probable.\nSe insta a la población a que se comunique de inmediato con el sistema de salud, refiera el antecedente de viaje y evite el contacto social.',
+
+    Prevention_Item_7_Title: '¿Cuándo hacer cuarentena?',
+    Prevention_Item_7_shortText: 'Hasta el día 26/04 la cuarentena es obligatoria para todos, salvo actividades exceptuadas.',
+    Prevention_Item_7_longText: 'Hasta el día 26/04 la cuarentena es obligatoria para todos, salvo actividades exceptuadas.\nPara aquellas personas exceptuadas, se recomienda mantener el distanciamiento social y extremar medidas de higiene.',
+
   },
 
 
@@ -123,6 +157,11 @@ export const translations = {
     Faq: 'Domande frequenti',
     Continue: 'Continuare',
     Settings: 'Configurazione',
+    Prevention: 'Prevenzione',
+    Diagnostic: 'Evaluazione',
+    Map: 'Mappa',
+    Height: 'Altezza',
+    Weight: 'Peso',
     Gathering_data: 'RACCOLTA DI INFORMAZIONI',
     Gathering_data_text: 'L\'applicazione verrà aggiornata con i dati sulla posizione e le rotte delle persone confermate con il contagio',
     Gathering_data_longtext: 'CoTrack utilizza la tua posizione per incrociare le informazioni di luoghi e percorsi in cui sei stato, con le posizioni approssimative di altri utenti infetti da coronavirus negli ultimi 14 giorni. Le coordinate e i tempi di localizzazione vengono salvati sul tuo cellulare in forma crittografata. Non esiste alcun identificativo con cui tu o il tuo dispositivo mobile siete in relazione ai dati sulla posizione. Le informazioni sulle persone infette sono fornite da enti governativi e nessuno diverso da un\'autorità di contrasto. La salute può certificare l\'efficace contagio. L\'agenzia chiederà al paziente se accetta di condividere le informazioni sulla propria posizione negli ultimi 14 giorni al fine di impedire la trasmissione ad altri utenti. Tuttavia, il paziente può scegliere di non farlo.',
@@ -201,6 +240,34 @@ export const translations = {
     bt_tracking_subtitle: 'Usa BlueTooth per identificare i contatti con persone infette',
     Config_Personal_data: 'Dati Personali',
     Config_Tracking: 'Geolocalizzazione e tracciamento',
+
+    Prevention_Item_1_Title: 'Cos\'è il coronavirus?',
+    Prevention_Item_1_shortText: 'Chiamato anche COVID-19, è una malattia infettiva causata da un nuovo virus che finora non è stato rilevato nell\'uomo.',
+    Prevention_Item_1_longText: 'Chiamato anche COVID-19, è una malattia infettiva causata da un nuovo virus che finora non è stato rilevato nell\'uomo. Il virus provoca una complicazione respiratoria simile all\'influenza, insieme a vari sintomi, che nei casi più gravi possono causare polmonite e persino la morte.',
+
+    Prevention_Item_2_Title: 'Quali sono i sintomi?',
+    Prevention_Item_2_shortText: 'I sintomi più comuni dell\'infezione da coronavirus sono febbre, tosse e mal di gola.',
+    Prevention_Item_2_longText: 'I sintomi più comuni dell\'infezione da coronavirus sono febbre, tosse e mal di gola. In alcuni casi può causare gravi difficoltà respiratorie, che richiedono il ricovero in ospedale.',
+
+    Prevention_Item_3_Title: 'Come si diffonde?',
+    Prevention_Item_3_shortText: 'La via principale per la diffusione del virus è l\'esposizione a una persona infetta attraverso starnuti o tosse e anche attraverso la circolazione di oggetti contaminati, in cui il virus rimane un tempo variabile a seconda del materiale.',
+    Prevention_Item_3_longText: 'La via principale per la diffusione del virus è l\'esposizione a una persona infetta attraverso starnuti o tosse e anche attraverso la circolazione di oggetti contaminati, in cui il virus rimane un tempo variabile a seconda del materiale. Queste piccole particelle possono raggiungere la bocca o il naso delle persone in contatto o eventualmente entrare nei polmoni respirando.',
+
+    Prevention_Item_4_Title: 'Come possiamo proteggerci?',
+    Prevention_Item_4_shortText: 'La principale via di infezione è attraverso le mani, toccando un oggetto contaminato e mettendo le mani alla bocca e agli occhi.',
+    Prevention_Item_4_longText: 'La principale via di infezione è attraverso le mani, toccando un oggetto contaminato e mettendo le mani alla bocca e agli occhi. Questa epidemia ci richiede di collaborare con semplici misure, che mirano a ridurre la probabilità di contagio tra le persone. SPARAZIONE SOCIALE: cerca sempre di mantenere una distanza maggiore di 1 metro con gli altri. CONTATTO CORPETTO: Evita di toccare il mani o viso per salutare o interagire con altre persone. AGLOMERAZIONI: Evita di recarti in posti dove puoi essere in contatto con più di 20 persone. AUTO ISOLAMENTO: l\'autoisolamento o la quarantena volontaria, aiuta Il sistema sanitario non collassa se in caso di contagio multiplo, è necessario prendersi cura contemporaneamente di più persone. Se si hanno sintomi influenzali, restare a casa, non andare al lavoro o in luoghi pubblici. Consultare le linee di assistenza professionale per scoprire come procedere.',
+
+    Prevention_Item_5_Title: 'In che modo l\'igiene aiuta?',
+    Prevention_Item_5_shortText: 'Mantenere pulito, principalmente delle superfici in cui si usano le mani (chiavistelli, rubinetti, tastiere, maniglie, ecc.).',
+    Prevention_Item_5_longText: 'Mantenere pulito, principalmente delle superfici in cui si usano le mani (chiavistelli, rubinetti, tastiere, maniglie, ecc.). Tieni anche le mani pulite. Evita di toccarti il ​​viso. Coprire con la piega del gomito e non con le mani quando si starnutisce.',
+
+    Prevention_Item_6_Title: 'Quando è consigliabile consultare?',
+    Prevention_Item_6_shortText: 'In presenza di febbre e sintomi respiratori come tosse, mal di gola, mancanza di respiro ed essere rimasti in aree con circolazione del virus o essere stati in contatto con un caso confermato o probabile.',
+    Prevention_Item_6_longText: 'In presenza di febbre e sintomi respiratori come tosse, mal di gola, mancanza di respiro ed essere rimasti in aree con circolazione del virus o essere stati in contatto con un caso confermato o probabile. La popolazione è invitata a contattare immediatamente il sistema sanitario, fare riferimento alla storia dei viaggi ed evitare i contatti sociali.',
+
+    Prevention_Item_7_Title: 'Quando mettere in quarantena?',
+    Prevention_Item_7_shortText: 'Fino al 26/04/04 la quarantena è obbligatoria per tutti, ad eccezione delle attività escluse.',
+    Prevention_Item_7_longText: 'Fino al 26/04, la quarantena è obbligatoria per tutti, ad eccezione delle attività escluse. Per le persone escluse, si raccomanda di mantenere le distanze sociali e adottare misure igieniche estreme.',
 
   },
 };
