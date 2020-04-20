@@ -276,7 +276,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             />
 
             <TextInput
-              placeholder="# Celular"
+              placeholder={i18n.t('Cellphone')}
               value={state.phoneNumber}
               onChangeText={handleChange('phoneNumber')}
               keyboardType="phone-pad"
@@ -292,7 +292,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                 marginTop: 15,
               }}
             >
-              ¿Por qué pedimos estos datos?
+              {i18n.t('WhyWeAsk')}
             </Text>
 
             <View
@@ -304,7 +304,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               />
               <Text style={{ marginTop: Platform.OS === 'web' ? 0 : 5 }}>
                 {' '}
-                He leído y acepto los{' '}
+                {i18n.t('ReadAndAccepted')}{' '}
                 <Text
                   onPress={() =>
                     handleOpenLink('https://cotrack.social/tyc.html')

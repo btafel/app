@@ -103,7 +103,7 @@ export default function DatePicker({ label, onChange, value }) {
           style={{ width: '30%' }}
           mode="dropdown"
         >
-          <Picker.Item label="Dia" value="0" />
+          <Picker.Item label={i18n.t('Day')} value="0" />
           {arrDays}
         </Picker>
         <Picker
@@ -113,7 +113,7 @@ export default function DatePicker({ label, onChange, value }) {
           style={{ width: '30%' }}
           mode="dropdown"
         >
-          <Picker.Item label="Mes" value="0" />
+          <Picker.Item label={i18n.t('Month')} value="0" />
           {arrMonths}
         </Picker>
         <Picker
@@ -123,7 +123,7 @@ export default function DatePicker({ label, onChange, value }) {
           style={{ width: '30%' }}
           mode="dropdown"
         >
-          <Picker.Item label="Año" value="0" />
+          <Picker.Item label={i18n.t('Year')} value="0" />
           {arrYears}
         </Picker>
       </View>
