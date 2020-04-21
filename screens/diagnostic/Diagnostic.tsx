@@ -19,7 +19,7 @@ import Touchable from '../../components/Touchable';
 import { saveDiagnosticLocally } from '../../utils/localStorageHelper';
 import { syncRecordsDataWithServer } from '../../utils/syncStorageHelper';
 import i18n from 'i18n-js';
-import { Text, ListItem, Divider } from 'react-native-elements';
+import { Text, Button, Divider } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace';
 

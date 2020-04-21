@@ -141,11 +141,11 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
             </ScrollView>
             <ScrollView>
             <View style={styles.inputContainer}>
-              <Text>DNI</Text>
+            <Text>{i18n.t('ID')}</Text>
               <Input
                 name="dni"
                 style={styles.Input}
-                maxLength={10}
+                maxLength={16}
                 value={state.userInfo.dni}
                 onBlur={handleSaveChanges}
                 onChange={handleDeferChange}
