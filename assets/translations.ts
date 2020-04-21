@@ -20,6 +20,7 @@ export const translations = {
     Month: 'mes',
     Cellphone: 'Móvil',
     ReadAndAccepted: 'He leído y acepto los',
+    BMI_title: 'Indice de masa corporal',
 
     title_signup: 'Necesitamos algunos datos tuyos para poder realizar un evaluación más preciso y contactarte si necesitas ayuda.',
     MakeTest: 'REALIZAR EVALUACION',
@@ -166,6 +167,7 @@ export const translations = {
     Month: 'mese',
     Cellphone: 'Telefono cellulare',
     ReadAndAccepted: 'Ho letto e accetto i',
+    BMI_title: 'Indice di massa corporea',
 
 
     MakeTest: 'VALUTAZIONE DELLE PRESTAZIONI',

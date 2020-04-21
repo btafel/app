@@ -42,7 +42,7 @@ function BMIDisplay({height, weight}) {
   const bmi = Math.floor(w/(h*h));  // peso sobre altura al cuadrado
   
   const color = (function(bmi)  {
-    if(isNaN(bmi)) return '';
+    if(isNaN(bmi)) return 'no data';
     if(bmi < 16) return 'muy bajo';
     if(bmi < 17) return 'moderadamente bajo';
     if(bmi < 18.5) return 'ligeramente bajo';
@@ -58,7 +58,7 @@ function BMIDisplay({height, weight}) {
       style={[styles.button]}
     >
       <Text style={[styles.buttonText]}>
-        {bmi}: {color}
+        {color}
       </Text>
     </Touchable>
   );
@@ -307,33 +307,6 @@ function Questionary({ onShowResults }: QuestionaryProps) {
       }
     }
     console.log(result);
-    /* Triage Logica hasta el 16/04
-    function hasExtraConditions() {
-      if (parseInt(state.age) >= 60 || positiveExtraConditions) {
-        result = 'negative';
-      } else {
-        result = 'neutral';
-      }
-    }
-
-    if (state.symptoms['fever'] === 'yes' && positiveTravelContact) {
-      if (
-        state.symptoms['cough'] === 'yes' ||
-        state.symptoms['throat'] === 'yes' ||
-        state.symptoms['breath'] === 'yes'
-      ) {
-        if (state.symptoms['breath'] === 'yes') {
-          result = 'negative';
-        } else {
-          hasExtraConditions();
-        }
-      } else {
-        result = 'positive';
-      }
-    } else {
-      result = 'positive';
-    }
-    */
 
     let location;
     try {
@@ -367,6 +340,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
         <Text style={styles.title}>
         {i18n.t('AutoTest_Intro')}
         </Text>
+        <Text>{' '}</Text>
         <Divider/>
         <View>
         <TextInput
@@ -377,8 +351,10 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           style={styles.input}
           blurOnSubmit
         />
+        <Divider/>
+        <Text style={styles.section}>{i18n.t('BMI_title')}</Text>
         <TextInput
-          placeholder={i18n.t('Height')}
+          placeholder={i18n.t('Height') + ' (CM)'}
           value={state.height}
           onChangeText={handleChangeHeight}
           keyboardType="numeric"
@@ -386,13 +362,14 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           blurOnSubmit
         />
         <TextInput
-          placeholder={i18n.t('Weight')}
+          placeholder={i18n.t('Weight') + ' (KG)'}
           value={state.weight}
           onChangeText={handleChangeWeight}
           keyboardType="numeric"
           style={styles.input}
           blurOnSubmit
         />
+        <BMIDisplay height={state.height} weight={state.weight}/>
         </View>
         <Text style={styles.section}>{i18n.t('symptoms_title')}</Text>
         <Divider/>
@@ -545,7 +522,6 @@ function Questionary({ onShowResults }: QuestionaryProps) {
             onPress={onSelectMedicalHistory}
             selected={state.medicalHistory}
           />
-          <BMIDisplay height={state.height} weight={state.weight}/>
         </View>
       </ScrollView>
       <Touchable
