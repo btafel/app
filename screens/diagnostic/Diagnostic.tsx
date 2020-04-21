@@ -20,6 +20,7 @@ import { saveDiagnosticLocally } from '../../utils/localStorageHelper';
 import { syncRecordsDataWithServer } from '../../utils/syncStorageHelper';
 import i18n from 'i18n-js';
 import { Text, ListItem, Divider } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolicateStackTrace';
 
 const initialState = {
@@ -41,26 +42,28 @@ function BMIDisplay({height, weight}) {
 
   const bmi = Math.floor(w/(h*h));  // peso sobre altura al cuadrado
   
-  const color = (function(bmi)  {
-    if(isNaN(bmi)) return 'no data';
-    if(bmi < 16) return 'muy bajo';
-    if(bmi < 17) return 'moderadamente bajo';
-    if(bmi < 18.5) return 'ligeramente bajo';
-    if(bmi < 25) return 'normal';
-    if(bmi < 30) return 'sobrepeso';
-    if(bmi < 35) return 'obesidad clase 1';
-    if(bmi < 40) return 'obesidad clase 1';
-    return 'obesidad clase 3';
+  const [iconcolor, text, iconname] = (function(bmi)  {
+    if(isNaN(bmi)) return ['white',i18n.t('BMI_1'),''];
+    if(bmi < 16) return ['#F2453E',i18n.t('BMI_2'), 'warning'];
+    if(bmi < 17) return ['#FF9700',i18n.t('BMI_3'), 'done'];
+    if(bmi < 18.5) return ['#FEE94E',i18n.t('BMI_4'), 'done'];
+    if(bmi < 25) return ['#00C16E',i18n.t('BMI_5'), 'done'];
+    if(bmi < 30) return ['#FEE94E',i18n.t('BMI_6'), 'report'];
+    if(bmi < 35) return ['#FF9700',i18n.t('BMI_7'), 'report'];
+    if(bmi < 40) return ['#F2453E',i18n.t('BMI_8'), 'report'];
+    return ['#BF3930',i18n.t('BMI_9'), 'report'];
   })(bmi);
 
   return (
-    <Touchable
-      style={[styles.button]}
-    >
-      <Text style={[styles.buttonText]}>
-        {color}
-      </Text>
-    </Touchable>
+    <Button
+    icon={{
+      name: iconname,
+      size: 30,
+      color: iconcolor,
+    }}
+      title={text}
+      size={20}
+    />
   );
 }
 

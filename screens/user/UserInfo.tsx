@@ -235,7 +235,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             ) : null}
 
             <TextInput
-              placeholder="DNI"
+              placeholder={i18n.t('ID')}
               value={state.dni}
               onChangeText={handleChange('dni')}
               keyboardType="phone-pad"
