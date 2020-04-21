@@ -24,6 +24,8 @@ import symbolicateStackTrace from 'react-native/Libraries/Core/Devtools/symbolic
 
 const initialState = {
   age: '',
+  height: '',
+  weight: '',
   symptoms: {},
   questions: {},
   medicalHistory: {},
@@ -31,6 +33,35 @@ const initialState = {
 
 function reducer(state, newState) {
   return { ...state, ...newState };
+}
+
+function BMIDisplay({height, weight}) {
+  const h = parseFloat(height)/100; // altura en metros
+  const w = parseFloat(weight);
+
+  const bmi = Math.floor(w/(h*h));  // peso sobre altura al cuadrado
+  
+  const color = (function(bmi)  {
+    if(isNaN(bmi)) return '';
+    if(bmi < 16) return 'muy bajo';
+    if(bmi < 17) return 'moderadamente bajo';
+    if(bmi < 18.5) return 'ligeramente bajo';
+    if(bmi < 25) return 'normal';
+    if(bmi < 30) return 'sobrepeso';
+    if(bmi < 35) return 'obesidad clase 1';
+    if(bmi < 40) return 'obesidad clase 1';
+    return 'obesidad clase 3';
+  })(bmi);
+
+  return (
+    <Touchable
+      style={[styles.button]}
+    >
+      <Text style={[styles.buttonText]}>
+        {bmi}: {color}
+      </Text>
+    </Touchable>
+  );
 }
 
 function QuestButton({ id, text, onPress, selected }) {
@@ -219,9 +250,15 @@ function Questionary({ onShowResults }: QuestionaryProps) {
     setState({ age: formatAge(age) });
   };
   const handleChangeWeight = (val) => {
+    val.replace(/\D/g, '');
+    if(val < 0) val = 0;
+    if(val > 250 ) val = 250;
     setState({ weight: val });
   };
   const handleChangeHeight = (val) => {
+    val.replace(/\D/g, '');
+    if(val < 0) val = 0;
+    if(val > 250 ) return;
     setState({ height: val });
   };
 
@@ -344,7 +381,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           placeholder={i18n.t('Height')}
           value={state.height}
           onChangeText={handleChangeHeight}
-          keyboardType="phone-pad"
+          keyboardType="numeric"
           style={styles.input}
           blurOnSubmit
         />
@@ -352,7 +389,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           placeholder={i18n.t('Weight')}
           value={state.weight}
           onChangeText={handleChangeWeight}
-          keyboardType="phone-pad"
+          keyboardType="numeric"
           style={styles.input}
           blurOnSubmit
         />
@@ -508,6 +545,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
             onPress={onSelectMedicalHistory}
             selected={state.medicalHistory}
           />
+          <BMIDisplay height={state.height} weight={state.weight}/>
         </View>
       </ScrollView>
       <Touchable
