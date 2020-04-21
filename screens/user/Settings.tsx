@@ -5,8 +5,9 @@ import {
   StyleSheet,
   Platform,
   Image,
+  TextInput,
   KeyboardAvoidingView,
-  Switch,
+  Keyboard,
 } from 'react-native';
 import { Ionicons as Icon } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -49,6 +50,7 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
       if (preferences.userInfo) {
         state.gps = !(preferences.userInfo.gps === false);
         state.bluetooth = !(preferences.userInfo.bluetooth === false);
+        state.userInfo = preferences.userInfo;
       }
       setState(state);
       setLoaded(true);
@@ -62,8 +64,21 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
     preferences.userInfo[[key]] = value;
     preferences.userInfo.infoSent = false;
     await savePreferences(preferences);
-    //TODO send every time??
     syncUserInfoDataWithServer();
+  };
+
+  const handleDeferChange = (e) => {
+    const {name, value} = e.target;
+    state.userInfo[name] = value;
+    setState(state);
+  };
+
+  const handleSaveChanges = async (e) => {
+    const preferences = await getPreferences();
+    preferences.userInfo = state.userInfo;
+    preferences.userInfo.infoSent = false;
+    await savePreferences(preferences);
+    syncUserInfoDataWithServer()
   };
 
   if (!loaded) return null;
@@ -107,21 +122,36 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
             <TouchableWithoutFeedback
               onPress={() => navigation.navigate('UserInfo')}
             >
-              <View style={styles.block}>
-            <Text h4>{i18n.t('Config_Personal_data')}</Text>
-                <Icon
-                  name={
-                    Platform.OS === 'ios'
-                      ? 'ios-arrow-forward'
-                      : 'md-arrow-forward'
-                  }
-                  size={30}
-                  color={GRAY_COLOR}
-                  // backgroundColor={Colors.primaryColor}
-                  style={{ paddingRight: 5, alignSelf: 'center' }}
-                />
+            <View style={styles.block}>
+            <Text h4>{'\n'}{i18n.t('Config_Personal_data')}</Text>
               </View>
             </TouchableWithoutFeedback>
+            <ScrollView>
+            <View style={styles.inputContainer}>
+              <Text>E-MAIL</Text>
+              <Input
+                name='email'
+                style={styles.Input}
+                maxLength={24}
+                value={state.userInfo.email}
+                onBlur={handleSaveChanges}
+                onChange={handleDeferChange}
+              />
+            </View>
+            </ScrollView>
+            <ScrollView>
+            <View style={styles.inputContainer}>
+              <Text>DNI</Text>
+              <Input
+                name="dni"
+                style={styles.Input}
+                maxLength={10}
+                value={state.userInfo.dni}
+                onBlur={handleSaveChanges}
+                onChange={handleDeferChange}
+              />
+            </View>
+            </ScrollView>
           </KeyboardAvoidingView>
         </View>
       </ScrollView>
@@ -139,7 +169,7 @@ const styles = StyleSheet.create({
     // borderTopColor: '#ccc',
     // borderTopWidth: 1,
     width: '100%',
-    marginBottom: 30,
+    marginBottom: 10,
     paddingTop: 10,
     paddingBottom: 10,
     alignItems: 'center',
@@ -161,6 +191,18 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '300',
   },
+  inputContainer: {
+    paddingTop: 10
+  },
+  Input: {
+    borderColor: '#CCCCCC',
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    height: 50,
+    fontSize: 25,
+    paddingLeft: 20,
+    paddingRight: 20
+  }  
 });
 
 export default Settings;
