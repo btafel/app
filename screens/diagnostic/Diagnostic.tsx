@@ -309,7 +309,6 @@ function Questionary({ onShowResults }: QuestionaryProps) {
         }
       }
     }
-    console.log(result);
 
     let location;
     try {

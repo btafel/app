@@ -103,6 +103,7 @@ export const translations = {
 
     symptoms_title: 'Dolencias y Síntomas',
 
+    OfficialApp: 'App Oficial',
 
     January: 'Enero',
     February: 'Febrero',
@@ -211,7 +212,7 @@ export const translations = {
     Heatmap_isofficial_text: 'I dati che verranno visualizzati sono dati ufficialmente segnalati. Le zone di calore non indicano punti di posizione esatti per gli infetti.',
 
 
-    Gender: 'Genere',
+    Gender: 'Sesso',
     Male: 'Maschio',
     Female: 'Femmina',
     ForOfficialUse: 'Le tue informazioni sono gestite e conservate esclusivamente ad uso ufficiale.',
@@ -273,6 +274,8 @@ export const translations = {
     October: 'Ottobre',
     November: 'Novembre',
     December: 'Dicembre',
+
+    OfficialApp: 'App Ufficiale della Regione Lazio',
 
     gps_history: 'Cronologia GPS',
     gps_history_subtitle: 'Utilizzare il GPS per avvisi di contatto e autovalutazioni',

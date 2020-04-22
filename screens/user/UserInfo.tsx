@@ -211,6 +211,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               label="Provincia"
               onChange={handleChange('province')}
               value={state.province}
+              region="it"
             />
 
             {state.province && state.province.image ? (
@@ -229,7 +230,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
                   resizeMode="contain"
                 />
                 <Text style={{ textAlign: 'center', marginTop: 5 }}>
-                  App Oficial
+                  {i18n.t('OfficialApp')}
                 </Text>
               </View>
             ) : null}
