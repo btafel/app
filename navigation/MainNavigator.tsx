@@ -11,6 +11,7 @@ import UserInfo from '../screens/user/UserInfo';
 import Settings from '../screens/user/Settings';
 import { MainStackParamList } from './types';
 import { UserPreferences } from '../utils/config';
+import CountrySelectorScreen from '../screens/user/CountrySelectorScreen';
 
 const Stack = createStackNavigator<MainStackParamList>();
 

@@ -211,7 +211,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               label="Provincia"
               onChange={handleChange('province')}
               value={state.province}
-              region="it"
+              country={state.country}
             />
 
             {state.province && state.province.image ? (
@@ -272,6 +272,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               value={state.email}
               onChangeText={handleChange('email')}
               keyboardType="email-address"
+              autoCompleteType="email"
               style={styles.input}
               blurOnSubmit
             />

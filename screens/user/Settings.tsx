@@ -7,8 +7,11 @@ import {
   Image,
   TextInput,
   KeyboardAvoidingView,
+  TouchableOpacity,
   Keyboard,
+  Picker,
 } from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
 import { Ionicons as Icon } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
@@ -16,6 +19,8 @@ import { MainStackNavProps } from '../../navigation/types';
 import { savePreferences, getPreferences } from '../../utils/config';
 import { syncUserInfoDataWithServer } from '../../utils/syncStorageHelper';
 import { Input, Divider, Text, ListItem } from 'react-native-elements';
+import CountrySelectorScreen from './CountrySelectorScreen';
+
 import i18n from 'i18n-js';
 
 const optlist = [
@@ -39,6 +44,23 @@ function reducer(state, newState) {
   return { ...state, ...newState };
 }
 
+function CountryPicker({value, onValueChange}) {
+  
+  return (
+    <Picker
+    selectedValue={value}
+    onValueChange={onValueChange}
+    style={{
+      marginLeft: 'auto',
+    }}
+    mode="dropdown"
+  >
+    <Picker.Item key="ar" label="Argentina" value="ar" />
+    <Picker.Item key="it" label="Italia" value="it" />
+  </Picker>
+  )
+}
+
 const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
   const [state, setState] = useReducer(reducer, { gps: true, bluetooth: true });
 
@@ -59,7 +81,11 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
   }, []);
 
   const handleChange = (key) => async (value) => {
+    console.log(key + ": " + value);
     setState({ [key]: value });
+    if(key == "country") {
+      i18n.locale = value;
+    }
     const preferences = await getPreferences();
     preferences.userInfo[[key]] = value;
     preferences.userInfo.infoSent = false;
@@ -80,6 +106,10 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
     await savePreferences(preferences);
     syncUserInfoDataWithServer()
   };
+
+  const getValue = (key) => {
+    return state.userInfo[key] || '';
+  }
 
   if (!loaded) return null;
 
@@ -119,13 +149,30 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
             </View>
 
 
-            <TouchableWithoutFeedback
-              onPress={() => navigation.navigate('UserInfo')}
-            >
             <View style={styles.block}>
-            <Text h4>{'\n'}{i18n.t('Config_Personal_data')}</Text>
-              </View>
-            </TouchableWithoutFeedback>
+              <Text h4>{'\n'}{i18n.t('Config_Personal_data')}</Text>
+            </View>
+            {/*
+            <TouchableOpacity
+              style={styles.listItem}
+              onPress={() => {navigation.navigate('CountrySelectorScreen')}}
+            >
+              <Text style={styles.listItemText}>PAIS</Text>
+              <Input
+                name='pais'
+                style={styles.Input}
+                maxLength={24}
+                value={state.userInfo.country}
+                disabled
+              />
+              <Icon style={styles.icon} name="ios-arrow-forward" size={25} />
+            </TouchableOpacity>
+            */}
+            <View style={styles.inputContainer}>
+              <Text>PAIS</Text>
+              <CountryPicker onValueChange={handleChange('country')} value={getValue('country')}/>
+            </View>
+
             <ScrollView>
             <View style={styles.inputContainer}>
               <Text>E-MAIL</Text>
@@ -202,7 +249,30 @@ const styles = StyleSheet.create({
     fontSize: 25,
     paddingLeft: 20,
     paddingRight: 20
-  }  
+  } ,
+  listItem: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    padding: 10
+  },
+  listItemText: {
+    marginLeft: 10,
+    fontSize: 18,
+    color: '#434343',
+    width: '90%'
+  },
+  icon: {
+    color: '#CCCCCC',
+    paddingLeft: 5
+  }
 });
+
+/*
+const SettingsNavigator = createStackNavigator({
+  Settings: Settings,
+  CountrySelector: CountrySelectorScreen,
+});
+*/
 
 export default Settings;

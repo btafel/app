@@ -18,7 +18,7 @@ import { syncLocalDataWithServer } from './utils/syncStorageHelper';
 import { initAndUpdateDatabase } from './utils/localStorageHelper';
 
 import useLinking from './navigation/useLinking';
-import { getPreferences, UserPreferences } from './utils/config';
+import { getPreferences, UserPreferences, savePreferences } from './utils/config';
 import MainNavigator from './navigation/MainNavigator';
 import Layout from './constants/Layout';
 
@@ -34,7 +34,7 @@ i18n.locale = Localization.locale.startsWith('it') ? 'it' : 'es';
 // i18n.locale = Localization.locale;
 // When a value is missing from a language it'll fallback to another language with the key present.
 i18n.fallbacks = true;
-i18n.locale = 'it';
+i18n.locale = 'ar';
 
 export default function App(props) {
   // Disable Font Scaling
@@ -90,10 +90,19 @@ export default function App(props) {
         await Promise.all(cacheImages);
 
         // await clearPreferences();
-        const preferences = await getPreferences();
+        let preferences = await getPreferences();
         // setPreferences(preferences);
 
+        if(preferences.userInfo === undefined || preferences.userInfo.country === undefined) {
+          savePreferences({ userInfo: {country: i18n.locale }});
+        }
+        preferences = await getPreferences();
         const userInfo = preferences.userInfo;
+
+        // Initial Locale
+        i18n.locale = userInfo.country;
+
+
         const initialRoute = preferences.showOnboarding
           ? 'Help'
           : userInfo &&

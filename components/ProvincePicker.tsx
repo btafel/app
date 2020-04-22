@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { View, Picker, StyleSheet } from 'react-native';
 import { provinces, regions } from '../utils/data';
 
-export default function ProvincePicker({ label, onChange, value, region }) {
+export default function ProvincePicker({ label, onChange, value, country }) {
   const [internalValue, setInternalValue] = useState(value ? value.id : 0);
 
-  if(region == '') region = 'it';
+  if(!country) country = 'ar';
 
   const handleChange = val => {
-    const prov = regions[region].provinces.find(e => e.id === parseInt(val));
+    const prov = regions[country].provinces.find(e => e.id === parseInt(val));
     setInternalValue(val);
     onChange(prov);
   };
@@ -22,7 +22,7 @@ export default function ProvincePicker({ label, onChange, value, region }) {
         mode="dialog"
       >
         <Picker.Item label={label} value="" />
-        {regions[region].provinces.map((e, i) => (
+        {regions[country].provinces.map((e, i) => (
           <Picker.Item key={i + 1} label={e.name} value={e.id} />
         ))}
       </Picker>

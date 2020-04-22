@@ -1,5 +1,5 @@
 export const translations = {
-  es: {
+  ar: {
     AutoTest: 'AutoTest',
     AutoTest_Intro: 'Realizá un AutoTest para saber si debés contactar a los servicios de salud. Los datos serán almacenados para que tengas un historial de tu evolución. Este test no es un diagnostico médico.',
     slide1:
@@ -22,7 +22,7 @@ export const translations = {
     ReadAndAccepted: 'He leído y acepto los',
 
     BMI_title: 'Indice de masa corporal',
-    BMI_1: 'sin datos',
+    BMI_1: 'tu índice de masa corporal es:',
     BMI_2: 'muy bajo',
     BMI_3: 'moderadamente bajo',
     BMI_4: 'ligeramente bajo',
@@ -31,7 +31,7 @@ export const translations = {
     BMI_7: 'obesidad clase 1',
     BMI_8: 'obesidad clase 2',
     BMI_9: 'obesidad clase 3',
-    ID: 'Codice Fiscale',
+    ID: 'DNI',
 
     title_signup: 'Necesitamos algunos datos tuyos para poder realizar un evaluación más preciso y contactarte si necesitas ayuda.',
     MakeTest: 'REALIZAR EVALUACION',
@@ -58,9 +58,10 @@ export const translations = {
     Female: 'Femenino',
     ForOfficialUse: 'Gestionamos tu información de forma segura y para uso exclusivo oficial.',
     BirthDate: 'Fecha de Nacimiento',
-    WheWeAsk: '¿Por qué pedimos estos datos?',
+    WhyWeAsk: '¿Por qué pedimos estos datos?',
     IfSymptomsChanged: 'Si tus síntomas fueron cambiando, por favor volvé a realizar el autoevaluación y seguí las recomendaciones dadas.',
-    
+    Country: 'País',
+
     LowRisk: 'RIESGO LEVE',
     MediumRisk: 'RIESGO MODERADO',
     HighRisk: 'EN RIESGO',
@@ -116,7 +117,7 @@ export const translations = {
     September: 'Septiembre',
     October: 'Octubre',
     November: 'Noviembre',
-    Dicember: 'Diciembre',
+    December: 'Diciembre',
 
     gps_history: 'Historial GPS',
     gps_history_subtitle: 'Utilizar GPS para alertas de Contacto y Autoevaluaciones',
@@ -180,7 +181,7 @@ export const translations = {
     Cellphone: 'Telefono cellulare',
     ReadAndAccepted: 'Ho letto e accetto i',
     BMI_title: 'Indice di massa corporea',
-    BMI_1: 'sin datos',
+    BMI_1: 'il tuo indice di massa corporea è',
     BMI_2: 'gravemente sottopeso',
     BMI_3: 'moderatamente sottopeso',
     BMI_4: 'leggermente sottopeso',
@@ -219,6 +220,7 @@ export const translations = {
     BirthDate: 'Data di nascita',
     WhyWeAsk: 'Perché richiediamo queste informazioni?',
     IfSymptomsChanged: 'Se i sintomi cambiano, ripetere l\'autovalutazione e seguire le raccomandazioni fornite.',
+    Country: 'Paese',
 
     LowRisk: 'RISCHIO LIEVE',
     MediumRisk: 'RISCHIO MODERATO',

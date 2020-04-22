@@ -16,6 +16,7 @@ import { QuestResults } from './types';
 import Colors from '../../constants/Colors';
 import { formatAge } from '../../utils/forms';
 import Touchable from '../../components/Touchable';
+import { getPreferences } from '../../utils/config';
 import { saveDiagnosticLocally } from '../../utils/localStorageHelper';
 import { syncRecordsDataWithServer } from '../../utils/syncStorageHelper';
 import i18n from 'i18n-js';
@@ -63,6 +64,8 @@ function BMIDisplay({height, weight}) {
     }}
       title={text}
       size={20}
+      type="outline"
+      disabled
     />
   );
 }
@@ -277,6 +280,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
     setDisabled(!(hasAnswers.length >= 3));
     setPositiveTravelContact(!!hasPositiveAnswers);
     setpositiveExtraConditions(!!hasPositiveConditions);
+
   }, [state]);
 
   const handleShowResults = (result) => {
@@ -353,6 +357,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           style={styles.input}
           blurOnSubmit
         />
+        <View style={[(i18n.locale == 'ar') ? styles.hidden : '']}>
         <Divider/>
         <Text style={styles.section}>{i18n.t('BMI_title')}</Text>
         <TextInput
@@ -372,6 +377,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           blurOnSubmit
         />
         <BMIDisplay height={state.height} weight={state.weight}/>
+        </View>
         </View>
         <Text style={styles.section}>{i18n.t('symptoms_title')}</Text>
         <Divider/>
@@ -559,6 +565,9 @@ export default function Diagnostic({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  hidden: {
+    height: 0, width: 0, opacity: 0,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
