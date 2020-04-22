@@ -157,7 +157,7 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
               style={styles.listItem}
               onPress={() => {navigation.navigate('CountrySelectorScreen')}}
             >
-              <Text style={styles.listItemText}>PAIS</Text>
+              <Text style={styles.listItemText}>{i18n.t('Country')}</Text>
               <Input
                 name='pais'
                 style={styles.Input}
@@ -169,7 +169,7 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
             </TouchableOpacity>
             */}
             <View style={styles.inputContainer}>
-              <Text>PAIS</Text>
+          <Text>{i18n.t('Country')}</Text>
               <CountryPicker onValueChange={handleChange('country')} value={getValue('country')}/>
             </View>
 

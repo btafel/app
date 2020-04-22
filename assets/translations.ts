@@ -306,13 +306,13 @@ export const translations = {
     Prevention_Item_5_shortText: 'Mantenere pulito, principalmente delle superfici in cui si usano le mani (chiavistelli, rubinetti, tastiere, maniglie, ecc.).',
     Prevention_Item_5_longText: 'Mantenere pulito, principalmente delle superfici in cui si usano le mani (chiavistelli, rubinetti, tastiere, maniglie, ecc.). Tieni anche le mani pulite. Evita di toccarti il ​​viso. Coprire con la piega del gomito e non con le mani quando si starnutisce.',
 
-    Prevention_Item_6_Title: 'Quando è consigliabile consultare?',
+    Prevention_Item_6_Title: 'Quando è consigliabile consultare un medico?',
     Prevention_Item_6_shortText: 'In presenza di febbre e sintomi respiratori come tosse, mal di gola, mancanza di respiro ed essere rimasti in aree con circolazione del virus o essere stati in contatto con un caso confermato o probabile.',
     Prevention_Item_6_longText: 'In presenza di febbre e sintomi respiratori come tosse, mal di gola, mancanza di respiro ed essere rimasti in aree con circolazione del virus o essere stati in contatto con un caso confermato o probabile. La popolazione è invitata a contattare immediatamente il sistema sanitario, fare riferimento alla storia dei viaggi ed evitare i contatti sociali.',
 
-    Prevention_Item_7_Title: 'Quando mettere in quarantena?',
-    Prevention_Item_7_shortText: 'Fino al 26/04/04 la quarantena è obbligatoria per tutti, ad eccezione delle attività escluse.',
-    Prevention_Item_7_longText: 'Fino al 26/04, la quarantena è obbligatoria per tutti, ad eccezione delle attività escluse. Per le persone escluse, si raccomanda di mantenere le distanze sociali e adottare misure igieniche estreme.',
+    Prevention_Item_7_Title: 'Quando mettersi in quarantena?',
+    Prevention_Item_7_shortText: 'Fino al 26/04/20 la quarantena è obbligatoria per tutti, ad eccezione delle attività escluse.',
+    Prevention_Item_7_longText: 'Fino al 26/04/20, la quarantena è obbligatoria per tutti, ad eccezione delle attività escluse. Per le persone escluse, si raccomanda di mantenere le distanze sociali e adottare misure igieniche estreme.',
 
   },
 };
