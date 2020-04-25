@@ -23,6 +23,7 @@ import Colors from '../../constants/Colors';
 import { savePreferences, getPreferences } from '../../utils/config';
 import RadioButtons from '../../components/RadioButtons';
 import DatePicker from '../../components/DatePicker';
+import DoctorPicker from '../../components/DoctorPicker';
 import ProvincePicker from '../../components/ProvincePicker';
 import { syncUserInfoDataWithServer } from '../../utils/syncStorageHelper';
 
@@ -235,6 +236,13 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               </View>
             ) : null}
 
+            <DoctorPicker
+              label={i18n.t('Doctor')}
+              onChange={handleChange('doctor')}
+              value={state.doctor}
+              province={state.province}
+              country={state.country}
+            />
             <TextInput
               placeholder={i18n.t('ID')}
               value={state.dni}

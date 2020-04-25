@@ -19,6 +19,7 @@ import { MainStackNavProps } from '../../navigation/types';
 import { savePreferences, getPreferences } from '../../utils/config';
 import { syncUserInfoDataWithServer } from '../../utils/syncStorageHelper';
 import { Input, Divider, Text, ListItem } from 'react-native-elements';
+import {isEqual} from 'lodash';
 import CountrySelectorScreen from './CountrySelectorScreen';
 
 import i18n from 'i18n-js';
@@ -72,7 +73,8 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
       if (preferences.userInfo) {
         state.gps = !(preferences.userInfo.gps === false);
         state.bluetooth = !(preferences.userInfo.bluetooth === false);
-        state.userInfo = preferences.userInfo;
+        state.userInfo = {... preferences.userInfo};
+        state.preferences = preferences;
       }
       setState(state);
       setLoaded(true);
@@ -81,30 +83,34 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
   }, []);
 
   const handleChange = (key) => async (value) => {
-    console.log(key + ": " + value);
     setState({ [key]: value });
     if(key == "country") {
       i18n.locale = value;
     }
     const preferences = await getPreferences();
-    preferences.userInfo[[key]] = value;
+    preferences.userInfo[key] = value;
     preferences.userInfo.infoSent = false;
     await savePreferences(preferences);
     syncUserInfoDataWithServer();
   };
 
-  const handleDeferChange = (e) => {
+  const handleDeferChange = async (e) => {
     const {name, value} = e.target;
     state.userInfo[name] = value;
     setState(state);
   };
 
-  const handleSaveChanges = async (e) => {
-    const preferences = await getPreferences();
-    preferences.userInfo = state.userInfo;
-    preferences.userInfo.infoSent = false;
-    await savePreferences(preferences);
-    syncUserInfoDataWithServer()
+  const handleSaveChanges = (e) => {
+    state.userInfo[e.target.name] = e.target.value;
+
+    // Si no hubo cambios en userInfo, nada que hacer.
+    if(isEqual(state.preferences.userInfo,state.userInfo)) {
+      return;
+    } else {
+      state.preferences.userInfo = {...state.userInfo};
+      state.preferences.infoSent = false;
+      savePreferences(state.preferences).then(syncUserInfoDataWithServer());
+    }
   };
 
   const getValue = (key) => {
@@ -170,7 +176,7 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
             */}
             <View style={styles.inputContainer}>
           <Text>{i18n.t('Country')}</Text>
-              <CountryPicker onValueChange={handleChange('country')} value={getValue('country')}/>
+              <CountryPicker onValueChange={handleChange('country')} defaultValue={getValue('country')}/>
             </View>
 
             <ScrollView>
@@ -179,10 +185,9 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
               <Input
                 name='email'
                 style={styles.Input}
-                maxLength={24}
-                value={state.userInfo.email}
+                maxLength={48}
+                defaultValue={state.userInfo.email}
                 onBlur={handleSaveChanges}
-                onChange={handleDeferChange}
               />
             </View>
             </ScrollView>
@@ -193,7 +198,7 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
                 name="dni"
                 style={styles.Input}
                 maxLength={16}
-                value={state.userInfo.dni}
+                defaultValue={state.userInfo.dni}
                 onBlur={handleSaveChanges}
                 onChange={handleDeferChange}
               />

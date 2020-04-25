@@ -25,7 +25,7 @@ export default function DatePicker({ label, onChange, value }) {
   const handleChange = (key) => (val) => {
     // internalValue[key] = val;
     // setInternalValue(internalValue);
-    console.log(key, val);
+
     switch (key) {
       case 'dobDay':
         setInternalDay(val);

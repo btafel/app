@@ -105,6 +105,8 @@ export const translations = {
     symptoms_title: 'Dolencias y Síntomas',
 
     OfficialApp: 'App Oficial',
+    Doctor: 'Doctor',
+    doctor: 'doctor',
 
     January: 'Enero',
     February: 'Febrero',
@@ -278,6 +280,8 @@ export const translations = {
     December: 'Dicembre',
 
     OfficialApp: 'App Ufficiale della Regione Lazio',
+    Doctor: 'Medico',
+    doctor: 'medico',
 
     gps_history: 'Cronologia GPS',
     gps_history_subtitle: 'Utilizzare il GPS per avvisi di contatto e autovalutazioni',

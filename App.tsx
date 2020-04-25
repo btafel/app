@@ -97,6 +97,7 @@ export default function App(props) {
           savePreferences({ userInfo: {country: i18n.locale }});
         }
         preferences = await getPreferences();
+        console.log(preferences);
         const userInfo = preferences.userInfo;
 
         // Initial Locale

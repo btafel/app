@@ -95,7 +95,12 @@ export const regions = {
     name: 'Italia',
     lang: 'it',
     provinces: [
-      { id: 1, name: 'Roma', tel: '800118800' },
+      { id: 1, name: 'Roma', tel: '800118800',
+        doctors: [
+          {id: 1, name: 'Marco', surname: 'Antonio', type: 'Surgeon'},
+          {id: 2, name: 'Sergio', surname: 'Palazzo', type: 'Nurse'}
+        ]
+      },
 
       { id: 2, name: 'Frosinone', tel: '800118800' },
     
