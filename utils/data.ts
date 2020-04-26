@@ -95,33 +95,60 @@ export const regions = {
     name: 'Italia',
     lang: 'it',
     provinces: [
-      { id: 1, name: 'Roma', tel: '800118800',
+      { id: 25, name: 'Municipio 1 - Centro Storico, Trastevere, Aventino', tel: '800118800',
         doctors: [
-          {id: 1, name: 'Marco', surname: 'Antonio', type: 'Surgeon'},
-          {id: 2, name: 'Sergio', surname: 'Palazzo', type: 'Nurse'}
+          {id: 1, name: 'Medico 1 Municipio I', type: 'Specialista Oncologia'},
+          {id: 2, name: 'Medico 2 Municipio I', type: 'Specialista Pneumologia'},
+          {id: 3, name: 'Medico 3 Municipio I', type: 'Specialista Cariologia'},
         ]
       },
 
-      { id: 2, name: 'Frosinone', tel: '800118800' },
+      { id: 26, name: 'Municipio 2 - Villaggio Olimpico, Parioli, Flamini', tel: '800118800',
+      doctors: [
+        {id: 4, name: 'Medico 1 Municipio II', type: 'Specialista Pneumologia'}
+      ]
+    ``},
     
-      { id: 3, name: 'Latina', tel: '800118800' },
+      { id: 27, name: 'Municipio 3 - Montesacro, Val Melaina, Monte Sacro', tel: '800118800' 
+      doctors: [
+        {id: 5, name: 'Medico 1 Municipio III', type: 'Specialista Cardiologia'}
+      ]  
+      },
     
-      { id: 4, name: 'Rieti', tel: '800118800' },
+      { id: 28, name: 'Municipio 4 - Casal Bertone, Casal Bruciato', tel: '800118800',
+      doctors: [
+        {id: 6, name: 'Medico 1 Municipio IV', type: 'Specialista Epatologia'}
+      ] 
+      },
     
       {
-        id: 5,
-        name: 'Viterbo',
+        id: 29,
+        name: 'Municipio 5 - Torpignattara, Casilino, Quadraro',
         tel: '800118800',
         extra: '11 5050 0147 (whatsapp)',
       },
     
-      { id: 6, name: 'Milano', tel: '800894545' },
+      { id: 29, name: 'Municipio 6 - Torre Spaccata, Torre Maura, Giardin', tel: '800894545' },
     
       {
-        id: 7,
-        name: 'Brescia',
+        id: 30,
+        name: 'Municipio 7 - Tuscolano Nord, Tuscolano Sud',
         tel: '800894545',
       },
+      { id: 31, name: 'Municipio 8 - Ostiense, Valco San Paolo, Garbatell', tel: '800894545' },
+      { id: 32, name: 'Municipio 9 - Eur, Villaggio Giuliano, Torrino', tel: '800894545' },
+      { id: 33, name: 'Municipio 10 - Malafede, Acilia Nord, Acilia Sud', tel: '800894545' },
+      { id: 34, name: 'Municipio 11 - Marconi, Portuense, Pian due Torri', tel: '800894545' },
+      { id: 35, name: 'Municipio 12 - Colli Portuensi, Buon Pastore', tel: '800894545' },
+      { id: 36, name: 'Municipio 13 - Aurelio Sud, Val Cannuta, Fogaccia', tel: '800894545' },
+      { id: 37, name: 'Municipio 14 - Medaglie d'Oro, Primavalle, Ottavia', tel: '800894545' },
+      { id: 38, name: 'Municipio 15 - Tor di Quinto, Acquatraversa, Tomba', tel: '800894545' },
+      { id: 39, name: 'Rieti', tel: '800894545' },
+      { id: 40, name: 'Provincia di Roma', tel: '800894545' },
+      { id: 41, name: 'Frosinone', tel: '800894545' },
+      { id: 42, name: 'Latina', tel: '800894545' },
+      { id: 43, name: 'Viterbo', tel: '800894545' },
+      
     ]
   }
 }
