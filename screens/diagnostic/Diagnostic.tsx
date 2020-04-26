@@ -295,10 +295,10 @@ function Questionary({ onShowResults }: QuestionaryProps) {
     // Uno de (tos,odinofagia: dolor al tragar,dificultad respitatoria,anosmia/disguesia: falta de olfato/sabor)
     // y en ultimos 14 días historial de viaje/contacto o residencia en zona de transmision local
     result = 'positive';
-    console.log(state);
     if(state.symptoms['fever'] === 'yes')
     {
       // Triage Italia
+
       if(state.temperature === undefined || state.temperature > 37.5) {
         if( positiveTravelContact ) {
           result = 'negative';

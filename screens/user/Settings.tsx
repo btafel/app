@@ -204,6 +204,31 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
               />
             </View>
             </ScrollView>
+            <ScrollView>
+            <View style={styles.inputContainer}>
+              <Text>{i18n.t('Name')}</Text>
+              <Input
+                name='name'
+                style={styles.Input}
+                maxLength={48}
+                defaultValue={state.userInfo.name}
+                onBlur={handleSaveChanges}
+              />
+            </View>
+            </ScrollView>
+            <ScrollView>
+            <View style={styles.inputContainer}>
+              <Text>{i18n.t('Surname')}</Text>
+              <Input
+                name='surname'
+                style={styles.Input}
+                maxLength={48}
+                defaultValue={state.userInfo.surname}
+                onBlur={handleSaveChanges}
+              />
+            </View>
+            </ScrollView>
+
           </KeyboardAvoidingView>
         </View>
       </ScrollView>

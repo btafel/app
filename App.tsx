@@ -101,9 +101,9 @@ export default function App(props) {
           preferences.userInfo === undefined ||
           preferences.userInfo.country === undefined
         ) {
-          savePreferences({ userInfo: { country: i18n.locale } });
+//          savePreferences({ userInfo: { country: i18n.locale } });
         }
-        savePreferences({ userInfo: { country: 'it' } });
+//        savePreferences({ userInfo: { country: 'it' } });
         preferences = await getPreferences();
         console.log(preferences);
         const userInfo = preferences.userInfo;

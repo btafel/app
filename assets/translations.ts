@@ -33,6 +33,9 @@ export const translations = {
     BMI_9: 'obesidad clase 3',
     ID: 'DNI',
 
+    Name: 'Nombre',
+    Surname: 'Apellido',
+
     title_signup: 'Necesitamos algunos datos tuyos para poder realizar un evaluación más preciso y contactarte si necesitas ayuda.',
     MakeTest: 'REALIZAR EVALUACION',
     MakeTestAgain: 'Realizar evaluación nuevamente',
@@ -195,6 +198,8 @@ export const translations = {
     BMI_9: 'obesità de classe 3',
     ID: 'Codice Fiscale',
 
+    Name: 'Nome',
+    Surname: 'Cognome',
 
     MakeTest: 'VALUTAZIONE DELLE PRESTAZIONI',
     MakeTestAgain: 'Eseguire di nuovo la valutazione',
