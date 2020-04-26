@@ -110,6 +110,7 @@ export default function App(props) {
 
         // Initial Locale
         i18n.locale = userInfo && userInfo.country ? userInfo.country :'it';
+        i18n.locale = 'it';
 
         const initialRoute = preferences.showOnboarding
           ? 'Help'
