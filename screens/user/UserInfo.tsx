@@ -61,6 +61,11 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
     setState({ [key]: value });
   };
 
+  const handleChangeID = (key) => (value) => {
+    value = value.replace(/[\W_]+/g, '');
+    setState({ [key]: value });
+  };
+
   const handleOpenLink = (url) => {
     if (Platform.OS === 'web') {
       window.open(url, '_blank');
@@ -209,7 +214,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             <Text style={styles.text}>{i18n.t('title_signup')}</Text>
 
             <ProvincePicker
-              label="Provincia"
+              label={i18n.t('Province')}
               onChange={handleChange('province')}
               value={state.province}
               country={state.country}
@@ -246,9 +251,9 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
             <TextInput
               placeholder={i18n.t('ID')}
               value={state.dni}
-              onChangeText={handleChange('dni')}
-              keyboardType="phone-pad"
+              onChangeText={handleChangeID('dni')}
               style={styles.input}
+              maxLength={10}
               blurOnSubmit
             />
             <View style={[styles.input, { borderWidth: 0 }]}>

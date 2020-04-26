@@ -61,6 +61,7 @@ export const translations = {
     WhyWeAsk: '¿Por qué pedimos estos datos?',
     IfSymptomsChanged: 'Si tus síntomas fueron cambiando, por favor volvé a realizar el autoevaluación y seguí las recomendaciones dadas.',
     Country: 'País',
+    Province: 'Provincia',
 
     LowRisk: 'RIESGO LEVE',
     MediumRisk: 'RIESGO MODERADO',
@@ -223,6 +224,7 @@ export const translations = {
     WhyWeAsk: 'Perché richiediamo queste informazioni?',
     IfSymptomsChanged: 'Se i sintomi cambiano, ripetere l\'autovalutazione e seguire le raccomandazioni fornite.',
     Country: 'Paese',
+    Province: 'Zona',
 
     LowRisk: 'RISCHIO LIEVE',
     MediumRisk: 'RISCHIO MODERATO',
@@ -253,7 +255,7 @@ export const translations = {
     confirmedContact_subtitle: 'Hai avuto un test positivo al Covid-19? (tampone o test anticorpale)?',
     suspectedOutside_subtitle: 'Hai assistito, avuto contatti diretti con un soggetto dichiarato positivo al Covid-19 o con sintomi riconducibili al Covid?',
     suspectedInside_subtitle: 'Hai viaggiato o soggiornato in comuni dichiarati zona rossa?',
-    medicalHistory: 'Sfondo medico',
+    medicalHistory: 'Patologie Esistenti',
     immunosuppression: 'Immunodepressione',
     diabetes: 'Diabete',
     cancer: 'Tumore',

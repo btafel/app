@@ -56,8 +56,8 @@ function CountryPicker({value, onValueChange}) {
     }}
     mode="dropdown"
   >
-    <Picker.Item key="ar" label="Argentina" value="ar" />
     <Picker.Item key="it" label="Italia" value="it" />
+    <Picker.Item key="ar" label="Argentina" value="ar" />
   </Picker>
   )
 }

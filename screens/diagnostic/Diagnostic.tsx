@@ -298,6 +298,13 @@ function Questionary({ onShowResults }: QuestionaryProps) {
     console.log(state);
     if(state.symptoms['fever'] === 'yes')
     {
+      // Triage Italia
+      if(state.temperature === undefined || state.temperature > 37.5) {
+        if( positiveTravelContact ) {
+          result = 'negative';
+        }
+      }
+
       // state.temperature === undefined = 37.5, bug en TempPicker
       if(state.temperature === undefined || state.temperature > 37.5) {
         if( (state.symptoms['throat'] === 'yes' || 
@@ -364,7 +371,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           placeholder={i18n.t('Height') + ' (CM)'}
           value={state.height}
           onChangeText={handleChangeHeight}
-          keyboardType="numeric"
+          keyboardType="phone-pad"
           style={styles.input}
           blurOnSubmit
         />
@@ -372,7 +379,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           placeholder={i18n.t('Weight') + ' (KG)'}
           value={state.weight}
           onChangeText={handleChangeWeight}
-          keyboardType="numeric"
+          keyboardType="decimal-pad"
           style={styles.input}
           blurOnSubmit
         />
