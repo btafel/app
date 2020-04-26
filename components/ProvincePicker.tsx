@@ -5,7 +5,7 @@ import { provinces, regions } from '../utils/data';
 export default function ProvincePicker({ label, onChange, value, country }) {
   const [internalValue, setInternalValue] = useState(value ? value.id : 0);
 
-  if(!country) country = 'ar';
+  if(!country) country = 'it';
 
   const handleChange = val => {
     const prov = regions[country].provinces.find(e => e.id === parseInt(val));

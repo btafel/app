@@ -25,7 +25,7 @@ export default function DoctorPicker({ label, onChange, value, province }) {
       >
         <Picker.Item label={label} value="" />
         {province.doctors.map((e, i) => (
-          <Picker.Item key={i + 1} label={e.name + ' ' + e.surname + ' | ' + e.type} value={e.id} />
+          <Picker.Item key={i + 1} label={e.name + ' | ' + e.type} value={e.id} />
         ))}
       </Picker>
     </View>

@@ -38,7 +38,7 @@ i18n.locale = Localization.locale.startsWith('it') ? 'it' : 'ar';
 // i18n.locale = Localization.locale;
 // When a value is missing from a language it'll fallback to another language with the key present.
 i18n.fallbacks = true;
-// i18n.locale = 'it';
+i18n.locale = 'it';
 
 export default function App(props) {
   // Disable Font Scaling
@@ -103,12 +103,13 @@ export default function App(props) {
         ) {
           savePreferences({ userInfo: { country: i18n.locale } });
         }
+        savePreferences({ userInfo: { country: 'it' } });
         preferences = await getPreferences();
         console.log(preferences);
         const userInfo = preferences.userInfo;
 
         // Initial Locale
-        i18n.locale = userInfo && userInfo.country ? userInfo.country : 'ar';
+        i18n.locale = userInfo && userInfo.country ? userInfo.country :'it';
 
         const initialRoute = preferences.showOnboarding
           ? 'Help'
