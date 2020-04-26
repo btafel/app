@@ -253,7 +253,7 @@ const UserInfo = ({ navigation }: MainStackNavProps<'UserInfo'>) => {
               value={state.dni}
               onChangeText={handleChangeID('dni')}
               style={styles.input}
-              maxLength={10}
+              maxLength={16}
               blurOnSubmit
             />
             <View style={[styles.input, { borderWidth: 0 }]}>
