@@ -127,30 +127,45 @@ export const regions = {
         tel: '800118800',
         extra: '11 5050 0147 (whatsapp)',
         doctors: [
-          {id: 7, name: 'Medico 1 Municipio IV', type: 'Specialista Ortopedia'}
+          {id: 7, name: 'Medico 1 Municipio V', type: 'Specialista Ortopedia'}
         ],
       },
     
-      { id: 29, name: 'Municipio 6 - Torre Spaccata, Torre Maura, Giardin', tel: '800894545' },
+      { id: 30, name: 'Municipio 6 - Torre Spaccata, Torre Maura, Giardin', tel: '800894545',
+        doctors: [
+        {id: 8, name: 'Medico 1 Municipio VI', type: 'Specialista Otorinolaringoiatria'}
+        ],
+      },
     
       {
-        id: 30,
+        id: 31,
         name: 'Municipio 7 - Tuscolano Nord, Tuscolano Sud',
         tel: '800894545',
+        doctors: [
+          {id: 9, name: 'Medico 1 Municipio VII', type: 'Specialista Ginecologia'}
+        ],
       },
-      { id: 31, name: 'Municipio 8 - Ostiense, Valco San Paolo, Garbatell', tel: '800894545' },
-      { id: 32, name: 'Municipio 9 - Eur, Villaggio Giuliano, Torrino', tel: '800894545' },
-      { id: 33, name: 'Municipio 10 - Malafede, Acilia Nord, Acilia Sud', tel: '800894545' },
-      { id: 34, name: 'Municipio 11 - Marconi, Portuense, Pian due Torri', tel: '800894545' },
-      { id: 35, name: 'Municipio 12 - Colli Portuensi, Buon Pastore', tel: '800894545' },
-      { id: 36, name: 'Municipio 13 - Aurelio Sud, Val Cannuta, Fogaccia', tel: '800894545' },
-      { id: 37, name: 'Municipio 14 - Medaglie d\'Oro, Primavalle, Ottavia', tel: '800894545' },
-      { id: 38, name: 'Municipio 15 - Tor di Quinto, Acquatraversa, Tomba', tel: '800894545' },
-      { id: 39, name: 'Rieti', tel: '800894545' },
-      { id: 40, name: 'Provincia di Roma', tel: '800894545' },
-      { id: 41, name: 'Frosinone', tel: '800894545' },
-      { id: 42, name: 'Latina', tel: '800894545' },
-      { id: 43, name: 'Viterbo', tel: '800894545' },
+      { id: 32, name: 'Municipio 8 - Ostiense, Valco San Paolo, Garbatell', tel: '800894545',
+        doctors: [
+          {id: 10, name: 'Medico 1 Municipio VIII', type: 'Specialista Pediatria'}
+        ],
+      },
+      { id: 33, name: 'Municipio 9 - Eur, Villaggio Giuliano, Torrino', tel: '800894545', 
+        doctors: [
+          {id: 11, name: 'Medico 1 Municipio IX', type: 'Specialista Neurologia'}
+        ],
+      },
+      { id: 34, name: 'Municipio 10 - Malafede, Acilia Nord, Acilia Sud', tel: '800894545' },
+      { id: 35, name: 'Municipio 11 - Marconi, Portuense, Pian due Torri', tel: '800894545' },
+      { id: 36, name: 'Municipio 12 - Colli Portuensi, Buon Pastore', tel: '800894545' },
+      { id: 37, name: 'Municipio 13 - Aurelio Sud, Val Cannuta, Fogaccia', tel: '800894545' },
+      { id: 38, name: 'Municipio 14 - Medaglie d\'Oro, Primavalle, Ottavia', tel: '800894545' },
+      { id: 39, name: 'Municipio 15 - Tor di Quinto, Acquatraversa, Tomba', tel: '800894545' },
+      { id: 40, name: 'Rieti', tel: '800894545' },
+      { id: 41, name: 'Provincia di Roma', tel: '800894545' },
+      { id: 42, name: 'Frosinone', tel: '800894545' },
+      { id: 43, name: 'Latina', tel: '800894545' },
+      { id: 44, name: 'Viterbo', tel: '800894545' },
       
     ]
   }
