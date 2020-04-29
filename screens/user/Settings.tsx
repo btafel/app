@@ -46,7 +46,6 @@ function reducer(state, newState) {
 }
 
 function CountryPicker({value, onValueChange}) {
-  
   return (
     <Picker
     selectedValue={value}
@@ -56,8 +55,9 @@ function CountryPicker({value, onValueChange}) {
     }}
     mode="dropdown"
   >
-    <Picker.Item key="it" label="Italia" value="it" />
+
     <Picker.Item key="ar" label="Argentina" value="ar" />
+    <Picker.Item key="it" label="Italia" value="it" />
   </Picker>
   )
 }
@@ -73,8 +73,12 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
       if (preferences.userInfo) {
         state.gps = !(preferences.userInfo.gps === false);
         state.bluetooth = !(preferences.userInfo.bluetooth === false);
-        state.userInfo = {... preferences.userInfo};
-        state.preferences = preferences;
+        state.country = preferences.userInfo.country;
+        state.email = preferences.userInfo.email;
+        state.name = preferences.userInfo.name;
+        state.surname = preferences.userInfo.surname;
+        state.dni = preferences.userInfo.dni;
+        state.infoSent = true;
       }
       setState(state);
       setLoaded(true);
@@ -83,15 +87,26 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
   }, []);
 
   const handleChange = (key) => async (value) => {
-    setState({ [key]: value });
+    console.log("key value", key, value);
+    let infoSent = true;
+    if(value != state[key]) {
+      setState({ [key]: value });
+      infoSent = false;
+      setState({ infoSent: infoSent });
+    }
     if(key == "country") {
       i18n.locale = value;
     }
-    const preferences = await getPreferences();
-    preferences.userInfo[key] = value;
-    preferences.userInfo.infoSent = false;
-    await savePreferences(preferences);
-    syncUserInfoDataWithServer();
+
+//    if(!infoSent) {
+      const preferences = await getPreferences();
+      console.log("preferences before", preferences.userInfo);
+      preferences.userInfo[key] = value;
+      preferences.userInfo.infoSent = false;
+      await savePreferences(preferences);
+      console.log("preferences after", preferences.userInfo);
+      syncUserInfoDataWithServer();
+ //   }
   };
 
   const handleDeferChange = async (e) => {
@@ -112,10 +127,6 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
       savePreferences(state.preferences).then(syncUserInfoDataWithServer());
     }
   };
-
-  const getValue = (key) => {
-    return state.userInfo[key] || '';
-  }
 
   if (!loaded) return null;
 
@@ -176,7 +187,7 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
             */}
             <View style={styles.inputContainer}>
           <Text>{i18n.t('Country')}</Text>
-              <CountryPicker onValueChange={handleChange('country')} defaultValue={getValue('country')}/>
+              <CountryPicker onValueChange={handleChange('country')} value={state.country}/>
             </View>
 
             <ScrollView>
@@ -186,8 +197,8 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
                 name='email'
                 style={styles.Input}
                 maxLength={48}
-                defaultValue={state.userInfo.email}
-                onBlur={handleSaveChanges}
+                value={state.email}
+                onBlur={handleChange('email')}
               />
             </View>
             </ScrollView>
@@ -198,9 +209,8 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
                 name="dni"
                 style={styles.Input}
                 maxLength={16}
-                defaultValue={state.userInfo.dni}
-                onBlur={handleSaveChanges}
-                onChange={handleDeferChange}
+                value={state.dni}
+                onChangeText={handleChange('dni')}
               />
             </View>
             </ScrollView>
@@ -211,20 +221,18 @@ const Settings = ({ navigation }: MainStackNavProps<'Settings'>) => {
                 name='name'
                 style={styles.Input}
                 maxLength={48}
-                defaultValue={state.userInfo.name}
-                onBlur={handleSaveChanges}
+                value={state.name}
+                onChangeText={handleChange('name')}
               />
             </View>
-            </ScrollView>
-            <ScrollView>
             <View style={styles.inputContainer}>
               <Text>{i18n.t('Surname')}</Text>
               <Input
                 name='surname'
                 style={styles.Input}
                 maxLength={48}
-                defaultValue={state.userInfo.surname}
-                onBlur={handleSaveChanges}
+                value={state.surname}
+                onChangeText={handleChange('surname')}
               />
             </View>
             </ScrollView>

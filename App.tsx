@@ -21,7 +21,7 @@ import useLinking from './navigation/useLinking';
 import {
   getPreferences,
   UserPreferences,
-  savePreferences,
+  clearPreferences,
 } from './utils/config';
 import MainNavigator from './navigation/MainNavigator';
 import Layout from './constants/Layout';
@@ -33,12 +33,12 @@ import { translations } from './assets/translations';
 // Set the key-value pairs for the different languages you want to support.
 i18n.translations = translations;
 
-i18n.locale = Localization.locale.startsWith('ar') ? 'ar' : 'it';
+i18n.locale = Localization.locale.startsWith('it') ? 'it' : 'ar';
+
 // Set the locale once at the beginning of your app.
 // i18n.locale = Localization.locale;
 // When a value is missing from a language it'll fallback to another language with the key present.
 i18n.fallbacks = true;
-i18n.locale = 'it';
 
 export default function App(props) {
   // Disable Font Scaling
@@ -96,21 +96,15 @@ export default function App(props) {
         // await clearPreferences();
         let preferences = await getPreferences();
         // setPreferences(preferences);
+        console.log("preferences init", preferences.userInfo);
+        if (!preferences.userInfo)
+          preferences.userInfo = {};
 
-        if (
-          preferences.userInfo === undefined ||
-          preferences.userInfo.country === undefined
-        ) {
-//          savePreferences({ userInfo: { country: i18n.locale } });
-        }
-//        savePreferences({ userInfo: { country: 'it' } });
-        preferences = await getPreferences();
-        console.log(preferences);
+        if(!preferences.userInfo.country)
+            preferences.userInfo.country = i18n.locale;
+
         const userInfo = preferences.userInfo;
-
-        // Initial Locale
-        i18n.locale = userInfo && userInfo.country ? userInfo.country :'it';
-        i18n.locale = 'it';
+        i18n.locale = preferences.userInfo.country;
 
         const initialRoute = preferences.showOnboarding
           ? 'Help'

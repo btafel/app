@@ -44,7 +44,7 @@ function BMIDisplay({height, weight}) {
   const bmi = Math.floor(w/(h*h));  // peso sobre altura al cuadrado
   
   const [iconcolor, text, iconname] = (function(bmi)  {
-    if(isNaN(bmi)) return ['white',i18n.t('BMI_1'),''];
+    if(isNaN(bmi)) return ['white',i18n.t('BMI_1'),'info'];
     if(bmi < 16) return ['#F2453E',i18n.t('BMI_2'), 'warning'];
     if(bmi < 17) return ['#FF9700',i18n.t('BMI_3'), 'done'];
     if(bmi < 18.5) return ['#FEE94E',i18n.t('BMI_4'), 'done'];
@@ -55,6 +55,7 @@ function BMIDisplay({height, weight}) {
     return ['#BF3930',i18n.t('BMI_9'), 'report'];
   })(bmi);
 
+  
   return (
     <Button
     icon={{
@@ -298,12 +299,13 @@ function Questionary({ onShowResults }: QuestionaryProps) {
     if(state.symptoms['fever'] === 'yes')
     {
       // Triage Italia
-
+      /*
       if(state.temperature === undefined || state.temperature > 37.5) {
         if( positiveTravelContact ) {
           result = 'negative';
         }
       }
+      */
 
       // state.temperature === undefined = 37.5, bug en TempPicker
       if(state.temperature === undefined || state.temperature > 37.5) {
@@ -379,7 +381,7 @@ function Questionary({ onShowResults }: QuestionaryProps) {
           placeholder={i18n.t('Weight') + ' (KG)'}
           value={state.weight}
           onChangeText={handleChangeWeight}
-          keyboardType="decimal-pad"
+          keyboardType="numbers-and-punctuation"
           style={styles.input}
           blurOnSubmit
         />

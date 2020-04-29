@@ -13,9 +13,8 @@ import i18n from 'i18n-js';
 import { translations } from '../../assets/translations';
 
 i18n.translations = translations;
-i18n.locale = Localization.locale.startsWith('it') ? 'it' : 'es';
+i18n.locale = Localization.locale.startsWith('it') ? 'it' : 'ar';
 i18n.fallbacks = true;
-i18n.locale = 'it';
 
 const data: PreventionItem[] = [
   {
