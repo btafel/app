@@ -7,6 +7,7 @@ import {
 import Layout from '../../constants/Layout';
 import { PreventionItem, PreventionStackNavProps } from './types';
 import { SharedElement } from 'react-navigation-shared-element';
+import i18n from 'i18n-js';
 
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
