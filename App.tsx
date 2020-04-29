@@ -11,7 +11,7 @@ import {
 import { SplashScreen } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
-import { Ionicons } from '@expo/vector-icons';
+// import { Ionicons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import { NavigationContainer } from '@react-navigation/native';
 import { syncLocalDataWithServer } from './utils/syncStorageHelper';
@@ -96,12 +96,11 @@ export default function App(props) {
         // await clearPreferences();
         let preferences = await getPreferences();
         // setPreferences(preferences);
-        console.log("preferences init", preferences.userInfo);
-        if (!preferences.userInfo)
-          preferences.userInfo = {};
+        console.log('preferences init', preferences.userInfo);
+        if (!preferences.userInfo) preferences.userInfo = {};
 
-        if(!preferences.userInfo.country)
-            preferences.userInfo.country = i18n.locale;
+        if (!preferences.userInfo.country)
+          preferences.userInfo.country = i18n.locale;
 
         const userInfo = preferences.userInfo;
         i18n.locale = preferences.userInfo.country;
